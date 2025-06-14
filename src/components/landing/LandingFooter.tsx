@@ -36,6 +36,16 @@ export default function LandingFooter() {
               <FileText size={18} /> Legal
             </Link>
           </li>
+          <li>
+            <Link to="/privacy" className="hover:underline flex items-center gap-1 text-base text-secondary font-medium">
+              <FileText size={18} /> Privacy
+            </Link>
+          </li>
+          <li>
+            <Link to="/terms" className="hover:underline flex items-center gap-1 text-base text-secondary font-medium">
+              <FileText size={18} /> Terms
+            </Link>
+          </li>
         </ul>
       </div>
       <div className="text-center text-xs text-muted-foreground mt-4">&copy; {new Date().getFullYear()} Ziada.mu. All rights reserved.</div>
