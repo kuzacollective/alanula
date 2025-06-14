@@ -1,5 +1,6 @@
 
 import { Instagram, MessageCircle, FileText } from "lucide-react";
+import { Link } from "react-router-dom";
 
 export default function LandingFooter() {
   return (
@@ -11,10 +12,10 @@ export default function LandingFooter() {
         </div>
         <ul className="flex flex-wrap gap-5 mt-3 md:mt-0">
           <li>
-            <a href="/about" className="hover:underline text-secondary text-base font-medium">About</a>
+            <Link to="/about" className="hover:underline text-secondary text-base font-medium">About</Link>
           </li>
           <li>
-            <a href="/contact" className="hover:underline text-secondary text-base font-medium">Contact</a>
+            <Link to="/contact" className="hover:underline text-secondary text-base font-medium">Contact</Link>
           </li>
           <li>
             <a href="https://instagram.com/ziada.mu" target="_blank" rel="noopener noreferrer" aria-label="Instagram" className="hover:underline flex items-center gap-1 text-base text-secondary font-medium">
@@ -27,9 +28,9 @@ export default function LandingFooter() {
             </a>
           </li>
           <li>
-            <a href="/legal" className="hover:underline flex items-center gap-1 text-base text-secondary font-medium">
+            <Link to="/legal" className="hover:underline flex items-center gap-1 text-base text-secondary font-medium">
               <FileText size={18} /> Legal
-            </a>
+            </Link>
           </li>
         </ul>
       </div>
