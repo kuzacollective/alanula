@@ -14,6 +14,8 @@ const mockHustlers: (Hustler & {
   needsReview?: boolean;
   profileComplete?: boolean;
   status?: "verified" | "unverified" | "under_review";
+  referredBy?: string;
+  referralCode?: string;
 })[] = [
   {
     id: "1",
@@ -29,7 +31,9 @@ const mockHustlers: (Hustler & {
     isNew: false,
     needsReview: false,
     profileComplete: true,
-    status: "verified"
+    status: "verified",
+    referredBy: "Sarah Wong",
+    referralCode: "ZU0001"
   },
   {
     id: "2",
@@ -45,7 +49,9 @@ const mockHustlers: (Hustler & {
     isNew: true,
     needsReview: false,
     profileComplete: true,
-    status: "verified"
+    status: "verified",
+    referredBy: "Aisha Peerun",
+    referralCode: "ZU0002"
   },
   {
     id: "3",
@@ -61,7 +67,8 @@ const mockHustlers: (Hustler & {
     isNew: false,
     needsReview: true, // flagged for incomplete
     profileComplete: false,
-    status: "unverified"
+    status: "unverified",
+    referralCode: "ZU0003"
   },
   // Under review & incomplete profile
   {
@@ -78,7 +85,8 @@ const mockHustlers: (Hustler & {
     isNew: true,
     needsReview: true,
     profileComplete: false,
-    status: "under_review"
+    status: "under_review",
+    referralCode: "ZU0004"
   },
   // Verified, but missing profile pic (incomplete)
   {
@@ -95,7 +103,9 @@ const mockHustlers: (Hustler & {
     isNew: false,
     needsReview: true,
     profileComplete: false,
-    status: "verified"
+    status: "verified",
+    referredBy: "",
+    referralCode: "ZU0005"
   },
   // Unverified and incomplete profile
   {
@@ -112,7 +122,8 @@ const mockHustlers: (Hustler & {
     isNew: false,
     needsReview: true,
     profileComplete: false,
-    status: "unverified"
+    status: "unverified",
+    referralCode: "ZU0006"
   }
 ];
 

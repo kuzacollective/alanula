@@ -1,4 +1,3 @@
-
 import React from "react";
 import { Badge } from "../ui/badge";
 import { Star, Check } from "lucide-react";
@@ -38,25 +37,25 @@ function formatPrice(price: number) {
 // New: Show star rating (avg), review count, Leave Review button if handler provided
 export default function HustlerCard({
   hustler,
-  isAdmin = false,
-  isNew = false,
-  needsReview = false,
-  profileComplete = true,
-  status = "verified",
   averageRating,
   reviewCount,
   onReviewClick,
   canFeatureToggle,
   onFeatureToggle,
+  isAdmin = false,
+  isNew = false,
+  needsReview = false,
+  profileComplete = true,
+  status = "verified",
 }: {
-  hustler: Hustler;
+  hustler: Hustler & { referredBy?: string; referralCode?: string };
   averageRating?: number;
   reviewCount?: number;
   onReviewClick?: () => void;
   canFeatureToggle?: boolean;
   onFeatureToggle?: (featured: boolean) => void;
 } & TrustProps) {
-  const { name, location, category, price, summary, whatsapp, photo, verified, featured } = hustler;
+  const { name, location, category, price, summary, whatsapp, photo, verified, featured, referredBy, referralCode } = hustler;
   const waLink = `https://wa.me/${whatsapp}?text=Hi!%20I%20found%20you%20on%20Ziada.mu%20and%20I'm%20interested%20in%20your%20${encodeURIComponent(category)}%20services.`;
   const canContact = !!summary && !!whatsapp && !!photo;
 
@@ -86,6 +85,12 @@ export default function HustlerCard({
           {isAdmin && !profileComplete && (
             <Badge className="bg-red-200 text-red-900 border-red-500 font-normal">Incomplete Profile</Badge>
           )}
+          {/* Referral info - admin only */}
+          {isAdmin && referredBy && (
+            <Badge className="bg-blue-100 text-blue-800 border-blue-400 font-normal">
+              Referred by {referredBy}
+            </Badge>
+          )}
         </div>
       )}
 
@@ -108,6 +113,13 @@ export default function HustlerCard({
         <div className="font-semibold text-xl text-secondary mb-2">{formatPrice(price)} <span className="text-sm text-muted-foreground font-normal">/start</span></div>
         <div className="text-sm text-center text-muted-foreground mb-2 line-clamp-3">{summary || <span className="italic text-muted-foreground/60">No summary provided</span>}</div>
         
+        {/* Referral code - admin only */}
+        {isAdmin && referralCode && (
+          <div className="mb-2">
+            <Badge className="bg-violet-100 text-violet-900 border-violet-300 font-normal">Referral Code: {referralCode}</Badge>
+          </div>
+        )}
+
         {/* Average rating and count */}
         <div className="flex items-center gap-1 mb-2">
           {!!averageRating && (
