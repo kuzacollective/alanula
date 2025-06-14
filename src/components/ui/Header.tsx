@@ -45,11 +45,7 @@ export default function Header() {
         <Link to="/" aria-label="Ziada.mu Home" className="flex items-center gap-2">
           <Logo size={36} withText />
         </Link>
-        <nav>
-          <Link to="/" className="font-inter text-primary text-base font-semibold hover:underline hidden sm:inline">
-            Home
-          </Link>
-        </nav>
+        {/* Navigation removed to avoid duplicate 'Home' link */}
       </div>
       <div className="mx-auto max-w-4xl mt-1">
         {breadcrumb}
@@ -57,3 +53,4 @@ export default function Header() {
     </header>
   );
 }
+
