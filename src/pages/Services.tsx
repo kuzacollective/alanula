@@ -130,12 +130,23 @@ const mockHustlers: (Hustler & {
 ];
 
 const categories = [
-  { label: "Makeup Artist", value: "Makeup Artist" },
-  { label: "Math Tutor", value: "Math Tutor" },
-  { label: "CV Writing", value: "CV Writing" },
-  { label: "Dog Walking", value: "Dog Walking" },
-  { label: "Yoga Instructor", value: "Yoga Instructor" },
-  { label: "Guitar Teacher", value: "Guitar Teacher" }
+  { label: "Caterer", value: "Caterer" },
+  { label: "Chef", value: "Chef" },
+  { label: "CV writing", value: "CV writing" },
+  { label: "Dog walking", value: "Dog walking" },
+  { label: "Florist", value: "Florist" },
+  { label: "Guitar teacher", value: "Guitar teacher" },
+  { label: "Hair stylist", value: "Hair stylist" },
+  { label: "Makeup artist", value: "Makeup artist" },
+  { label: "Manicurist", value: "Manicurist" },
+  { label: "Massage therapist", value: "Massage therapist" },
+  { label: "Math tutor", value: "Math tutor" },
+  { label: "Nail artist", value: "Nail artist" },
+  { label: "Photographer", value: "Photographer" },
+  { label: "Tiktok/Instagram expert", value: "Tiktok/Instagram expert" },
+  { label: "Videographer", value: "Videographer" },
+  { label: "Yoga instructor", value: "Yoga instructor" },
+  { label: "Wax technician", value: "Wax technician" },
 ];
 
 const locations = [
@@ -184,7 +195,7 @@ export default function Services() {
   const [reviewDialogFor, setReviewDialogFor] = useState<string | null>(null);
 
   // Admin: manage featured state
-  const [featuredState, setFeaturedState] = useState<{ [id: string]: boolean }>(
+  const [featuredState, setFeaturedState<{ [id: string]: boolean }>(
     Object.fromEntries(mockHustlers.map(h => [h.id, !!h.featured]))
   );
 
