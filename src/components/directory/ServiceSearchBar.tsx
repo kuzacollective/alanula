@@ -1,3 +1,4 @@
+
 import React from "react";
 import { Input } from "@/components/ui/input";
 import { Select, SelectTrigger, SelectContent, SelectItem, SelectValue } from "@/components/ui/select";
@@ -37,15 +38,20 @@ export const ServiceSearchBar = ({
   minPrice,
   maxPrice,
 }: ServiceSearchBarProps) => (
-  <div className="flex flex-col md:flex-row gap-3 items-stretch mb-6">
+  <div className="
+    flex flex-col gap-3 items-stretch mb-6
+    md:flex-row    
+    md:items-stretch
+    md:gap-3
+  ">
     <Input
       placeholder="Search for a service, name or skill…"
       value={search}
       onChange={e => setSearch(e.target.value)}
-      className="md:w-[220px] bg-white dark:bg-card"
+      className="w-full md:w-[220px] bg-white dark:bg-card"
     />
     <Select value={category} onValueChange={setCategory}>
-      <SelectTrigger className="md:w-[180px] bg-white dark:bg-card">
+      <SelectTrigger className="w-full md:w-[180px] bg-white dark:bg-card">
         <SelectValue placeholder="Category" />
       </SelectTrigger>
       <SelectContent>
@@ -57,7 +63,7 @@ export const ServiceSearchBar = ({
       </SelectContent>
     </Select>
     <Select value={location} onValueChange={setLocation}>
-      <SelectTrigger className="md:w-[160px] bg-white dark:bg-card">
+      <SelectTrigger className="w-full md:w-[160px] bg-white dark:bg-card">
         <SelectValue placeholder="Location" />
       </SelectTrigger>
       <SelectContent>
@@ -68,23 +74,25 @@ export const ServiceSearchBar = ({
         ))}
       </SelectContent>
     </Select>
-    <div className="flex flex-col min-w-[170px]">
-      <label className="text-xs font-semibold mb-1 text-muted-foreground">
+    <div className="flex flex-col min-w-0 w-full md:min-w-[170px] md:w-auto">
+      <label className="text-xs font-semibold mb-1 text-muted-foreground pl-1">
         Price range (Rs)
       </label>
-      <div className="flex items-center gap-2">
-        <span className="text-sm text-muted-foreground">{priceRange[0]}</span>
-        <Slider
-          min={minPrice}
-          max={maxPrice}
-          step={50}
-          value={priceRange}
-          onValueChange={vals =>
-            setPriceRange([vals[0], vals[1] ?? vals[0]])
-          }
-          className="w-36"
-        />
-        <span className="text-sm text-muted-foreground">{priceRange[1]}</span>
+      <div className="flex flex-col xs:flex-row items-stretch xs:items-center gap-2">
+        <span className="text-sm text-muted-foreground min-w-[36px] text-center">{priceRange[0]}</span>
+        <div className="flex-1 flex items-center">
+          <Slider
+            min={minPrice}
+            max={maxPrice}
+            step={50}
+            value={priceRange}
+            onValueChange={vals =>
+              setPriceRange([vals[0], vals[1] ?? vals[0]])
+            }
+            className="w-full"
+          />
+        </div>
+        <span className="text-sm text-muted-foreground min-w-[36px] text-center">{priceRange[1]}</span>
       </div>
     </div>
   </div>

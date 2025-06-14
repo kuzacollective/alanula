@@ -169,7 +169,16 @@ export default function Services() {
           </div>
 
           {/* Hustler grid list (loading skeletons or results) */}
-          <div className="grid gap-5 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 auto-rows-fr mb-6">
+          <div className="
+            grid gap-5 
+            grid-cols-1 
+            sm:grid-cols-2 
+            lg:grid-cols-3 
+            auto-rows-fr 
+            mb-6
+            px-1
+            xs:px-2
+          ">
             {loading ? (
               Array.from({ length: 6 }).map((_, i) => (
                 <HustlerCardSkeleton key={i} />
