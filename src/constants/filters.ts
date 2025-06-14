@@ -25,5 +25,14 @@ export const locations = [
   { label: "Rose Hill", value: "Rose Hill" },
   { label: "Quatre Bornes", value: "Quatre Bornes" },
   { label: "Moka", value: "Moka" },
-  { label: "Vacoas", value: "Vacoas" }
+  { label: "Vacoas", value: "Vacoas" },
+  { label: "Beau Bassin", value: "Beau Bassin" },
+  { label: "Ebène", value: "Ebène" },
+  { label: "Phoenix", value: "Phoenix" },
+  { label: "Flacq", value: "Flacq" },
+  { label: "Goodlands", value: "Goodlands" },
+  { label: "Triolet", value: "Triolet" },
+  { label: "Mahébourg", value: "Mahébourg" },
+  { label: "Grand Baie", value: "Grand Baie" },
+  { label: "Flic en Flac", value: "Flic en Flac" }
 ];
