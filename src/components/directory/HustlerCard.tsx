@@ -1,7 +1,7 @@
 
 import React from "react";
 import { Badge } from "../ui/badge";
-import { Star, Check, MessageCircle } from "lucide-react"; // Replaced Whatsapp with MessageCircle
+import { Star, Check } from "lucide-react";
 
 export type Hustler = {
   id: string;
@@ -16,16 +16,41 @@ export type Hustler = {
   featured?: boolean;
 };
 
+type TrustProps = {
+  isAdmin?: boolean;
+  isNew?: boolean;
+  needsReview?: boolean;
+  profileComplete?: boolean;
+  status?: "verified" | "unverified" | "under_review";
+};
+
 function formatPrice(price: number) {
   return `Rs ${price}`;
 }
 
-export default function HustlerCard({ hustler }: { hustler: Hustler }) {
+export default function HustlerCard({
+  hustler,
+  isAdmin = false,
+  isNew = false,
+  needsReview = false,
+  profileComplete = true,
+  status = "verified"
+}: {
+  hustler: Hustler;
+} & TrustProps) {
   const { name, location, category, price, summary, whatsapp, photo, verified, featured } = hustler;
   const waLink = `https://wa.me/${whatsapp}?text=Hi!%20I%20found%20you%20on%20Ziada.mu%20and%20I'm%20interested%20in%20your%20${encodeURIComponent(category)}%20services.`;
 
+  // Only show Contact button if profile is complete
+  const canContact = !!summary && !!whatsapp && !!photo;
+
   return (
-    <div className="bg-white dark:bg-card border rounded-lg shadow-sm flex flex-col h-full relative overflow-hidden">
+    <div
+      className={
+        "bg-white dark:bg-card border rounded-lg shadow-sm flex flex-col h-full relative overflow-hidden" +
+        (isAdmin && !profileComplete ? " border-red-400" : "")
+      }
+    >
       {featured && (
         <div className="absolute right-3 top-3 z-10">
           <Badge className="bg-accent text-accent-foreground px-2 py-1 flex items-center gap-1">
@@ -34,12 +59,25 @@ export default function HustlerCard({ hustler }: { hustler: Hustler }) {
           </Badge>
         </div>
       )}
+
+      {/* Trust Layer Badges */}
+      {(isAdmin || isNew || needsReview || status === "under_review") && (
+        <div className="absolute left-3 top-3 flex flex-col gap-1 z-10">
+          {isNew && <Badge className="bg-green-50 text-green-700 border-green-500 font-normal">New</Badge>}
+          {needsReview && <Badge variant="destructive" className="font-normal">Needs Review</Badge>}
+          {status === "under_review" && <Badge className="bg-yellow-200 text-yellow-900 border-yellow-500 font-normal">Under Review</Badge>}
+          {isAdmin && !profileComplete && (
+            <Badge className="bg-red-200 text-red-900 border-red-500 font-normal">Incomplete Profile</Badge>
+          )}
+        </div>
+      )}
+
       <div className="flex flex-col items-center px-4 pt-6 pb-4">
         <div className="relative mb-3">
           <img
             src={photo || "/placeholder.svg"}
             alt={name}
-            className="w-24 h-24 rounded-full object-cover border-2 border-primary shadow"
+            className={"w-24 h-24 rounded-full object-cover border-2 shadow " + (profileComplete ? "border-primary" : "border-red-300")}
           />
           {verified && (
             <span className="absolute -bottom-2 -right-2">
@@ -51,19 +89,46 @@ export default function HustlerCard({ hustler }: { hustler: Hustler }) {
         <div className="text-sm text-muted-foreground mb-1 text-center">{location}</div>
         <Badge variant="secondary" className="mb-1">{category}</Badge>
         <div className="font-semibold text-xl text-secondary mb-2">{formatPrice(price)} <span className="text-sm text-muted-foreground font-normal">/start</span></div>
-        <div className="text-sm text-center text-muted-foreground mb-4 line-clamp-3">{summary}</div>
-        <a
-          href={waLink}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="mt-auto w-full"
-        >
-          <button
-            className="bg-accent text-accent-foreground font-semibold w-full rounded-md py-2 px-3 flex items-center justify-center gap-2 hover:bg-accent/90 transition animate-fade-in"
+        <div className="text-sm text-center text-muted-foreground mb-4 line-clamp-3">{summary || <span className="italic text-muted-foreground/60">No summary provided</span>}</div>
+        {canContact ? (
+          <a
+            href={waLink}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="mt-auto w-full"
           >
-            <MessageCircle size={18} /> Chat on WhatsApp
+            <button
+              className="bg-accent text-accent-foreground font-semibold w-full rounded-md py-2 px-3 flex items-center justify-center gap-2 hover:bg-accent/90 transition animate-fade-in"
+            >
+              {/* No Whatsapp icon per allowed Lucide icons list, use Check icon as placeholder */}
+              <Check size={18} /> Chat on WhatsApp
+            </button>
+          </a>
+        ) : (
+          <button
+            className="bg-muted text-muted-foreground font-semibold w-full rounded-md py-2 px-3 flex items-center justify-center gap-2 opacity-70 cursor-not-allowed mt-auto"
+            disabled
+            title="Profile incomplete"
+          >
+            <Check size={18} /> Chat on WhatsApp
           </button>
-        </a>
+        )}
+
+        {/* Profile completeness visual for admin */}
+        {isAdmin && (
+          <div className="mt-2 text-xs w-full flex justify-center">
+            <span
+              className={
+                "rounded px-2 py-1 " +
+                (profileComplete
+                  ? "bg-green-100 text-green-700"
+                  : "bg-red-100 text-red-700")
+              }
+            >
+              {profileComplete ? "Profile complete" : "Profile incomplete"}
+            </span>
+          </div>
+        )}
       </div>
     </div>
   );
