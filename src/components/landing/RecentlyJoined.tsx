@@ -1,8 +1,8 @@
+
 import React from "react";
 import HustlerCard, { Hustler } from "../directory/HustlerCard";
 import { HustlerWithAdminFields } from "../directory/HustlerList";
 
-// This should match mockHustlers data structure for demo
 const hustlers: HustlerWithAdminFields[] = [
   {
     id: "2",
@@ -23,51 +23,83 @@ const hustlers: HustlerWithAdminFields[] = [
     referralCode: "ZU0002",
   },
   {
-    id: "4",
-    name: "Kavi Luchmun",
-    location: "Quatre Bornes",
-    category: "Dog Walking",
-    price: 250,
-    summary: "",
-    whatsapp: "",
-    photo: "",
-    verified: false,
+    id: "5",
+    name: "Lina Chun",
+    location: "Port Louis",
+    category: "Makeup Artist",
+    price: 900,
+    summary: "Classic & bridal makeup artist. Transformative looks with a personal touch.",
+    whatsapp: "23058115612",
+    photo: "https://randomuser.me/api/portraits/women/69.jpg",
+    verified: true,
     featured: false,
     isNew: true,
-    needsReview: true,
-    profileComplete: false,
-    status: "under_review",
-    referralCode: "ZU0004",
+    needsReview: false,
+    profileComplete: true,
+    status: "verified",
+    referralCode: "ZU0005",
+  },
+  {
+    id: "9",
+    name: "Krish Poolalah",
+    location: "Grand Baie",
+    category: "Photographer",
+    price: 1200,
+    summary: "Portrait & event specialist. Capturing moments with an artistic eye.",
+    whatsapp: "23059509591",
+    photo: "https://randomuser.me/api/portraits/men/44.jpg",
+    verified: true,
+    featured: false,
+    isNew: true,
+    needsReview: false,
+    profileComplete: true,
+    status: "verified",
+    referralCode: "ZU0009",
+  },
+  {
+    id: "11",
+    name: "Ria Sofa",
+    location: "Flic en Flac",
+    category: "Yoga Instructor",
+    price: 500,
+    summary: "Yoga for all ages – group & private sessions with a holistic approach.",
+    whatsapp: "23057214521",
+    photo: "https://randomuser.me/api/portraits/women/58.jpg",
+    verified: true,
+    featured: false,
+    isNew: true,
+    needsReview: false,
+    profileComplete: true,
+    status: "verified",
+    referralCode: "ZU0011",
   },
 ];
 
 export default function RecentlyJoined() {
-  // For the demo, use the list above. In real app, fetch dynamically.
   // Only show verified & newly joined hustlers (isNew && verified)
   const verifiedNewHustlers = hustlers.filter(h => h.isNew && h.verified);
 
   if (verifiedNewHustlers.length === 0) return null;
 
   return (
-    <section className="mb-8">
-      <h3 className="text-2xl font-bold font-poppins text-primary mb-4 text-center md:text-left">
+    <div className="py-12 md:py-16">
+      <h3 className="text-3xl font-bold font-poppins text-primary mb-8 text-center">
         Recently Joined Hustlers
       </h3>
-      <div className="flex gap-4 flex-wrap justify-center md:justify-start">
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 justify-center">
         {verifiedNewHustlers.map(h => (
-          <div key={h.id} className="max-w-xs w-full">
+          <div key={h.id} className="w-full">
             <HustlerCard
               hustler={h}
               isNew={h.isNew}
               needsReview={h.needsReview}
               profileComplete={!!h.profileComplete}
               status={h.status}
-              // Don't show reviews here, keep it simple
               isAdmin={false}
             />
           </div>
         ))}
       </div>
-    </section>
+    </div>
   );
 }

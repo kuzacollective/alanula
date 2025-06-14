@@ -1,6 +1,6 @@
 
 import { useNavigate } from "react-router-dom";
-import { ChefHat, Image, PencilLine, Camera, Brush, Users, BookUser } from "lucide-react";
+import { ChefHat, Image, PencilLine, Camera, Brush, Users } from "lucide-react";
 import { Card, CardContent } from "../ui/card";
 
 const categories = [
@@ -50,33 +50,30 @@ export default function PopularCategories() {
   };
 
   return (
-    <section className="py-10 bg-muted">
-      <div className="mx-auto max-w-4xl">
-        <h2 className="text-2xl md:text-3xl font-bold font-poppins text-secondary text-center mb-7">
-          Popular Categories
-        </h2>
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4 px-3 pb-3">
-          {categories.map((cat) => (
-            <Card
-              key={cat.label}
-              role="button"
-              tabIndex={0}
-              className={`transition-all duration-200 hover-scale cursor-pointer shadow-sm bg-gradient-to-b ${cat.color}`}
-              onClick={() => handleCardClick(cat.label)}
-              onKeyDown={e => (e.key === "Enter" || e.key === " ") && handleCardClick(cat.label)}
-              aria-label={`Browse ${cat.label}`}
-            >
-              <CardContent className="flex flex-col gap-1 items-center py-6">
-                <cat.icon className={cat.iconClass} size={28} aria-hidden="true" />
-                <span className="mt-2 font-bold font-poppins text-base text-secondary text-center">
-                  {cat.label}
-                </span>
-              </CardContent>
-            </Card>
-          ))}
-        </div>
+    <div className="py-12 md:py-16">
+      <h2 className="text-3xl font-bold font-poppins text-secondary text-center mb-8">
+        Popular Categories
+      </h2>
+      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
+        {categories.map((cat) => (
+          <Card
+            key={cat.label}
+            role="button"
+            tabIndex={0}
+            className={`transition-all duration-200 hover-scale cursor-pointer shadow-sm bg-gradient-to-b ${cat.color}`}
+            onClick={() => handleCardClick(cat.label)}
+            onKeyDown={e => (e.key === "Enter" || e.key === " ") && handleCardClick(cat.label)}
+            aria-label={`Browse ${cat.label}`}
+          >
+            <CardContent className="flex flex-col gap-1 items-center py-7">
+              <cat.icon className={cat.iconClass} size={30} aria-hidden="true" />
+              <span className="mt-3 font-bold font-poppins text-base text-secondary text-center">
+                {cat.label}
+              </span>
+            </CardContent>
+          </Card>
+        ))}
       </div>
-    </section>
+    </div>
   );
 }
-
