@@ -195,7 +195,7 @@ export default function Services() {
   const [reviewDialogFor, setReviewDialogFor] = useState<string | null>(null);
 
   // Admin: manage featured state
-  const [featuredState, setFeaturedState<{ [id: string]: boolean }>(
+  const [featuredState, setFeaturedState] = useState<{ [id: string]: boolean }>(
     Object.fromEntries(mockHustlers.map(h => [h.id, !!h.featured]))
   );
 
