@@ -1,5 +1,4 @@
 
-import React from "react";
 import { Link, useLocation } from "react-router-dom";
 import Logo from "@/components/Logo";
 import { Breadcrumb, BreadcrumbList, BreadcrumbItem, BreadcrumbLink, BreadcrumbSeparator, BreadcrumbPage } from "@/components/ui/breadcrumb";
