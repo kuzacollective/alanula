@@ -1,4 +1,3 @@
-
 import React, { useState } from "react";
 import HustlerCard, { Hustler } from "@/components/directory/HustlerCard";
 import { Input } from "@/components/ui/input";
@@ -6,6 +5,9 @@ import { Select, SelectTrigger, SelectContent, SelectItem, SelectValue } from "@
 import { Badge } from "@/components/ui/badge";
 import { Switch } from "@/components/ui/switch";
 import ReviewDialog, { Review } from "@/components/directory/ReviewDialog";
+import { ServiceSearchBar } from "@/components/directory/ServiceSearchBar";
+import { HustlerList } from "@/components/directory/HustlerList";
+import { useReviews } from "@/hooks/useReviews";
 
 const mockHustlers: (Hustler & {
   isNew?: boolean;
@@ -146,11 +148,13 @@ export default function Services() {
   const [category, setCategory] = useState("");
   const [location, setLocation] = useState("");
   const [adminMode, setAdminMode] = useState(false);
-  const [reviews, setReviews] = useState<ReviewsDict>({});
+
+  // Reviews handled via custom hook
+  const { reviews, getStats, addReview } = useReviews();
 
   const [reviewDialogFor, setReviewDialogFor] = useState<string | null>(null);
 
-  // Allow admins to toggle "featured"
+  // Admin: manage featured state
   const [featuredState, setFeaturedState] = useState<{ [id: string]: boolean }>(
     Object.fromEntries(mockHustlers.map(h => [h.id, !!h.featured]))
   );
@@ -160,7 +164,7 @@ export default function Services() {
     featured: featuredState[h.id] ?? false,
   }));
 
-  // Calculate filtered and sorted list
+  // Filtering and sorting
   const filtered = hustlersWithFeatured
     .filter((h) => {
       const matchSearch =
@@ -176,31 +180,10 @@ export default function Services() {
       const complete = isProfileComplete(h);
       return matchSearch && matchCat && matchLoc && h.verified && complete;
     })
-    // Sort: Featured hustlers first, then the rest
     .sort((a, b) => {
       if (a.featured === b.featured) return 0;
       return a.featured ? -1 : 1;
     });
-
-  // Get avg rating, review count for a hustler
-  const getStats = (id: string) => {
-    const r = reviews[id] || [];
-    if (r.length === 0) return { avg: undefined, count: 0 };
-    const avg = r.reduce((s, x) => s + x.rating, 0) / r.length;
-    return { avg, count: r.length };
-  };
-
-  // On review submission
-  const handleReviewSubmit = (review: Omit<Review, "createdAt">) => {
-    setReviews(prev => {
-      const arr = prev[review.hustlerId] || [];
-      const newReview: Review = {
-        ...review,
-        createdAt: new Date().toISOString()
-      };
-      return { ...prev, [review.hustlerId]: [newReview, ...arr] };
-    });
-  };
 
   // Admin: toggle featured badge
   const handleFeatureToggle = (id: string, newVal: boolean) => {
@@ -222,77 +205,30 @@ export default function Services() {
             </div>
           </div>
         </div>
-        <div className="flex flex-col md:flex-row gap-3 items-stretch mb-6">
-          <Input
-            placeholder="Search for a service, name or skill…"
-            value={search}
-            onChange={e => setSearch(e.target.value)}
-            className="md:w-[220px] bg-white dark:bg-card"
-          />
-          <Select value={category} onValueChange={setCategory}>
-            <SelectTrigger className="md:w-[180px] bg-white dark:bg-card">
-              <SelectValue placeholder="Category" />
-            </SelectTrigger>
-            <SelectContent>
-              {categories.map(opt => (
-                <SelectItem value={opt.value} key={opt.value}>
-                  {opt.label}
-                </SelectItem>
-              ))}
-            </SelectContent>
-          </Select>
-          <Select value={location} onValueChange={setLocation}>
-            <SelectTrigger className="md:w-[160px] bg-white dark:bg-card">
-              <SelectValue placeholder="Location" />
-            </SelectTrigger>
-            <SelectContent>
-              {locations.map(opt => (
-                <SelectItem value={opt.value} key={opt.value}>
-                  {opt.label}
-                </SelectItem>
-              ))}
-            </SelectContent>
-          </Select>
-        </div>
+
+        <ServiceSearchBar
+          search={search}
+          setSearch={setSearch}
+          category={category}
+          setCategory={setCategory}
+          location={location}
+          setLocation={setLocation}
+          categories={categories}
+          locations={locations}
+        />
+
         <div className="grid gap-5 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 auto-rows-fr">
-          {filtered.length === 0 ? (
-            <div className="col-span-full text-center text-muted-foreground py-16">
-              No hustlers found. Try again!
-            </div>
-          ) : (
-            filtered.map(h => {
-              const stats = getStats(h.id);
-              return (
-                <React.Fragment key={h.id}>
-                  <HustlerCard
-                    hustler={h}
-                    isAdmin={adminMode}
-                    isNew={h.isNew}
-                    needsReview={h.needsReview}
-                    profileComplete={isProfileComplete(h)}
-                    status={h.status}
-                    averageRating={stats.avg}
-                    reviewCount={stats.count}
-                    onReviewClick={
-                      typeof stats.avg !== "undefined"
-                        ? () => setReviewDialogFor(h.id)
-                        : () => setReviewDialogFor(h.id)
-                    }
-                    canFeatureToggle={adminMode}
-                    onFeatureToggle={newVal => handleFeatureToggle(h.id, newVal)}
-                  />
-                  {reviewDialogFor === h.id && (
-                    <ReviewDialog
-                      key={h.id + "_modal"}
-                      hustlerId={h.id}
-                      onSubmit={handleReviewSubmit}
-                      triggerButton={null}
-                    />
-                  )}
-                </React.Fragment>
-              );
-            })
-          )}
+          <HustlerList
+            hustlers={filtered}
+            adminMode={adminMode}
+            reviewDialogFor={reviewDialogFor}
+            openReviewDialog={setReviewDialogFor}
+            onReviewSubmit={addReview}
+            getStats={getStats}
+            canFeatureToggle={adminMode}
+            onFeatureToggle={handleFeatureToggle}
+            isProfileComplete={isProfileComplete}
+          />
         </div>
         <div className="text-center text-sm mt-7 text-muted-foreground">
           Powered by <span className="text-primary font-medium">Airtable</span> & Ziada.mu community 🚀
