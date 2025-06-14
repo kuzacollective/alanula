@@ -1,5 +1,5 @@
 
-import { Instagram, MessageCircle, FileText } from "lucide-react";
+import { Instagram, MessageCircle, FileText, MessageSquareQuestion } from "lucide-react";
 import { Link } from "react-router-dom";
 
 export default function LandingFooter() {
@@ -13,6 +13,11 @@ export default function LandingFooter() {
         <ul className="flex flex-wrap gap-5 mt-3 md:mt-0">
           <li>
             <Link to="/about" className="hover:underline text-secondary text-base font-medium">About</Link>
+          </li>
+          <li>
+            <Link to="/faq" className="hover:underline flex items-center gap-1 text-base text-secondary font-medium">
+              <MessageSquareQuestion size={18} /> FAQ
+            </Link>
           </li>
           <li>
             <Link to="/contact" className="hover:underline text-secondary text-base font-medium">Contact</Link>
