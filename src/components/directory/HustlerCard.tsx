@@ -1,7 +1,7 @@
 
 import React from "react";
 import { Badge } from "../ui/badge";
-import { Star, Check, Whatsapp } from "lucide-react";
+import { Star, Check, MessageCircle } from "lucide-react"; // Replaced Whatsapp with MessageCircle
 
 export type Hustler = {
   id: string;
@@ -61,7 +61,7 @@ export default function HustlerCard({ hustler }: { hustler: Hustler }) {
           <button
             className="bg-accent text-accent-foreground font-semibold w-full rounded-md py-2 px-3 flex items-center justify-center gap-2 hover:bg-accent/90 transition animate-fade-in"
           >
-            <Whatsapp size={18} /> Chat on WhatsApp
+            <MessageCircle size={18} /> Chat on WhatsApp
           </button>
         </a>
       </div>
