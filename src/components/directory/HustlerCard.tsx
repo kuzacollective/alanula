@@ -1,3 +1,4 @@
+
 import React from "react";
 import { Badge } from "../ui/badge";
 import { Star, Check } from "lucide-react";
@@ -69,25 +70,25 @@ export default function HustlerCard({
       {/* Featured badge */}
       {featured && (
         <div className="absolute right-3 top-3 z-10">
-          <Badge className="bg-yellow-300 text-yellow-800 px-2 py-1 flex items-center gap-1">
+          <Badge className="bg-yellow-300 text-yellow-800 px-2 py-1 flex items-center gap-1 shadow animate-fade-in">
             <Star size={16} className="text-yellow-500" />
             Featured
           </Badge>
         </div>
       )}
 
-      {/* Trust Layer Badges */}
+      {/* Trust Layer Badges (Left) */}
       {(isAdmin || isNew || needsReview || status === "under_review") && (
-        <div className="absolute left-3 top-3 flex flex-col gap-1 z-10">
-          {isNew && <Badge className="bg-green-50 text-green-700 border-green-500 font-normal">New</Badge>}
-          {needsReview && <Badge variant="destructive" className="font-normal">Needs Review</Badge>}
-          {status === "under_review" && <Badge className="bg-yellow-200 text-yellow-900 border-yellow-500 font-normal">Under Review</Badge>}
+        <div className="absolute left-3 top-3 flex flex-col gap-1 z-10 w-max min-w-[110px]">
+          {isNew && <Badge className="bg-green-50 text-green-700 border-green-500 font-normal shadow-md animate-fade-in">New</Badge>}
+          {needsReview && <Badge variant="destructive" className="font-normal shadow-md animate-fade-in">Needs Review</Badge>}
+          {status === "under_review" && <Badge className="bg-yellow-200 text-yellow-900 border-yellow-500 font-normal shadow-md animate-fade-in">Under Review</Badge>}
           {isAdmin && !profileComplete && (
-            <Badge className="bg-red-200 text-red-900 border-red-500 font-normal">Incomplete Profile</Badge>
+            <Badge className="bg-red-200 text-red-900 border-red-500 font-normal shadow-md animate-fade-in">Incomplete Profile</Badge>
           )}
           {/* Referral info - admin only */}
-          {isAdmin && referredBy && (
-            <Badge className="bg-blue-100 text-blue-800 border-blue-400 font-normal">
+          {isAdmin && referredBy && referredBy.trim() && (
+            <Badge className="bg-blue-100 text-blue-800 border-blue-400 font-normal shadow-md animate-fade-in">
               Referred by {referredBy}
             </Badge>
           )}
@@ -99,7 +100,10 @@ export default function HustlerCard({
           <img
             src={photo || "/placeholder.svg"}
             alt={name}
-            className={"w-24 h-24 rounded-full object-cover border-2 shadow " + (profileComplete ? "border-primary" : "border-red-300")}
+            className={
+              "w-24 h-24 rounded-full object-cover border-2 shadow " +
+              (profileComplete ? "border-primary" : "border-red-300")
+            }
           />
           {verified && (
             <span className="absolute -bottom-2 -right-2">
@@ -199,3 +203,4 @@ export default function HustlerCard({
     </div>
   );
 }
+
