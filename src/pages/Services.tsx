@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useMemo, useCallback, useEffect } from "react";
 import HustlerCard, { Hustler } from "@/components/directory/HustlerCard";
 import { Input } from "@/components/ui/input";
 import { Select, SelectTrigger, SelectContent, SelectItem, SelectValue } from "@/components/ui/select";
@@ -9,6 +9,7 @@ import { ServiceSearchBar } from "@/components/directory/ServiceSearchBar";
 import { HustlerList } from "@/components/directory/HustlerList";
 import { useReviews } from "@/hooks/useReviews";
 import Header from "@/components/ui/Header";
+import { Slider } from "@/components/ui/slider";
 
 const mockHustlers: (Hustler & {
   isNew?: boolean;
@@ -154,11 +155,28 @@ type ReviewsDict = {
   [hustlerId: string]: ReturnType<typeof useReviews>["reviews"][string];
 };
 
+// Extract price min/max (based on mockHustlers data)
+const rawPrices = mockHustlers.map(h => h.price ?? 0).filter(p => typeof p === "number" && !isNaN(p));
+const minPrice = Math.min(...rawPrices, 0);
+const maxPrice = Math.max(...rawPrices, 0);
+
 export default function Services() {
-  const [search, setSearch] = useState("");
+  const [searchInput, setSearchInput] = useState("");
+  const [search, setSearch] = useState(""); // debounced effective search
   const [category, setCategory] = useState("");
   const [location, setLocation] = useState("");
   const [adminMode, setAdminMode] = useState(false);
+
+  // Price range filter
+  const [priceRange, setPriceRange] = useState<[number, number]>([minPrice, maxPrice]);
+
+  // Debounce search input for performance (300ms)
+  useEffect(() => {
+    const handler = setTimeout(() => {
+      setSearch(searchInput);
+    }, 300);
+    return () => clearTimeout(handler);
+  }, [searchInput]);
 
   // Reviews handled via custom hook
   const { reviews, getStats, addReview } = useReviews();
@@ -180,16 +198,19 @@ export default function Services() {
     .filter((h) => {
       const matchSearch =
         h.name.toLowerCase().includes(search.toLowerCase()) ||
-        h.summary.toLowerCase().includes(search.toLowerCase());
+        h.summary.toLowerCase().includes(search.toLowerCase()) ||
+        h.category?.toLowerCase().includes(search.toLowerCase());
       const matchCat = !category || h.category === category;
       const matchLoc = !location || h.location === location;
+      const matchPrice =
+        h.price >= priceRange[0] && h.price <= priceRange[1];
 
       if (adminMode) {
-        return matchSearch && matchCat && matchLoc;
+        return matchSearch && matchCat && matchLoc && matchPrice;
       }
       // For users: only verified + complete
       const complete = isProfileComplete(h);
-      return matchSearch && matchCat && matchLoc && h.verified && complete;
+      return matchSearch && matchCat && matchLoc && matchPrice && h.verified && complete;
     })
     .sort((a, b) => {
       if (a.featured === b.featured) return 0;
@@ -200,6 +221,12 @@ export default function Services() {
   const handleFeatureToggle = (id: string, newVal: boolean) => {
     setFeaturedState(prev => ({ ...prev, [id]: newVal }));
   };
+
+  // Count active filters (except for search, which is not "resettable")
+  const activeFilterCount =
+    (category ? 1 : 0) +
+    (location ? 1 : 0) +
+    ((priceRange[0] !== minPrice || priceRange[1] !== maxPrice) ? 1 : 0);
 
   return (
     <>
@@ -214,10 +241,10 @@ export default function Services() {
             <div className="flex items-center gap-3">
               <Badge variant="secondary" className="shrink-0">MVP Preview</Badge>
               <div className="flex items-center gap-2">
-                <Switch 
-                  checked={adminMode} 
-                  onCheckedChange={setAdminMode} 
-                  id="admin-mode" 
+                <Switch
+                  checked={adminMode}
+                  onCheckedChange={setAdminMode}
+                  id="admin-mode"
                   className="shrink-0"
                 />
                 <label htmlFor="admin-mode" className="text-xs text-muted-foreground">Admin view</label>
@@ -227,30 +254,37 @@ export default function Services() {
 
           {/* Search/filter bar */}
           <ServiceSearchBar
-            search={search}
-            setSearch={setSearch}
+            search={searchInput}
+            setSearch={setSearchInput}
             category={category}
             setCategory={setCategory}
             location={location}
             setLocation={setLocation}
             categories={categories}
             locations={locations}
+            priceRange={priceRange}
+            setPriceRange={setPriceRange}
+            minPrice={minPrice}
+            maxPrice={maxPrice}
           />
 
           {/* Results count and clear filters */}
           <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-3 mt-[-12px]">
-            <div className="text-sm text-muted-foreground">
+            <div className="text-sm text-muted-foreground flex items-center gap-2">
               {filtered.length > 0
                 ? `Showing ${filtered.length} hustler${filtered.length > 1 ? "s" : ""}`
                 : "No hustlers match your filters."}
+              {activeFilterCount > 0 && (
+                <span className="inline-flex items-center px-2 py-0.5 rounded-full bg-accent text-accent-foreground text-[11px] font-semibold ml-2">{activeFilterCount} filter{activeFilterCount>1 ? 's':''} active</span>
+              )}
             </div>
-            {(search || category || location) && (
+            {(category || location || (priceRange[0] !== minPrice || priceRange[1] !== maxPrice)) && (
               <button
-                className="text-xs underline text-accent font-medium hover:text-accent/80 transition"
+                className="text-xs underline text-accent font-bold hover:text-accent/80 transition"
                 onClick={() => {
-                  setSearch("");
                   setCategory("");
                   setLocation("");
+                  setPriceRange([minPrice, maxPrice]);
                 }}
                 aria-label="Clear all filters"
               >

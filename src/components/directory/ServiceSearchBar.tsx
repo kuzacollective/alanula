@@ -1,7 +1,7 @@
-
 import React from "react";
 import { Input } from "@/components/ui/input";
 import { Select, SelectTrigger, SelectContent, SelectItem, SelectValue } from "@/components/ui/select";
+import { Slider } from "@/components/ui/slider";
 
 type Option = {
   label: string;
@@ -17,10 +17,25 @@ interface ServiceSearchBarProps {
   setLocation: (v: string) => void;
   categories: Option[];
   locations: Option[];
+  priceRange: [number, number];
+  setPriceRange: (range: [number, number]) => void;
+  minPrice: number;
+  maxPrice: number;
 }
 
 export const ServiceSearchBar = ({
-  search, setSearch, category, setCategory, location, setLocation, categories, locations
+  search,
+  setSearch,
+  category,
+  setCategory,
+  location,
+  setLocation,
+  categories,
+  locations,
+  priceRange,
+  setPriceRange,
+  minPrice,
+  maxPrice,
 }: ServiceSearchBarProps) => (
   <div className="flex flex-col md:flex-row gap-3 items-stretch mb-6">
     <Input
@@ -53,5 +68,24 @@ export const ServiceSearchBar = ({
         ))}
       </SelectContent>
     </Select>
+    <div className="flex flex-col min-w-[170px]">
+      <label className="text-xs font-semibold mb-1 text-muted-foreground">
+        Price range (Rs)
+      </label>
+      <div className="flex items-center gap-2">
+        <span className="text-sm text-muted-foreground">{priceRange[0]}</span>
+        <Slider
+          min={minPrice}
+          max={maxPrice}
+          step={50}
+          value={priceRange}
+          onValueChange={vals =>
+            setPriceRange([vals[0], vals[1] ?? vals[0]])
+          }
+          className="w-36"
+        />
+        <span className="text-sm text-muted-foreground">{priceRange[1]}</span>
+      </div>
+    </div>
   </div>
 );
