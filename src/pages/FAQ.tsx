@@ -2,7 +2,7 @@
 import Header from "@/components/ui/Header";
 import { Card, CardContent } from "@/components/ui/card";
 import React from "react";
-import { MessageSquareQuestion } from "lucide-react";
+import { MessageSquare } from "lucide-react";
 
 const FAQS = [
   {
@@ -37,7 +37,7 @@ export default function FAQ() {
       <Header />
       <main className="max-w-3xl mx-auto px-4 py-10">
         <div className="flex items-center gap-3 mb-4">
-          <MessageSquareQuestion className="text-primary" size={32} />
+          <MessageSquare className="text-primary" size={32} />
           <h1 className="text-4xl font-bold font-poppins text-primary">Frequently Asked Questions</h1>
         </div>
         <div className="flex flex-col gap-4 mt-8">
