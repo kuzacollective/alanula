@@ -150,9 +150,8 @@ function isProfileComplete(h: typeof mockHustlers[0]) {
   return !!h.summary && !!h.whatsapp && !!h.photo;
 }
 
-// MVP approach: reviews state is kept in-memory per hustlerId
 type ReviewsDict = {
-  [hustlerId: string]: Review[];
+  [hustlerId: string]: ReturnType<typeof useReviews>["reviews"][string];
 };
 
 export default function Services() {
@@ -205,50 +204,81 @@ export default function Services() {
   return (
     <>
       <Header />
-      <div className="py-8 px-2 min-h-screen bg-background">
-        <div className="max-w-4xl mx-auto flex flex-col gap-4">
-          <div className="flex items-center justify-between">
-            <h1 className="text-3xl font-poppins font-bold text-primary mb-2">
+      <main className="min-h-screen bg-background px-2 py-8 w-full">
+        <div className="max-w-4xl mx-auto flex flex-col gap-0 w-full">
+          {/* Top controls: Title, MVP badge, Admin toggle */}
+          <div className="flex flex-col sm:flex-row sm:items-center gap-2 mb-4 w-full justify-between">
+            <h1 className="text-3xl font-poppins font-bold text-primary">
               Browse Local Hustlers
             </h1>
-            <div className="flex items-center gap-2">
-              <Badge variant="secondary">MVP Preview</Badge>
-              <div className="flex items-center gap-1 ml-3">
-                <Switch checked={adminMode} onCheckedChange={setAdminMode} id="admin-mode" />
+            <div className="flex items-center gap-3">
+              <Badge variant="secondary" className="shrink-0">MVP Preview</Badge>
+              <div className="flex items-center gap-2">
+                <Switch 
+                  checked={adminMode} 
+                  onCheckedChange={setAdminMode} 
+                  id="admin-mode" 
+                  className="shrink-0"
+                />
                 <label htmlFor="admin-mode" className="text-xs text-muted-foreground">Admin view</label>
               </div>
             </div>
+          </div>
 
-            <ServiceSearchBar
-              search={search}
-              setSearch={setSearch}
-              category={category}
-              setCategory={setCategory}
-              location={location}
-              setLocation={setLocation}
-              categories={categories}
-              locations={locations}
+          {/* Search/filter bar */}
+          <ServiceSearchBar
+            search={search}
+            setSearch={setSearch}
+            category={category}
+            setCategory={setCategory}
+            location={location}
+            setLocation={setLocation}
+            categories={categories}
+            locations={locations}
+          />
+
+          {/* Results count and clear filters */}
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-3 mt-[-12px]">
+            <div className="text-sm text-muted-foreground">
+              {filtered.length > 0
+                ? `Showing ${filtered.length} hustler${filtered.length > 1 ? "s" : ""}`
+                : "No hustlers match your filters."}
+            </div>
+            {(search || category || location) && (
+              <button
+                className="text-xs underline text-accent font-medium hover:text-accent/80 transition"
+                onClick={() => {
+                  setSearch("");
+                  setCategory("");
+                  setLocation("");
+                }}
+                aria-label="Clear all filters"
+              >
+                Clear filters
+              </button>
+            )}
+          </div>
+
+          {/* Hustler grid list */}
+          <div className="grid gap-5 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 auto-rows-fr mb-6">
+            <HustlerList
+              hustlers={filtered}
+              adminMode={adminMode}
+              reviewDialogFor={reviewDialogFor}
+              openReviewDialog={setReviewDialogFor}
+              onReviewSubmit={addReview}
+              getStats={getStats}
+              canFeatureToggle={adminMode}
+              onFeatureToggle={handleFeatureToggle}
+              isProfileComplete={isProfileComplete}
             />
-
-            <div className="grid gap-5 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 auto-rows-fr">
-              <HustlerList
-                hustlers={filtered}
-                adminMode={adminMode}
-                reviewDialogFor={reviewDialogFor}
-                openReviewDialog={setReviewDialogFor}
-                onReviewSubmit={addReview}
-                getStats={getStats}
-                canFeatureToggle={adminMode}
-                onFeatureToggle={handleFeatureToggle}
-                isProfileComplete={isProfileComplete}
-              />
-            </div>
-            <div className="text-center text-sm mt-7 text-muted-foreground">
-              Powered by <span className="text-primary font-medium">Airtable</span> & Ziada.mu community 🚀
-            </div>
           </div>
         </div>
-      </div>
+        {/* Moved footer out of flex column for better stacking and responsive layout */}
+        <div className="text-center text-sm mt-7 text-muted-foreground pb-8">
+          Powered by <span className="text-primary font-medium">Airtable</span> & Ziada.mu community 🚀
+        </div>
+      </main>
     </>
   );
 }
