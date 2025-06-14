@@ -1,4 +1,3 @@
-
 import React from "react";
 import { Badge } from "../ui/badge";
 import { Star, Check } from "lucide-react";
@@ -35,8 +34,7 @@ function formatPrice(price: number) {
   return `Rs ${price}`;
 }
 
-// New: Show star rating (avg), review count, Leave Review button if handler provided
-export default function HustlerCard({
+const HustlerCard = React.memo(function HustlerCard({
   hustler,
   averageRating,
   reviewCount,
@@ -59,13 +57,18 @@ export default function HustlerCard({
   const { name, location, category, price, summary, whatsapp, photo, verified, featured, referredBy, referralCode } = hustler;
   const waLink = `https://wa.me/${whatsapp}?text=Hi!%20I%20found%20you%20on%20Ziada.mu%20and%20I'm%20interested%20in%20your%20${encodeURIComponent(category)}%20services.`;
   const canContact = !!summary && !!whatsapp && !!photo;
+  // Check for loading fallback for profile photo
+  const [imgLoaded, setImgLoaded] = React.useState(false);
 
   return (
     <div
       className={
-        "bg-white dark:bg-card border rounded-lg shadow-sm flex flex-col h-full relative overflow-hidden" +
+        "bg-white dark:bg-card border rounded-lg shadow-sm flex flex-col h-full relative overflow-hidden " +
+        "transition-transform duration-200 transform hover:scale-105 hover:shadow-lg focus-within:scale-105 focus-within:shadow-lg animate-fade-in" +
         (isAdmin && !profileComplete ? " border-red-400" : "")
       }
+      tabIndex={0}
+      aria-label={`Service provider: ${name}, category: ${category}, location: ${location}`}
     >
       {/* Featured badge */}
       {featured && (
@@ -97,13 +100,20 @@ export default function HustlerCard({
 
       <div className="flex flex-col items-center px-4 pt-6 pb-4 w-full">
         <div className="relative mb-3">
+          {!imgLoaded && (
+            <div className="absolute left-0 top-0 w-24 h-24 rounded-full bg-muted animate-pulse" aria-hidden="true" />
+          )}
           <img
             src={photo || "/placeholder.svg"}
             alt={name}
+            loading="lazy"
             className={
-              "w-24 h-24 rounded-full object-cover border-2 shadow " +
-              (profileComplete ? "border-primary" : "border-red-300")
+              "w-24 h-24 rounded-full object-cover border-2 shadow transition-all duration-150 " +
+              (profileComplete ? "border-primary" : "border-red-300") +
+              (imgLoaded ? "" : " opacity-0")
             }
+            onLoad={() => setImgLoaded(true)}
+            style={{ transition: "opacity 0.2s" }}
           />
           {verified && (
             <span className="absolute -bottom-2 -right-2">
@@ -202,5 +212,27 @@ export default function HustlerCard({
       </div>
     </div>
   );
-}
+}, (prev, next) => {
+  // Prevent re-render if props are deeply the same
+  return (
+    prev.hustler.id === next.hustler.id &&
+    prev.hustler.featured === next.hustler.featured &&
+    prev.averageRating === next.averageRating &&
+    prev.reviewCount === next.reviewCount &&
+    prev.isAdmin === next.isAdmin &&
+    prev.isNew === next.isNew &&
+    prev.needsReview === next.needsReview &&
+    prev.profileComplete === next.profileComplete &&
+    prev.status === next.status
+  );
+});
+export default HustlerCard;
 
+export type HustlerWithAdminFields = Hustler & {
+  isNew?: boolean;
+  needsReview?: boolean;
+  profileComplete?: boolean;
+  status?: "verified" | "unverified" | "under_review";
+  referredBy?: string;
+  referralCode?: string;
+};

@@ -1,4 +1,3 @@
-
 import React, { useState, useMemo, useCallback, useEffect } from "react";
 import HustlerCard, { Hustler } from "@/components/directory/HustlerCard";
 import HustlerCardSkeleton from "@/components/directory/HustlerCardSkeleton";
@@ -16,6 +15,7 @@ import { mockHustlers } from "@/mocks/hustlers";
 import { categories, locations } from "@/constants/filters";
 import { isProfileComplete } from "@/utils/isProfileComplete";
 import { ErrorBoundary } from "@/components/ErrorBoundary";
+import { BackToTopButton } from "@/components/ui/BackToTopButton";
 
 // Simulate data fetching/loading state
 function useDemoLoading(deps: any[]) {
@@ -104,7 +104,8 @@ export default function Services() {
   return (
     <ErrorBoundary>
       <Header />
-      <main className="min-h-screen bg-background px-2 py-8 w-full">
+      <main className="min-h-screen bg-background px-2 py-8 w-full relative">
+        <BackToTopButton />
         <div className="max-w-4xl mx-auto flex flex-col gap-0 w-full">
           {/* Top controls: Title, MVP badge, Admin toggle */}
           <div className="flex flex-col sm:flex-row sm:items-center gap-2 mb-4 w-full justify-between">
@@ -168,20 +169,25 @@ export default function Services() {
             )}
           </div>
 
-          {/* Hustler grid list (loading skeletons or results) */}
-          <div className="
-            grid gap-5 
-            grid-cols-1 
-            sm:grid-cols-2 
-            lg:grid-cols-3 
-            auto-rows-fr 
-            mb-6
-            px-1
-            xs:px-2
-          ">
+          {/* Hustler grid list with animation */}
+          <div
+            className="
+              grid gap-5 
+              grid-cols-1 
+              sm:grid-cols-2 
+              lg:grid-cols-3 
+              auto-rows-fr 
+              mb-6
+              px-1
+              xs:px-2
+            "
+            aria-live="polite"
+          >
             {loading ? (
               Array.from({ length: 6 }).map((_, i) => (
-                <HustlerCardSkeleton key={i} />
+                <div key={i} className="animate-pulse animate-fade-in">
+                  <HustlerCardSkeleton />
+                </div>
               ))
             ) : (
               <HustlerList

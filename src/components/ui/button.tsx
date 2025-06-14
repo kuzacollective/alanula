@@ -41,16 +41,21 @@ export interface ButtonProps
 
 const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
   ({ className, variant, size, asChild = false, ...props }, ref) => {
-    const Comp = asChild ? Slot : "button"
+    const Comp = asChild ? Slot : "button";
     return (
       <Comp
-        className={cn(buttonVariants({ variant, size, className }))}
+        className={cn(
+          buttonVariants({ variant, size, className }),
+          "transition-transform duration-150 hover:scale-105 focus:scale-105 outline-none focus-visible:ring-2"
+        )}
         ref={ref}
+        tabIndex={0}
+        aria-pressed={props["aria-pressed"]}
         {...props}
       />
-    )
+    );
   }
-)
-Button.displayName = "Button"
+);
+Button.displayName = "Button";
 
 export { Button, buttonVariants }
