@@ -1,4 +1,3 @@
-
 import React, { useState } from "react";
 import HustlerCard, { Hustler } from "@/components/directory/HustlerCard";
 import { Input } from "@/components/ui/input";
@@ -114,7 +113,6 @@ const mockHustlers: (Hustler & {
 ];
 
 const categories = [
-  { label: "All", value: "" },
   { label: "Makeup Artist", value: "Makeup Artist" },
   { label: "Math Tutor", value: "Math Tutor" },
   { label: "CV Writing", value: "CV Writing" },
@@ -124,7 +122,6 @@ const categories = [
 ];
 
 const locations = [
-  { label: "All", value: "" },
   { label: "Port Louis", value: "Port Louis" },
   { label: "Curepipe", value: "Curepipe" },
   { label: "Rose Hill", value: "Rose Hill" },
