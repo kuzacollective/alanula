@@ -1,9 +1,11 @@
+
 import React, { useState } from "react";
 import HustlerCard, { Hustler } from "@/components/directory/HustlerCard";
 import { Input } from "@/components/ui/input";
 import { Select, SelectTrigger, SelectContent, SelectItem, SelectValue } from "@/components/ui/select";
 import { Badge } from "@/components/ui/badge";
 import { Switch } from "@/components/ui/switch";
+import ReviewDialog, { Review } from "@/components/directory/ReviewDialog";
 
 const mockHustlers: (Hustler & {
   isNew?: boolean;
@@ -134,26 +136,76 @@ function isProfileComplete(h: typeof mockHustlers[0]) {
   return !!h.summary && !!h.whatsapp && !!h.photo;
 }
 
+// MVP approach: reviews state is kept in-memory per hustlerId
+type ReviewsDict = {
+  [hustlerId: string]: Review[];
+};
+
 export default function Services() {
   const [search, setSearch] = useState("");
   const [category, setCategory] = useState("");
   const [location, setLocation] = useState("");
   const [adminMode, setAdminMode] = useState(false);
+  const [reviews, setReviews] = useState<ReviewsDict>({});
 
-  const filtered = mockHustlers.filter((h) => {
-    const matchSearch =
-      h.name.toLowerCase().includes(search.toLowerCase()) ||
-      h.summary.toLowerCase().includes(search.toLowerCase());
-    const matchCat = !category || h.category === category;
-    const matchLoc = !location || h.location === location;
+  const [reviewDialogFor, setReviewDialogFor] = useState<string | null>(null);
 
-    if (adminMode) {
-      return matchSearch && matchCat && matchLoc;
-    }
-    // Filter for normal users: only verified + complete
-    const complete = isProfileComplete(h);
-    return matchSearch && matchCat && matchLoc && h.verified && complete;
-  });
+  // Allow admins to toggle "featured"
+  const [featuredState, setFeaturedState] = useState<{ [id: string]: boolean }>(
+    Object.fromEntries(mockHustlers.map(h => [h.id, !!h.featured]))
+  );
+
+  const hustlersWithFeatured = mockHustlers.map(h => ({
+    ...h,
+    featured: featuredState[h.id] ?? false,
+  }));
+
+  // Calculate filtered and sorted list
+  const filtered = hustlersWithFeatured
+    .filter((h) => {
+      const matchSearch =
+        h.name.toLowerCase().includes(search.toLowerCase()) ||
+        h.summary.toLowerCase().includes(search.toLowerCase());
+      const matchCat = !category || h.category === category;
+      const matchLoc = !location || h.location === location;
+
+      if (adminMode) {
+        return matchSearch && matchCat && matchLoc;
+      }
+      // For users: only verified + complete
+      const complete = isProfileComplete(h);
+      return matchSearch && matchCat && matchLoc && h.verified && complete;
+    })
+    // Sort: Featured hustlers first, then the rest
+    .sort((a, b) => {
+      if (a.featured === b.featured) return 0;
+      return a.featured ? -1 : 1;
+    });
+
+  // Get avg rating, review count for a hustler
+  const getStats = (id: string) => {
+    const r = reviews[id] || [];
+    if (r.length === 0) return { avg: undefined, count: 0 };
+    const avg = r.reduce((s, x) => s + x.rating, 0) / r.length;
+    return { avg, count: r.length };
+  };
+
+  // On review submission
+  const handleReviewSubmit = (review: Omit<Review, "createdAt">) => {
+    setReviews(prev => {
+      const arr = prev[review.hustlerId] || [];
+      const newReview: Review = {
+        ...review,
+        createdAt: new Date().toISOString()
+      };
+      return { ...prev, [review.hustlerId]: [newReview, ...arr] };
+    });
+  };
+
+  // Admin: toggle featured badge
+  const handleFeatureToggle = (id: string, newVal: boolean) => {
+    setFeaturedState(prev => ({ ...prev, [id]: newVal }));
+  };
 
   return (
     <div className="py-8 px-2 min-h-screen bg-background">
@@ -208,17 +260,38 @@ export default function Services() {
               No hustlers found. Try again!
             </div>
           ) : (
-            filtered.map(h => (
-              <HustlerCard
-                key={h.id}
-                hustler={h}
-                isAdmin={adminMode}
-                isNew={h.isNew}
-                needsReview={h.needsReview}
-                profileComplete={isProfileComplete(h)}
-                status={h.status}
-              />
-            ))
+            filtered.map(h => {
+              const stats = getStats(h.id);
+              return (
+                <React.Fragment key={h.id}>
+                  <HustlerCard
+                    hustler={h}
+                    isAdmin={adminMode}
+                    isNew={h.isNew}
+                    needsReview={h.needsReview}
+                    profileComplete={isProfileComplete(h)}
+                    status={h.status}
+                    averageRating={stats.avg}
+                    reviewCount={stats.count}
+                    onReviewClick={
+                      typeof stats.avg !== "undefined"
+                        ? () => setReviewDialogFor(h.id)
+                        : () => setReviewDialogFor(h.id)
+                    }
+                    canFeatureToggle={adminMode}
+                    onFeatureToggle={newVal => handleFeatureToggle(h.id, newVal)}
+                  />
+                  {reviewDialogFor === h.id && (
+                    <ReviewDialog
+                      key={h.id + "_modal"}
+                      hustlerId={h.id}
+                      onSubmit={handleReviewSubmit}
+                      triggerButton={null}
+                    />
+                  )}
+                </React.Fragment>
+              );
+            })
           )}
         </div>
         <div className="text-center text-sm mt-7 text-muted-foreground">
