@@ -1,3 +1,4 @@
+
 import Logo from "../Logo";
 import { Button } from "../ui/button";
 import { Link } from "react-router-dom";
@@ -13,8 +14,8 @@ export default function Hero() {
         Mauritius' marketplace for everyday services — from makeup to CV writing.
       </p>
       <div className="flex flex-col md:flex-row gap-3 w-full max-w-sm justify-center">
-        <Button className="w-full font-semibold text-base bg-primary hover:bg-primary/90 text-primary-foreground py-3 shadow-lg animate-scale-in">
-          Browse Services
+        <Button asChild className="w-full font-semibold text-base bg-primary hover:bg-primary/90 text-primary-foreground py-3 shadow-lg animate-scale-in">
+          <Link to="/services">Browse Services</Link>
         </Button>
         <Button variant="outline" asChild className="w-full font-semibold text-base border-primary text-primary py-3 hover:bg-primary/10 animate-scale-in">
           <Link to="/join">List Your Service</Link>
