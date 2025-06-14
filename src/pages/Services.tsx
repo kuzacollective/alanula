@@ -16,6 +16,7 @@ import { categories, locations } from "@/constants/filters";
 import { isProfileComplete } from "@/utils/isProfileComplete";
 import { ErrorBoundary } from "@/components/ErrorBoundary";
 import { BackToTopButton } from "@/components/ui/BackToTopButton";
+import { useAirtableHustlers } from "@/hooks/useAirtableHustlers";
 
 // Simulate data fetching/loading state
 function useDemoLoading(deps: any[]) {
@@ -56,18 +57,22 @@ export default function Services() {
   const { reviews, getStats, addReview } = useReviews();
   const [reviewDialogFor, setReviewDialogFor] = useState<string | null>(null);
 
+  // Use Airtable data if available, fallback to mockHustlers
+  const { hustlers: airtableHustlers, loading: airtableLoading, error: airtableError } = useAirtableHustlers();
+  const hustlersSource = airtableError ? mockHustlers : (airtableHustlers.length > 0 ? airtableHustlers : mockHustlers);
+
   // Admin: manage featured state
   const [featuredState, setFeaturedState] = useState<{ [id: string]: boolean }>(
-    Object.fromEntries(mockHustlers.map(h => [h.id, !!h.featured]))
+    Object.fromEntries(hustlersSource.map(h => [h.id, !!h.featured]))
   );
 
-  const hustlersWithFeatured = mockHustlers.map(h => ({
+  const hustlersWithFeatured = hustlersSource.map(h => ({
     ...h,
     featured: featuredState[h.id] ?? false,
   }));
 
   // Demo loading skeletons when any filter/search changes (simulates fetching)
-  const loading = useDemoLoading([search, category, location, priceRange, adminMode]);
+  const loading = useDemoLoading([search, category, location, priceRange, adminMode]) || airtableLoading;
 
   const filtered = hustlersWithFeatured
     .filter((h) => {
@@ -104,6 +109,8 @@ export default function Services() {
   return (
     <ErrorBoundary>
       <Header />
+      {/* Optionally show Airtable error */}
+      {airtableError && <div className="bg-red-100 text-red-700 p-2 text-center mb-2 font-semibold animate-fade-in">{airtableError}</div>}
       <main className="min-h-screen bg-background px-2 py-8 w-full relative">
         <BackToTopButton />
         <div className="max-w-4xl mx-auto flex flex-col gap-0 w-full">
