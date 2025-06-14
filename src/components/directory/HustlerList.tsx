@@ -1,4 +1,3 @@
-
 import React from "react";
 import HustlerCard, { Hustler } from "./HustlerCard";
 import ReviewDialog, { Review } from "./ReviewDialog";
@@ -9,6 +8,8 @@ export type HustlerWithAdminFields = Hustler & {
   needsReview?: boolean;
   profileComplete?: boolean;
   status?: "verified" | "unverified" | "under_review";
+  referredBy?: string;
+  referralCode?: string;
 };
 
 interface HustlerListProps {
@@ -74,4 +75,3 @@ export const HustlerList = ({
     </>
   );
 };
-
