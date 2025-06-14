@@ -1,8 +1,14 @@
 
 import { Zap } from "lucide-react";
+import { Link } from "react-router-dom";
 
-export default function Logo({ size = 32, withText = true, className = "" }: { size?: number; withText?: boolean; className?: string }) {
-  return (
+export default function Logo({
+  size = 32,
+  withText = true,
+  className = "",
+  clickable = false
+}: { size?: number; withText?: boolean; className?: string; clickable?: boolean }) {
+  const logoContent = (
     <div className={`flex items-center gap-2 ${className}`}>
       <span className="inline-flex items-center justify-center rounded-full bg-primary/10 p-2">
         <Zap size={size} color="#F5B400" strokeWidth={2.2} />
@@ -17,4 +23,13 @@ export default function Logo({ size = 32, withText = true, className = "" }: { s
       )}
     </div>
   );
+
+  if (clickable) {
+    return (
+      <Link to="/" aria-label="Go home">
+        {logoContent}
+      </Link>
+    );
+  }
+  return logoContent;
 }

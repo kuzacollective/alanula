@@ -1,4 +1,4 @@
-
+import Header from "@/components/ui/Header";
 import { Button } from "@/components/ui/button";
 import { ArrowLeft } from "lucide-react";
 import { useNavigate } from "react-router-dom";
@@ -12,6 +12,7 @@ export default function Join() {
 
   return (
     <div className="min-h-screen bg-background flex flex-col items-center py-10 px-3 font-inter">
+      <Header />
       <div className="w-full max-w-2xl mb-8">
         <Button
           variant="ghost"

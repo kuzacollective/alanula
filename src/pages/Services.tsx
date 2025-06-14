@@ -8,6 +8,7 @@ import ReviewDialog, { Review } from "@/components/directory/ReviewDialog";
 import { ServiceSearchBar } from "@/components/directory/ServiceSearchBar";
 import { HustlerList } from "@/components/directory/HustlerList";
 import { useReviews } from "@/hooks/useReviews";
+import Header from "@/components/ui/Header";
 
 const mockHustlers: (Hustler & {
   isNew?: boolean;
@@ -202,49 +203,52 @@ export default function Services() {
   };
 
   return (
-    <div className="py-8 px-2 min-h-screen bg-background">
-      <div className="max-w-4xl mx-auto flex flex-col gap-4">
-        <div className="flex items-center justify-between">
-          <h1 className="text-3xl font-poppins font-bold text-primary mb-2">
-            Browse Local Hustlers
-          </h1>
-          <div className="flex items-center gap-2">
-            <Badge variant="secondary">MVP Preview</Badge>
-            <div className="flex items-center gap-1 ml-3">
-              <Switch checked={adminMode} onCheckedChange={setAdminMode} id="admin-mode" />
-              <label htmlFor="admin-mode" className="text-xs text-muted-foreground">Admin view</label>
+    <>
+      <Header />
+      <div className="py-8 px-2 min-h-screen bg-background">
+        <div className="max-w-4xl mx-auto flex flex-col gap-4">
+          <div className="flex items-center justify-between">
+            <h1 className="text-3xl font-poppins font-bold text-primary mb-2">
+              Browse Local Hustlers
+            </h1>
+            <div className="flex items-center gap-2">
+              <Badge variant="secondary">MVP Preview</Badge>
+              <div className="flex items-center gap-1 ml-3">
+                <Switch checked={adminMode} onCheckedChange={setAdminMode} id="admin-mode" />
+                <label htmlFor="admin-mode" className="text-xs text-muted-foreground">Admin view</label>
+              </div>
+            </div>
+
+            <ServiceSearchBar
+              search={search}
+              setSearch={setSearch}
+              category={category}
+              setCategory={setCategory}
+              location={location}
+              setLocation={setLocation}
+              categories={categories}
+              locations={locations}
+            />
+
+            <div className="grid gap-5 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 auto-rows-fr">
+              <HustlerList
+                hustlers={filtered}
+                adminMode={adminMode}
+                reviewDialogFor={reviewDialogFor}
+                openReviewDialog={setReviewDialogFor}
+                onReviewSubmit={addReview}
+                getStats={getStats}
+                canFeatureToggle={adminMode}
+                onFeatureToggle={handleFeatureToggle}
+                isProfileComplete={isProfileComplete}
+              />
+            </div>
+            <div className="text-center text-sm mt-7 text-muted-foreground">
+              Powered by <span className="text-primary font-medium">Airtable</span> & Ziada.mu community 🚀
             </div>
           </div>
         </div>
-
-        <ServiceSearchBar
-          search={search}
-          setSearch={setSearch}
-          category={category}
-          setCategory={setCategory}
-          location={location}
-          setLocation={setLocation}
-          categories={categories}
-          locations={locations}
-        />
-
-        <div className="grid gap-5 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 auto-rows-fr">
-          <HustlerList
-            hustlers={filtered}
-            adminMode={adminMode}
-            reviewDialogFor={reviewDialogFor}
-            openReviewDialog={setReviewDialogFor}
-            onReviewSubmit={addReview}
-            getStats={getStats}
-            canFeatureToggle={adminMode}
-            onFeatureToggle={handleFeatureToggle}
-            isProfileComplete={isProfileComplete}
-          />
-        </div>
-        <div className="text-center text-sm mt-7 text-muted-foreground">
-          Powered by <span className="text-primary font-medium">Airtable</span> & Ziada.mu community 🚀
-        </div>
       </div>
-    </div>
+    </>
   );
 }
