@@ -3,8 +3,16 @@ import React from "react";
 import HustlerCard, { Hustler } from "./HustlerCard";
 import ReviewDialog, { Review } from "./ReviewDialog";
 
+// Extend Hustler type with admin/meta fields
+export type HustlerWithAdminFields = Hustler & {
+  isNew?: boolean;
+  needsReview?: boolean;
+  profileComplete?: boolean;
+  status?: "verified" | "unverified" | "under_review";
+};
+
 interface HustlerListProps {
-  hustlers: Hustler[];
+  hustlers: HustlerWithAdminFields[];
   adminMode: boolean;
   reviewDialogFor: string | null;
   openReviewDialog: (id: string | null) => void;
@@ -12,7 +20,7 @@ interface HustlerListProps {
   getStats: (id: string) => { avg: number | undefined; count: number };
   canFeatureToggle?: boolean;
   onFeatureToggle?: (id: string, val: boolean) => void;
-  isProfileComplete: (h: Hustler) => boolean;
+  isProfileComplete: (h: HustlerWithAdminFields) => boolean;
 }
 
 export const HustlerList = ({
@@ -66,3 +74,4 @@ export const HustlerList = ({
     </>
   );
 };
+
