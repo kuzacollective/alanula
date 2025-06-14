@@ -1,6 +1,6 @@
-
 import Logo from "../Logo";
 import { Button } from "../ui/button";
+import { Link } from "react-router-dom";
 
 export default function Hero() {
   return (
@@ -16,8 +16,8 @@ export default function Hero() {
         <Button className="w-full font-semibold text-base bg-primary hover:bg-primary/90 text-primary-foreground py-3 shadow-lg animate-scale-in">
           Browse Services
         </Button>
-        <Button variant="outline" className="w-full font-semibold text-base border-primary text-primary py-3 hover:bg-primary/10 animate-scale-in">
-          List Your Service
+        <Button variant="outline" asChild className="w-full font-semibold text-base border-primary text-primary py-3 hover:bg-primary/10 animate-scale-in">
+          <Link to="/join">List Your Service</Link>
         </Button>
       </div>
     </section>
