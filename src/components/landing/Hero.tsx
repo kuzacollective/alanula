@@ -1,3 +1,4 @@
+
 import Logo from "../Logo";
 import { Button } from "../ui/button";
 import { Link } from "react-router-dom";
@@ -10,7 +11,7 @@ export default function Hero() {
         Find local hustlers.<br className="hidden md:block" /> Book them in minutes.
       </h1>
       <p className="text-lg md:text-xl font-inter text-secondary-foreground text-center mb-6 max-w-xl">
-        Mauritius' marketplace for everyday services — from makeup to CV writing.
+        Ziada.mu is the fastest, easiest way to find and book trusted local service providers in Mauritius. We help everyday hustlers build visibility and grow their income—while helping clients find great help, fast.
       </p>
       <div className="flex flex-col md:flex-row gap-3 w-full max-w-sm justify-center">
         <Button asChild className="w-full font-semibold text-base bg-primary hover:bg-primary/90 text-primary-foreground py-3 shadow-lg animate-scale-in">

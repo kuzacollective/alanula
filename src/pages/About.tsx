@@ -20,6 +20,9 @@ export default function About() {
         <section className="mb-10">
           <h2 className="text-xl font-semibold mb-2">Mission</h2>
           <p className="text-base mb-2">
+            Ziada.mu is the fastest, easiest way to find and book trusted local service providers in Mauritius. We help everyday hustlers build visibility and grow their income—while helping clients find great help, fast.
+          </p>
+          <p className="text-base mb-2">
             We’re building the go-to marketplace for everyday services in Mauritius—powered by local talent, trust, and hustle. Whether you're booking a tutor or showcasing your side gig, Ziada.mu makes it seamless.
           </p>
         </section>
