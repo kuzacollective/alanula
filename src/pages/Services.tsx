@@ -1,5 +1,7 @@
+
 import React, { useState, useMemo, useCallback, useEffect } from "react";
 import HustlerCard, { Hustler } from "@/components/directory/HustlerCard";
+import HustlerCardSkeleton from "@/components/directory/HustlerCardSkeleton";
 import { Input } from "@/components/ui/input";
 import { Select, SelectTrigger, SelectContent, SelectItem, SelectValue } from "@/components/ui/select";
 import { Badge } from "@/components/ui/badge";
@@ -13,27 +15,36 @@ import { Slider } from "@/components/ui/slider";
 import { mockHustlers } from "@/mocks/hustlers";
 import { categories, locations } from "@/constants/filters";
 import { isProfileComplete } from "@/utils/isProfileComplete";
+import { ErrorBoundary } from "@/components/ErrorBoundary";
+
+// Simulate data fetching/loading state
+function useDemoLoading(deps: any[]) {
+  const [loading, setLoading] = useState(true);
+  useEffect(() => {
+    setLoading(true);
+    const timeout = setTimeout(() => setLoading(false), 1200); // 1.2s
+    return () => clearTimeout(timeout);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, deps);
+  return loading;
+}
 
 type ReviewsDict = {
   [hustlerId: string]: ReturnType<typeof useReviews>["reviews"][string];
 };
 
-// Extract price min/max (based on mockHustlers data)
 const rawPrices = mockHustlers.map(h => h.price ?? 0).filter(p => typeof p === "number" && !isNaN(p));
 const minPrice = Math.min(...rawPrices, 0);
 const maxPrice = Math.max(...rawPrices, 0);
 
 export default function Services() {
   const [searchInput, setSearchInput] = useState("");
-  const [search, setSearch] = useState(""); // debounced effective search
+  const [search, setSearch] = useState("");
   const [category, setCategory] = useState("");
   const [location, setLocation] = useState("");
   const [adminMode, setAdminMode] = useState(false);
-
-  // Price range filter
   const [priceRange, setPriceRange] = useState<[number, number]>([minPrice, maxPrice]);
 
-  // Debounce search input for performance (300ms)
   useEffect(() => {
     const handler = setTimeout(() => {
       setSearch(searchInput);
@@ -43,7 +54,6 @@ export default function Services() {
 
   // Reviews handled via custom hook
   const { reviews, getStats, addReview } = useReviews();
-
   const [reviewDialogFor, setReviewDialogFor] = useState<string | null>(null);
 
   // Admin: manage featured state
@@ -56,7 +66,9 @@ export default function Services() {
     featured: featuredState[h.id] ?? false,
   }));
 
-  // Filtering and sorting
+  // Demo loading skeletons when any filter/search changes (simulates fetching)
+  const loading = useDemoLoading([search, category, location, priceRange, adminMode]);
+
   const filtered = hustlersWithFeatured
     .filter((h) => {
       const matchSearch =
@@ -80,19 +92,17 @@ export default function Services() {
       return a.featured ? -1 : 1;
     });
 
-  // Admin: toggle featured badge
   const handleFeatureToggle = (id: string, newVal: boolean) => {
     setFeaturedState(prev => ({ ...prev, [id]: newVal }));
   };
 
-  // Count active filters (except for search, which is not "resettable")
   const activeFilterCount =
     (category ? 1 : 0) +
     (location ? 1 : 0) +
     ((priceRange[0] !== minPrice || priceRange[1] !== maxPrice) ? 1 : 0);
 
   return (
-    <>
+    <ErrorBoundary>
       <Header />
       <main className="min-h-screen bg-background px-2 py-8 w-full">
         <div className="max-w-4xl mx-auto flex flex-col gap-0 w-full">
@@ -136,9 +146,11 @@ export default function Services() {
             <div className="text-sm text-muted-foreground flex items-center gap-2">
               {filtered.length > 0
                 ? `Showing ${filtered.length} hustler${filtered.length > 1 ? "s" : ""}`
-                : "No hustlers match your filters."}
+                : loading
+                  ? "Loading local hustlers..."
+                  : "No hustlers match your filters."}
               {activeFilterCount > 0 && (
-                <span className="inline-flex items-center px-2 py-0.5 rounded-full bg-accent text-accent-foreground text-[11px] font-semibold ml-2">{activeFilterCount} filter{activeFilterCount>1 ? 's':''} active</span>
+                <span className="inline-flex items-center px-2 py-0.5 rounded-full bg-accent text-accent-foreground text-[11px] font-semibold ml-2">{activeFilterCount} filter{activeFilterCount > 1 ? 's' : ''} active</span>
               )}
             </div>
             {(category || location || (priceRange[0] !== minPrice || priceRange[1] !== maxPrice)) && (
@@ -156,19 +168,25 @@ export default function Services() {
             )}
           </div>
 
-          {/* Hustler grid list */}
+          {/* Hustler grid list (loading skeletons or results) */}
           <div className="grid gap-5 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 auto-rows-fr mb-6">
-            <HustlerList
-              hustlers={filtered}
-              adminMode={adminMode}
-              reviewDialogFor={reviewDialogFor}
-              openReviewDialog={setReviewDialogFor}
-              onReviewSubmit={addReview}
-              getStats={getStats}
-              canFeatureToggle={adminMode}
-              onFeatureToggle={handleFeatureToggle}
-              isProfileComplete={isProfileComplete}
-            />
+            {loading ? (
+              Array.from({ length: 6 }).map((_, i) => (
+                <HustlerCardSkeleton key={i} />
+              ))
+            ) : (
+              <HustlerList
+                hustlers={filtered}
+                adminMode={adminMode}
+                reviewDialogFor={reviewDialogFor}
+                openReviewDialog={setReviewDialogFor}
+                onReviewSubmit={addReview}
+                getStats={getStats}
+                canFeatureToggle={adminMode}
+                onFeatureToggle={handleFeatureToggle}
+                isProfileComplete={isProfileComplete}
+              />
+            )}
           </div>
         </div>
         {/* Moved footer out of flex column for better stacking and responsive layout */}
@@ -176,6 +194,6 @@ export default function Services() {
           Powered by <span className="text-primary font-medium">Airtable</span> & Ziada.mu community 🚀
         </div>
       </main>
-    </>
+    </ErrorBoundary>
   );
 }

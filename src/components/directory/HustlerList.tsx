@@ -1,8 +1,8 @@
+
 import React from "react";
 import HustlerCard, { Hustler } from "./HustlerCard";
 import ReviewDialog, { Review } from "./ReviewDialog";
 
-// Extend Hustler type with admin/meta fields
 export type HustlerWithAdminFields = Hustler & {
   isNew?: boolean;
   needsReview?: boolean;
@@ -22,6 +22,7 @@ interface HustlerListProps {
   canFeatureToggle?: boolean;
   onFeatureToggle?: (id: string, val: boolean) => void;
   isProfileComplete: (h: HustlerWithAdminFields) => boolean;
+  isLoading?: boolean;
 }
 
 export const HustlerList = ({
@@ -34,11 +35,21 @@ export const HustlerList = ({
   canFeatureToggle,
   onFeatureToggle,
   isProfileComplete,
+  isLoading = false,
 }: HustlerListProps) => {
+  if (isLoading) {
+    // Let Services decide how many skeletons to show—handled outside this component for flexibility
+    return null;
+  }
+
   if (hustlers.length === 0) {
     return (
-      <div className="col-span-full text-center text-muted-foreground py-16">
-        No hustlers found. Try again!
+      <div className="col-span-full text-center text-muted-foreground py-16 flex flex-col items-center animate-fade-in">
+        <div className="text-lg font-semibold mb-2">No hustlers found.</div>
+        <div className="text-sm text-muted-foreground mb-4">Try adjusting your filters or search keywords.</div>
+        <div className="w-full max-w-xs flex flex-col gap-3 items-center">
+          <span className="inline-block bg-muted text-foreground rounded px-3 py-1 text-xs mb-1">Tip: Broaden your search for more results!</span>
+        </div>
       </div>
     );
   }
