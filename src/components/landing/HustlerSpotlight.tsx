@@ -1,4 +1,3 @@
-
 import React from "react";
 import { Badge } from "../ui/badge";
 import { Button } from "../ui/button";
@@ -22,7 +21,7 @@ const spotlightHustler = {
 
 export default function HustlerSpotlight() {
   return (
-    <div className="flex flex-col md:flex-row items-center gap-10 py-14 md:py-20">
+    <div className="flex flex-col md:flex-row items-center justify-center gap-10 py-14 md:py-20 max-w-4xl mx-auto">
       <div className="relative group mb-4 md:mb-0">
         <div className="rounded-full bg-gradient-to-tr from-yellow-100 to-accent/10 p-1.5 shadow-lg transition-transform duration-150 group-hover:scale-105">
           <img
@@ -50,7 +49,7 @@ export default function HustlerSpotlight() {
           <StarRating rating={spotlightHustler.rating} size={17} />
           <span className="text-xs text-yellow-600 dark:text-yellow-400 font-semibold">{spotlightHustler.rating}/5</span>
         </div>
-        <blockquote className="relative bg-yellow-50/60 dark:bg-yellow-900/10 px-6 py-4 rounded-xl italic text-secondary-foreground leading-relaxed shadow-sm mb-3 animate-fade-in">
+        <blockquote className="relative bg-yellow-50/60 dark:bg-yellow-900/10 px-6 py-4 rounded-xl italic text-foreground leading-relaxed shadow-sm mb-3 animate-fade-in">
           <span className="absolute left-2 top-3 text-yellow-300 text-xl select-none">“</span>
           {spotlightHustler.quote}
           <span className="absolute right-2 bottom-3 text-yellow-300 text-xl select-none">”</span>
