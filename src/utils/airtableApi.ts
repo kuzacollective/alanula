@@ -1,47 +1,48 @@
 
 /**
- * Fetches hustler data from Airtable using Airtable API.
- * IMPORTANT: Replace AIRTABLE_API_KEY and AIRTABLE_BASE_ID with your publishable API key and base ID.
- * For improved security, integrate Supabase or use serverless functions for secret management.
+ * Fetches hustler data from Make.com webhook, which in turn fetches Airtable data.
+ *
+ * IMPORTANT:
+ * - Set your Make.com webhook URL below.
+ * - Make.com scenarios should collect and format Airtable data into the same array of objects as before.
+ * - No API secret should be stored in this frontend code: Make.com secures your Airtable key.
  */
 
-// Example usage, see useAirtableHustlers.ts
-
-const AIRTABLE_API_KEY = "YOUR_AIRTABLE_API_KEY"; // <-- Replace with publishable key or env/secret handling
-const AIRTABLE_BASE_ID = "YOUR_AIRTABLE_BASE_ID"; // <-- Replace with your base ID
-const AIRTABLE_TABLE = "tblvPshNwP8VjhYwr"; // Example table ID, adjust as needed.
+const MAKE_WEBHOOK_URL = "YOUR_MAKE_WEBHOOK_URL"; // <-- Replace with your actual Make.com webhook URL
 
 export async function fetchAirtableHustlers() {
-  const url = `https://api.airtable.com/v0/${AIRTABLE_BASE_ID}/${AIRTABLE_TABLE}`;
-  const resp = await fetch(url, {
-    headers: {
-      Authorization: `Bearer ${AIRTABLE_API_KEY}`,
-    },
-  });
+  if (MAKE_WEBHOOK_URL.startsWith("YOUR_MAKE_WEBHOOK_URL")) {
+    throw new Error("Make.com webhook URL is not set. Please set it in src/utils/airtableApi.ts");
+  }
+
+  const resp = await fetch(MAKE_WEBHOOK_URL);
 
   if (!resp.ok) {
-    throw new Error("Failed to fetch from Airtable");
+    throw new Error("Failed to fetch hustlers from Make.com webhook.");
   }
 
   const data = await resp.json();
 
-  // Map Airtable records to the Hustler shape
-  const hustlers = data.records.map((rec: any) => ({
-    id: rec.id,
-    name: rec.fields.Name || "",
-    location: rec.fields.Location || "",
-    category: rec.fields.Category || "",
-    price: Number(rec.fields.Price || 0),
-    summary: rec.fields.Summary || "",
-    whatsapp: rec.fields.Whatsapp || "",
-    photo: rec.fields.Photo && rec.fields.Photo[0] ? rec.fields.Photo[0].url : "",
-    verified: !!rec.fields.Verified,
-    featured: !!rec.fields.Featured,
-    isNew: !!rec.fields['New'],
-    needsReview: !!rec.fields['NeedsReview'],
-    referredBy: rec.fields['ReferredBy'] || "",
-    referralCode: rec.fields['ReferralCode'] || "",
-  }));
+  // Map data from Make.com to the Hustler shape (must match your frontend's needs)
+  // NOTE: Adjust keys as needed to match your Make.com scenario output!
+  const hustlers = data.records
+    ? data.records.map((rec: any) => ({
+        id: rec.id,
+        name: rec.name || "",
+        location: rec.location || "",
+        category: rec.category || "",
+        price: Number(rec.price || 0),
+        summary: rec.summary || "",
+        whatsapp: rec.whatsapp || "",
+        photo: rec.photo || "",
+        verified: !!rec.verified,
+        featured: !!rec.featured,
+        isNew: !!rec.isNew,
+        needsReview: !!rec.needsReview,
+        referredBy: rec.referredBy || "",
+        referralCode: rec.referralCode || "",
+      }))
+    : []; // fallback
 
   return hustlers;
 }
