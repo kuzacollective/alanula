@@ -1,4 +1,3 @@
-
 /**
  * Fetches hustler data from Make.com webhook, which in turn fetches Airtable data.
  *
@@ -8,7 +7,7 @@
  * - No API secret should be stored in this frontend code: Make.com secures your Airtable key.
  */
 
-const MAKE_WEBHOOK_URL = "YOUR_MAKE_WEBHOOK_URL"; // <-- Replace with your actual Make.com webhook URL
+const MAKE_WEBHOOK_URL = "PASTE_YOUR_MAKE_WEBHOOK_URL_HERE"; // <-- Replace with your actual Make.com webhook URL
 
 export async function fetchAirtableHustlers() {
   if (MAKE_WEBHOOK_URL.startsWith("YOUR_MAKE_WEBHOOK_URL")) {
