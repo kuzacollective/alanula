@@ -8,9 +8,9 @@ import React, { useState } from "react";
 export default function Join() {
   const navigate = useNavigate();
 
-  // Updated Airtable embed URL
+  // Update with the provided Airtable embed URL
   const airtableEmbedUrl =
-    "https://airtable.com/embed/apphdszH4AGshLo9F/pagQTVmGg0fqwGQSS/form";
+    "https://airtable.com/embed/appYCffZwGEMJ3xcF/pagEvCD1lwQwVV0qx/form";
 
   // Simple loading state for iframe
   const [iframeLoaded, setIframeLoaded] = useState(false);
@@ -63,12 +63,15 @@ export default function Join() {
             </div>
           )}
           <iframe
-            className="w-full h-[533px] rounded-md border"
+            className="airtable-embed w-full h-[533px] rounded-md border transition-opacity duration-300"
             src={airtableEmbedUrl}
             title="Ziada.mu Hustler Intake Form"
             frameBorder="0"
             style={{ background: "transparent", border: "1px solid #ccc" }}
             onLoad={() => setIframeLoaded(true)}
+            width="100%"
+            height="533"
+            allowFullScreen
           >
             Loading…
           </iframe>
