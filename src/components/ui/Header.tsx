@@ -42,7 +42,7 @@ export default function Header() {
   return (
     <header className="w-full py-4 px-2 border-b border-border bg-background sticky top-0 z-30">
       <div className="mx-auto max-w-4xl flex items-center justify-between gap-2">
-        <Link to="/" aria-label="Ziada.mu Home" className="flex items-center gap-2">
+        <Link to="/" aria-label="Alanula Home" className="flex items-center gap-2">
           <Logo size={36} withText />
         </Link>
         {/* Navigation removed to avoid duplicate 'Home' link */}
@@ -53,4 +53,3 @@ export default function Header() {
     </header>
   );
 }
-

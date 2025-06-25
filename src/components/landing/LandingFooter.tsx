@@ -1,3 +1,4 @@
+
 import { Instagram, MessageCircle, FileText, MessageSquare } from "lucide-react";
 import { Link } from "react-router-dom";
 
@@ -6,8 +7,8 @@ export default function LandingFooter() {
     <footer className="w-full border-t border-border bg-background py-8 px-4 mt-8">
       <div className="max-w-5xl mx-auto flex flex-col md:flex-row justify-between items-center gap-4">
         <div className="flex flex-col gap-2 text-center md:text-left">
-          <span className="font-poppins font-bold text-xl text-primary">Ziada.mu</span>
-          <span className="text-muted-foreground text-sm">A project to empower Mauritius’ service hustlers</span>
+          <span className="font-poppins font-bold text-xl text-primary">Alanula</span>
+          <span className="text-muted-foreground text-sm">A project to empower Mauritius' service hustlers</span>
         </div>
         <ul className="flex flex-wrap gap-5 mt-3 md:mt-0">
           <li>
@@ -22,7 +23,7 @@ export default function LandingFooter() {
             <Link to="/contact" className="hover:underline text-secondary text-base font-medium">Contact</Link>
           </li>
           <li>
-            <a href="https://instagram.com/ziada.mu" target="_blank" rel="noopener noreferrer" aria-label="Instagram" className="hover:underline flex items-center gap-1 text-base text-secondary font-medium">
+            <a href="https://instagram.com/alanula" target="_blank" rel="noopener noreferrer" aria-label="Instagram" className="hover:underline flex items-center gap-1 text-base text-secondary font-medium">
               <Instagram size={18} /> Instagram
             </a>
           </li>
@@ -48,7 +49,7 @@ export default function LandingFooter() {
           </li>
         </ul>
       </div>
-      <div className="text-center text-xs text-muted-foreground mt-4">&copy; {new Date().getFullYear()} Ziada.mu. All rights reserved.</div>
+      <div className="text-center text-xs text-muted-foreground mt-4">&copy; {new Date().getFullYear()} Alanula. All rights reserved.</div>
     </footer>
   );
 }

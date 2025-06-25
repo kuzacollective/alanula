@@ -1,3 +1,4 @@
+
 import React from "react";
 import { Badge } from "../ui/badge";
 import { Button } from "../ui/button";
@@ -9,7 +10,7 @@ const spotlightHustler = {
   location: "Port Louis",
   category: "Makeup Artist",
   photo: "https://randomuser.me/api/portraits/women/65.jpg",
-  quote: `"The bookings from Ziada changed my life."`,
+  quote: `"The bookings from Alanula changed my life."`,
   achievements: [
     { text: "20+ bridal bookings", icon: <Check className="text-accent" size={15} /> },
     { text: "Featured in local magazines", icon: <Check className="text-accent" size={15} /> },
@@ -50,9 +51,9 @@ export default function HustlerSpotlight() {
           <span className="text-xs text-yellow-600 dark:text-yellow-400 font-semibold">{spotlightHustler.rating}/5</span>
         </div>
         <blockquote className="relative bg-yellow-50/60 dark:bg-yellow-900/10 px-6 py-4 rounded-xl italic text-foreground leading-relaxed shadow-sm mb-3 animate-fade-in">
-          <span className="absolute left-2 top-3 text-yellow-300 text-xl select-none">“</span>
+          <span className="absolute left-2 top-3 text-yellow-300 text-xl select-none">"</span>
           {spotlightHustler.quote}
-          <span className="absolute right-2 bottom-3 text-yellow-300 text-xl select-none">”</span>
+          <span className="absolute right-2 bottom-3 text-yellow-300 text-xl select-none">"</span>
         </blockquote>
         <ul className="text-xs text-muted-foreground flex flex-wrap gap-x-4 gap-y-1 justify-center md:justify-start mb-4">
           {spotlightHustler.achievements.map((ach, i) => (

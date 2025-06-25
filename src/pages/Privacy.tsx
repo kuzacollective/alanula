@@ -17,7 +17,7 @@ export default function Privacy() {
         <Card>
           <CardContent className="pt-6 pb-6 flex flex-col gap-4 text-base leading-7">
             <div>
-              At Ziada.mu, we are committed to protecting your privacy. This policy outlines how we collect, use, and safeguard your information.
+              At Alanula, we are committed to protecting your privacy. This policy outlines how we collect, use, and safeguard your information.
             </div>
             <div>
               <strong>1. What We Collect</strong>
@@ -52,8 +52,8 @@ export default function Privacy() {
               <strong>5. Contact</strong>
               <div>
                 For privacy questions, contact us via WhatsApp or email at{" "}
-                <a className="text-primary underline" href="mailto:support@ziadamu.africa">
-                  support@ziadamu.africa
+                <a className="text-primary underline" href="mailto:support@alanula.com">
+                  support@alanula.com
                 </a>.
               </div>
             </div>

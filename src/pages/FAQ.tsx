@@ -11,7 +11,7 @@ const FAQS = [
   },
   {
     q: "How do I list my service?",
-    a: "Click “List My Hustle” on the homepage. Fill out the Airtable form and upload your details. We'll do the rest."
+    a: "Click \"List My Hustle\" on the homepage. Fill out the Airtable form and upload your details. We'll do the rest."
   },
   {
     q: "Do I need to pay to be listed?",
@@ -22,7 +22,7 @@ const FAQS = [
     a: "Our team reviews submissions and verifies providers based on completeness and trust indicators."
   },
   {
-    q: "Is payment handled through Ziada.mu?",
+    q: "Is payment handled through Alanula?",
     a: "Not at the moment. Clients and hustlers arrange payment directly, usually via cash, bank transfer, or mobile wallet."
   },
   {

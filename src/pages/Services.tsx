@@ -213,7 +213,7 @@ export default function Services() {
         </div>
         {/* Moved footer out of flex column for better stacking and responsive layout */}
         <div className="text-center text-sm mt-7 text-muted-foreground pb-8">
-          Powered by <span className="text-primary font-medium">Airtable</span> & Ziada.mu community 🚀
+          Powered by <span className="text-primary font-medium">Airtable</span> & Alanula community 🚀
         </div>
       </main>
     </ErrorBoundary>

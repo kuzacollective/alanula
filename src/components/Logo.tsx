@@ -18,7 +18,7 @@ export default function Logo({
           className="font-poppins text-[2rem] font-bold tracking-tight text-primary"
           style={{ letterSpacing: "-1.5px" }}
         >
-          Ziada.<span className="text-accent">mu</span>
+          Alanula
         </span>
       )}
     </div>

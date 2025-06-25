@@ -28,7 +28,7 @@ export default function Join() {
           Back to home
         </Button>
         <h1 className="text-primary font-poppins font-bold text-3xl sm:text-4xl mb-2 text-center">
-          List Your Service on Ziada.mu
+          List Your Service on Alanula
         </h1>
         <p className="text-secondary-foreground text-lg text-center mb-6">
           Fill this short form to join Mauritius' growing community of side-hustlers!
@@ -65,7 +65,7 @@ export default function Join() {
           <iframe
             className="airtable-embed w-full h-[533px] rounded-md border transition-opacity duration-300"
             src={airtableEmbedUrl}
-            title="Ziada.mu Hustler Intake Form"
+            title="Alanula Hustler Intake Form"
             frameBorder="0"
             style={{ background: "transparent", border: "1px solid #ccc" }}
             onLoad={() => setIframeLoaded(true)}

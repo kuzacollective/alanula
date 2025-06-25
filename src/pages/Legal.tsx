@@ -17,7 +17,7 @@ export default function Legal() {
         <Card className="mb-7">
           <CardContent className="flex flex-col gap-4 py-6">
             <div>
-              Welcome to the Ziada.mu Legal Center.
+              Welcome to the Alanula Legal Center.
               Here you&apos;ll find our site policies and guidelines for safe, compliant usage.
             </div>
             <div className="flex flex-col gap-2">
@@ -44,7 +44,7 @@ export default function Legal() {
                 <strong>Verified Profiles:</strong> We check each hustler submission before publishing. Verified badges are granted to complete and trusted profiles.
               </div>
               <div>
-                <strong>No Middlemen:</strong> We don’t take commission from payments. All bookings happen directly between client and provider.
+                <strong>No Middlemen:</strong> We don't take commission from payments. All bookings happen directly between client and provider.
               </div>
               <div>
                 <strong>Reviews Matter:</strong> After every service, clients are encouraged to leave honest ratings. Good work gets rewarded with visibility.
@@ -62,7 +62,7 @@ export default function Legal() {
           </Card>
         </section>
         <div className="text-center text-xs text-muted-foreground mt-8">
-          &copy; {new Date().getFullYear()} Ziada.mu. All rights reserved.
+          &copy; {new Date().getFullYear()} Alanula. All rights reserved.
         </div>
       </main>
     </div>

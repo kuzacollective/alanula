@@ -15,22 +15,22 @@ export default function About() {
     <div className="min-h-screen bg-background text-foreground font-inter">
       <Header />
       <main className="max-w-3xl mx-auto px-4 py-10">
-        <h1 className="text-4xl font-bold font-poppins mb-4 text-primary">About Ziada.mu</h1>
+        <h1 className="text-4xl font-bold font-poppins mb-4 text-primary">About Alanula</h1>
 
         <section className="mb-10">
           <h2 className="text-xl font-semibold mb-2">Mission</h2>
           <p className="text-base mb-2">
-            Ziada.mu is the fastest, easiest way to find and book trusted local service providers in Mauritius. We help everyday hustlers build visibility and grow their income—while helping clients find great help, fast.
+            Alanula is the fastest, easiest way to find and book trusted local service providers in Mauritius. We help everyday hustlers build visibility and grow their income—while helping clients find great help, fast.
           </p>
           <p className="text-base mb-2">
-            We’re building the go-to marketplace for everyday services in Mauritius—powered by local talent, trust, and hustle. Whether you're booking a tutor or showcasing your side gig, Ziada.mu makes it seamless.
+            We're building the go-to marketplace for everyday services in Mauritius—powered by local talent, trust, and hustle. Whether you're booking a tutor or showcasing your side gig, Alanula makes it seamless.
           </p>
         </section>
 
         <section className="mb-10">
           <h2 className="text-xl font-semibold mb-2">Our Story</h2>
           <p className="text-base mb-2">
-            Ziada.mu was born from a simple question: <span className="italic">&quot;Why is it so hard to find reliable help locally?&quot;</span> In a country full of talented individuals offering incredible services, there was no central, trusted platform to connect them with those who need them. We're here to change that.
+            Alanula was born from a simple question: <span className="italic">&quot;Why is it so hard to find reliable help locally?&quot;</span> In a country full of talented individuals offering incredible services, there was no central, trusted platform to connect them with those who need them. We're here to change that.
           </p>
         </section>
 

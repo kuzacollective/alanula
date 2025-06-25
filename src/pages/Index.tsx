@@ -6,7 +6,7 @@ import RecentlyJoined from "@/components/landing/RecentlyJoined";
 import PopularCategories from "@/components/landing/PopularCategories";
 import HowItWorks from "@/components/landing/HowItWorks";
 import SuccessStories from "@/components/landing/SuccessStories";
-import WhyZiada from "@/components/landing/WhyZiada";
+import WhyAlanula from "@/components/landing/WhyAlanula";
 import LandingFooter from "@/components/landing/LandingFooter";
 
 // Consistent section wrapper for layout
@@ -24,7 +24,7 @@ const Index = () => {
       <Section><PopularCategories /></Section>
       <Section bg="bg-muted/10"><HowItWorks /></Section>
       <Section><SuccessStories /></Section>
-      <Section bg="bg-muted/10"><WhyZiada /></Section>
+      <Section bg="bg-muted/10"><WhyAlanula /></Section>
       <LandingFooter />
     </div>
   );

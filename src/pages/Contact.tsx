@@ -30,10 +30,10 @@ export default function Contact() {
             </div>
             <div className="flex items-center gap-3">
               <a
-                href="mailto:hello@ziada.mu"
+                href="mailto:hello@alanula.com"
                 className="flex items-center gap-2 text-primary font-medium hover:underline"
               >
-                <Mail size={20} /> hello@ziada.mu
+                <Mail size={20} /> hello@alanula.com
               </a>
               <span className="ml-2 text-xs text-muted-foreground">(Business/Partnerships)</span>
             </div>

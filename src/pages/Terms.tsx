@@ -17,12 +17,12 @@ export default function Terms() {
         <Card>
           <CardContent className="pt-6 pb-6 flex flex-col gap-4 text-base leading-7">
             <div>
-              By using Ziada.mu, you agree to these terms:
+              By using Alanula, you agree to these terms:
             </div>
             <div>
               <strong>1. General</strong>
               <p>
-                Ziada.mu is a platform for connecting clients with local service providers (&quot;hustlers&quot;).
+                Alanula is a platform for connecting clients with local service providers (&quot;hustlers&quot;).
                 We do not process payments or act as a legal representative of either party.
               </p>
             </div>
@@ -36,7 +36,7 @@ export default function Terms() {
             <div>
               <strong>3. No Guarantees</strong>
               <p>
-                Ziada.mu is not liable for any damage, loss, or dispute arising from services booked through the platform.
+                Alanula is not liable for any damage, loss, or dispute arising from services booked through the platform.
                 We simply facilitate visibility and connections.
               </p>
             </div>
