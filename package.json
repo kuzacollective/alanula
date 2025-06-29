@@ -4,7 +4,6 @@
   "version": "1.0.0",
   "type": "module",
   "description": "Local service provider platform for Mauritius",
-  "homepage": "https://kuzacollective.github.io/alanula-pros/",
   "repository": {
     "type": "git",
     "url": "https://github.com/kuzacollective/alanula-pros.git"
