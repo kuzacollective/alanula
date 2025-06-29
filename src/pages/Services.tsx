@@ -1,22 +1,22 @@
 import React, { useState, useMemo, useCallback, useEffect } from "react";
-import HustlerCard, { Hustler } from "@/components/directory/HustlerCard";
-import HustlerCardSkeleton from "@/components/directory/HustlerCardSkeleton";
+import ProCard, { Pro } from "@/components/directory/ProCard";
+import ProCardSkeleton from "@/components/directory/ProCardSkeleton";
 import { Input } from "@/components/ui/input";
 import { Select, SelectTrigger, SelectContent, SelectItem, SelectValue } from "@/components/ui/select";
 import { Badge } from "@/components/ui/badge";
 import { Switch } from "@/components/ui/switch";
 import ReviewDialog, { Review } from "@/components/directory/ReviewDialog";
 import { ServiceSearchBar } from "@/components/directory/ServiceSearchBar";
-import { HustlerList } from "@/components/directory/HustlerList";
+import { ProList } from "@/components/directory/ProList";
 import { useReviews } from "@/hooks/useReviews";
 import Header from "@/components/ui/Header";
 import { Slider } from "@/components/ui/slider";
-import { mockHustlers } from "@/mocks/hustlers";
+import { mockPros } from "@/mocks/pros";
 import { categories, locations } from "@/constants/filters";
 import { isProfileComplete } from "@/utils/isProfileComplete";
 import { ErrorBoundary } from "@/components/ErrorBoundary";
 import { BackToTopButton } from "@/components/ui/BackToTopButton";
-import { useAirtableHustlers } from "@/hooks/useAirtableHustlers";
+import { useAirtablePros } from "@/hooks/useAirtablePros";
 
 // Simulate data fetching/loading state
 function useDemoLoading(deps: any[]) {
@@ -31,10 +31,10 @@ function useDemoLoading(deps: any[]) {
 }
 
 type ReviewsDict = {
-  [hustlerId: string]: ReturnType<typeof useReviews>["reviews"][string];
+  [proId: string]: ReturnType<typeof useReviews>["reviews"][string];
 };
 
-const rawPrices = mockHustlers.map(h => h.price ?? 0).filter(p => typeof p === "number" && !isNaN(p));
+const rawPrices = mockPros.map(p => p.price ?? 0).filter(p => typeof p === "number" && !isNaN(p));
 const minPrice = Math.min(...rawPrices, 0);
 const maxPrice = Math.max(...rawPrices, 0);
 
@@ -57,40 +57,40 @@ export default function Services() {
   const { reviews, getStats, addReview } = useReviews();
   const [reviewDialogFor, setReviewDialogFor] = useState<string | null>(null);
 
-  // Use Airtable data if available, fallback to mockHustlers
-  const { hustlers: airtableHustlers, loading: airtableLoading, error: airtableError } = useAirtableHustlers();
-  const hustlersSource = airtableError ? mockHustlers : (airtableHustlers.length > 0 ? airtableHustlers : mockHustlers);
+  // Use Airtable data if available, fallback to mockPros
+  const { pros: airtablePros, loading: airtableLoading, error: airtableError } = useAirtablePros();
+  const prosSource = airtableError ? mockPros : (airtablePros.length > 0 ? airtablePros : mockPros);
 
   // Admin: manage featured state
   const [featuredState, setFeaturedState] = useState<{ [id: string]: boolean }>(
-    Object.fromEntries(hustlersSource.map(h => [h.id, !!h.featured]))
+    Object.fromEntries(prosSource.map(p => [p.id, !!p.featured]))
   );
 
-  const hustlersWithFeatured = hustlersSource.map(h => ({
-    ...h,
-    featured: featuredState[h.id] ?? false,
+  const prosWithFeatured = prosSource.map(p => ({
+    ...p,
+    featured: featuredState[p.id] ?? false,
   }));
 
   // Demo loading skeletons when any filter/search changes (simulates fetching)
   const loading = useDemoLoading([search, category, location, priceRange, adminMode]) || airtableLoading;
 
-  const filtered = hustlersWithFeatured
-    .filter((h) => {
+  const filtered = prosWithFeatured
+    .filter((p) => {
       const matchSearch =
-        h.name.toLowerCase().includes(search.toLowerCase()) ||
-        h.summary.toLowerCase().includes(search.toLowerCase()) ||
-        h.category?.toLowerCase().includes(search.toLowerCase());
-      const matchCat = !category || h.category === category;
-      const matchLoc = !location || h.location === location;
+        p.name.toLowerCase().includes(search.toLowerCase()) ||
+        p.summary.toLowerCase().includes(search.toLowerCase()) ||
+        p.category?.toLowerCase().includes(search.toLowerCase());
+      const matchCat = !category || p.category === category;
+      const matchLoc = !location || p.location === location;
       const matchPrice =
-        h.price >= priceRange[0] && h.price <= priceRange[1];
+        p.price >= priceRange[0] && p.price <= priceRange[1];
 
       if (adminMode) {
         return matchSearch && matchCat && matchLoc && matchPrice;
       }
       // For users: only verified + complete
-      const complete = isProfileComplete(h);
-      return matchSearch && matchCat && matchLoc && matchPrice && h.verified && complete;
+      const complete = isProfileComplete(p);
+      return matchSearch && matchCat && matchLoc && matchPrice && p.verified && complete;
     })
     .sort((a, b) => {
       if (a.featured === b.featured) return 0;
@@ -117,7 +117,7 @@ export default function Services() {
           {/* Top controls: Title, MVP badge, Admin toggle */}
           <div className="flex flex-col sm:flex-row sm:items-center gap-2 mb-4 w-full justify-between">
             <h1 className="text-3xl font-poppins font-bold text-primary">
-              Browse Local Hustlers
+              Browse Local Pros
             </h1>
             <div className="flex items-center gap-3">
               <Badge variant="secondary" className="shrink-0">MVP Preview</Badge>
@@ -153,10 +153,10 @@ export default function Services() {
           <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-3 mt-[-12px]">
             <div className="text-sm text-muted-foreground flex items-center gap-2">
               {filtered.length > 0
-                ? `Showing ${filtered.length} hustler${filtered.length > 1 ? "s" : ""}`
+                ? `Showing ${filtered.length} pro${filtered.length > 1 ? "s" : ""}`
                 : loading
-                  ? "Loading local hustlers..."
-                  : "No hustlers match your filters."}
+                  ? "Loading local pros..."
+                  : "No pros match your filters."}
               {activeFilterCount > 0 && (
                 <span className="inline-flex items-center px-2 py-0.5 rounded-full bg-accent text-accent-foreground text-[11px] font-semibold ml-2">{activeFilterCount} filter{activeFilterCount > 1 ? 's' : ''} active</span>
               )}
@@ -176,7 +176,7 @@ export default function Services() {
             )}
           </div>
 
-          {/* Hustler grid list with animation */}
+          {/* Pro grid list with animation */}
           <div
             className="
               grid gap-5 
@@ -193,12 +193,12 @@ export default function Services() {
             {loading ? (
               Array.from({ length: 6 }).map((_, i) => (
                 <div key={i} className="animate-pulse animate-fade-in">
-                  <HustlerCardSkeleton />
+                  <ProCardSkeleton />
                 </div>
               ))
             ) : (
-              <HustlerList
-                hustlers={filtered}
+              <ProList
+                pros={filtered}
                 adminMode={adminMode}
                 reviewDialogFor={reviewDialogFor}
                 openReviewDialog={setReviewDialogFor}

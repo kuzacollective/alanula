@@ -1,9 +1,8 @@
-
 import { useState } from "react";
 import { Review } from "@/components/directory/ReviewDialog";
 
 export type ReviewsDict = {
-  [hustlerId: string]: Review[];
+  [proId: string]: Review[];
 };
 
 export function useReviews() {
@@ -18,12 +17,12 @@ export function useReviews() {
 
   const addReview = (review: Omit<Review, "createdAt">) => {
     setReviews(prev => {
-      const arr = prev[review.hustlerId] || [];
+      const arr = prev[review.proId] || [];
       const newReview: Review = {
         ...review,
         createdAt: new Date().toISOString()
       };
-      return { ...prev, [review.hustlerId]: [newReview, ...arr] };
+      return { ...prev, [review.proId]: [newReview, ...arr] };
     });
   };
 

@@ -1,4 +1,3 @@
-
 import Header from "@/components/ui/Header";
 import { Card, CardContent } from "@/components/ui/card";
 import React from "react";
@@ -7,7 +6,7 @@ const ABOUT_VALUES = [
   { label: "Local First", desc: "We highlight Mauritian providers" },
   { label: "Trust & Transparency", desc: "Verified profiles, ratings, and real people" },
   { label: "Digital Access for All", desc: "Easy tools to list your service, no tech skills needed" },
-  { label: "Community Over Corporates", desc: "We're here for micro-entrepreneurs and side hustlers" },
+  { label: "Community Over Corporates", desc: "We're here for micro-entrepreneurs and side pros" },
 ];
 
 export default function About() {
@@ -20,17 +19,17 @@ export default function About() {
         <section className="mb-10">
           <h2 className="text-xl font-semibold mb-2">Mission</h2>
           <p className="text-base mb-2">
-            Alanula is the fastest, easiest way to find and book trusted local service providers in Mauritius. We help everyday hustlers build visibility and grow their income—while helping clients find great help, fast.
+            Alanula is the fastest, easiest way to find and book trusted local service providers in Mauritius. We help everyday pros build visibility and grow their income—while helping clients find great help, fast.
           </p>
           <p className="text-base mb-2">
-            We're building the go-to marketplace for everyday services in Mauritius—powered by local talent, trust, and hustle. Whether you're booking a tutor or showcasing your side gig, Alanula makes it seamless.
+            We're building the go-to marketplace for everyday services in Mauritius—powered by local talent, trust, and drive. Whether you're booking a tutor or showcasing your side gig, Alanula makes it seamless.
           </p>
         </section>
 
         <section className="mb-10">
           <h2 className="text-xl font-semibold mb-2">Our Story</h2>
           <p className="text-base mb-2">
-            Alanula was born from a simple question: <span className="italic">&quot;Why is it so hard to find reliable help locally?&quot;</span> In a country full of talented individuals offering incredible services, there was no central, trusted platform to connect them with those who need them. We're here to change that.
+            Alanula was born from a simple question: <span className="italic">"Why is it so hard to find reliable help locally?"</span> In a country full of talented individuals offering incredible services, there was no central, trusted platform to connect them with those who need them. We're here to change that.
           </p>
         </section>
 

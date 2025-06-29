@@ -1,10 +1,9 @@
-
 import React from "react";
 
 const stories = [
   {
     name: "Jean-Marc Dumas",
-    summary: "Through Alanula, I found 12 students in 1 month. My tutoring side hustle is now my main income source.",
+    summary: "Through Alanula, I found 12 students in 1 month. My tutoring side gig is now my main income source.",
     photo: "https://randomuser.me/api/portraits/men/55.jpg",
     category: "Math Tutor",
   },

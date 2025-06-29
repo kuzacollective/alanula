@@ -1,4 +1,3 @@
-
 import Header from "@/components/ui/Header";
 import { Card, CardContent } from "@/components/ui/card";
 import { ShieldCheck, FileText, Scale } from "lucide-react";
@@ -12,7 +11,7 @@ export default function Legal() {
       <main className="max-w-2xl mx-auto px-4 py-10">
         <div className="flex items-center gap-3 mb-6">
           <ShieldCheck className="text-primary" size={32} />
-          <h1 className="text-4xl font-bold font-poppins text-primary">Legal &amp; Trust Center</h1>
+          <h1 className="text-4xl font-bold font-poppins text-primary">Legal & Trust Center</h1>
         </div>
         <Card className="mb-7">
           <CardContent className="flex flex-col gap-4 py-6">
@@ -28,7 +27,7 @@ export default function Legal() {
                 <Scale aria-hidden size={20} /> Terms of Use
               </Link>
               <Link to="/legal#trust" className="flex items-center gap-2 text-primary hover:underline">
-                <ShieldCheck aria-hidden size={20} /> Trust &amp; Safety
+                <ShieldCheck aria-hidden size={20} /> Trust & Safety
               </Link>
             </div>
           </CardContent>
@@ -36,12 +35,12 @@ export default function Legal() {
         <section id="trust">
           <div className="flex items-center gap-2 mb-2">
             <ShieldCheck className="text-accent" size={20} />
-            <span className="font-semibold text-lg">Trust &amp; Safety</span>
+            <span className="font-semibold text-lg">Trust & Safety</span>
           </div>
           <Card>
             <CardContent className="pt-6 pb-6 flex flex-col gap-3">
               <div>
-                <strong>Verified Profiles:</strong> We check each hustler submission before publishing. Verified badges are granted to complete and trusted profiles.
+                <strong>Verified Profiles:</strong> We check each pro submission before publishing. Verified badges are granted to complete and trusted profiles.
               </div>
               <div>
                 <strong>No Middlemen:</strong> We don't take commission from payments. All bookings happen directly between client and provider.

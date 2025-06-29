@@ -1,21 +1,20 @@
-
 import { Search, MessageCircle, Star, UserPlus, Sparkle } from "lucide-react";
 
 const steps = [
   {
     icon: <Search className="text-primary" size={36} />,
     title: "Discover a Service",
-    desc: "Browse Mauritius’ top local gigs in seconds.",
+    desc: "Browse Mauritius' top local gigs in seconds.",
   },
   {
     icon: <MessageCircle className="text-accent" size={36} />,
     title: "Book via WhatsApp",
-    desc: "Message a hustler instantly. No middlemen—ever.",
+    desc: "Message a pro instantly. No middlemen—ever.",
   },
   {
     icon: <UserPlus className="text-yellow-500" size={36} />,
-    title: "Become a Hustler",
-    desc: "Share your side hustle. Get more clients, fast.",
+    title: "Become a Pro",
+    desc: "Share your side gig. Get more clients, fast.",
   },
   {
     icon: <Star className="text-yellow-400" size={36} />,

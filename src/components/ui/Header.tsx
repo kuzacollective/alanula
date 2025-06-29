@@ -1,7 +1,7 @@
-
 import React from "react";
 import { Link, useLocation } from "react-router-dom";
 import Logo from "@/components/Logo";
+import { ThemeToggle } from "@/components/ui/ThemeToggle";
 import { Breadcrumb, BreadcrumbList, BreadcrumbItem, BreadcrumbLink, BreadcrumbSeparator, BreadcrumbPage } from "@/components/ui/breadcrumb";
 
 export default function Header() {
@@ -45,7 +45,7 @@ export default function Header() {
         <Link to="/" aria-label="Alanula Home" className="flex items-center gap-2">
           <Logo size={36} withText />
         </Link>
-        {/* Navigation removed to avoid duplicate 'Home' link */}
+        <ThemeToggle />
       </div>
       <div className="mx-auto max-w-4xl mt-1">
         {breadcrumb}

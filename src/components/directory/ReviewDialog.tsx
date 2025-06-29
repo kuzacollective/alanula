@@ -1,4 +1,3 @@
-
 import React, { useState } from "react";
 import { Dialog, DialogTrigger, DialogContent, DialogTitle, DialogDescription, DialogHeader, DialogFooter, DialogClose } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
@@ -8,17 +7,17 @@ import { Input } from "@/components/ui/input";
 type Review = {
   rating: number;
   comment: string;
-  hustlerId: string;
+  proId: string;
   createdAt: string;
 };
 
 export default function ReviewDialog({
   onSubmit,
-  hustlerId,
+  proId,
   triggerButton,
 }: {
   onSubmit: (review: Omit<Review, "createdAt">) => void;
-  hustlerId: string;
+  proId: string;
   triggerButton: React.ReactNode;
 }) {
   const [open, setOpen] = useState(false);
@@ -30,7 +29,7 @@ export default function ReviewDialog({
   const submit = (e: React.FormEvent) => {
     e.preventDefault();
     setSubmitting(true);
-    onSubmit({ rating, comment, hustlerId });
+    onSubmit({ rating, comment, proId });
     setTimeout(() => { // Simulate delay
       setOpen(false);
       setRating(0);
@@ -48,7 +47,7 @@ export default function ReviewDialog({
         <DialogHeader>
           <DialogTitle>Leave a review</DialogTitle>
           <DialogDescription>
-            Share your experience with this hustler. Your feedback helps others!
+            Share your experience with this pro. Your feedback helps others!
           </DialogDescription>
         </DialogHeader>
         <form onSubmit={submit} className="flex flex-col gap-4">

@@ -1,4 +1,3 @@
-
 import React from "react";
 import { Input } from "@/components/ui/input";
 import { Select, SelectTrigger, SelectContent, SelectItem, SelectValue } from "@/components/ui/select";
@@ -40,9 +39,9 @@ export const ServiceSearchBar = ({
 }: ServiceSearchBarProps) => (
   <form
     className="
-      flex flex-col gap-3 items-stretch mb-6
+      flex flex-col gap-4 items-stretch mb-6
       md:flex-row    
-      md:items-stretch
+      md:items-end
       md:gap-3
       animate-fade-in
     "
@@ -54,47 +53,58 @@ export const ServiceSearchBar = ({
       // optionally support submit-to-search if needed
     }}
   >
-    <Input
-      aria-label="Search for a service, name or skill"
-      placeholder="Search for a service, name or skill…"
-      value={search}
-      onChange={e => setSearch(e.target.value)}
-      className="w-full md:w-[220px] bg-white dark:bg-card"
-    />
-    <Select value={category} onValueChange={setCategory}>
-      <SelectTrigger className="w-full md:w-[180px] bg-white dark:bg-card" aria-label="Select category">
-        <SelectValue placeholder="Category" />
-      </SelectTrigger>
-      <SelectContent>
-        {categories.map(opt => (
-          <SelectItem value={opt.value} key={opt.value}>
-            {opt.label}
-          </SelectItem>
-        ))}
-      </SelectContent>
-    </Select>
-    <Select value={location} onValueChange={setLocation}>
-      <SelectTrigger className="w-full md:w-[160px] bg-white dark:bg-card" aria-label="Select location">
-        <SelectValue placeholder="Location" />
-      </SelectTrigger>
-      <SelectContent>
-        {locations.map(opt => (
-          <SelectItem value={opt.value} key={opt.value}>
-            {opt.label}
-          </SelectItem>
-        ))}
-      </SelectContent>
-    </Select>
-    <div className="flex flex-col min-w-0 w-full md:min-w-[170px] md:w-auto">
+    <div className="flex flex-col gap-1 w-full md:w-[220px]">
+      <Input
+        aria-label="Search for a service, name or skill"
+        placeholder="Search for a service, name or skill…"
+        value={search}
+        onChange={e => setSearch(e.target.value)}
+        className="w-full bg-white dark:bg-card"
+      />
+    </div>
+    
+    <div className="flex flex-col gap-1 w-full md:w-[180px]">
+      <Select value={category} onValueChange={setCategory}>
+        <SelectTrigger className="w-full bg-white dark:bg-card" aria-label="Select category">
+          <SelectValue placeholder="Category" />
+        </SelectTrigger>
+        <SelectContent>
+          {categories.map(opt => (
+            <SelectItem value={opt.value} key={opt.value}>
+              {opt.label}
+            </SelectItem>
+          ))}
+        </SelectContent>
+      </Select>
+    </div>
+    
+    <div className="flex flex-col gap-1 w-full md:w-[160px]">
+      <Select value={location} onValueChange={setLocation}>
+        <SelectTrigger className="w-full bg-white dark:bg-card" aria-label="Select location">
+          <SelectValue placeholder="Location" />
+        </SelectTrigger>
+        <SelectContent>
+          {locations.map(opt => (
+            <SelectItem value={opt.value} key={opt.value}>
+              {opt.label}
+            </SelectItem>
+          ))}
+        </SelectContent>
+      </Select>
+    </div>
+    
+    <div className="flex flex-col gap-1 w-full md:min-w-[200px] md:w-auto">
       <label
-        className="text-xs font-semibold mb-1 text-muted-foreground pl-1"
+        className="text-xs font-semibold text-muted-foreground"
         htmlFor="price-slider"
       >
         Price range (Rs)
       </label>
-      <div className="flex flex-col xs:flex-row items-stretch xs:items-center gap-2">
-        <span className="text-sm text-muted-foreground min-w-[36px] text-center" aria-label="Minimum price">{priceRange[0]}</span>
-        <div className="flex-1 flex items-center">
+      <div className="flex items-center gap-3 px-1">
+        <span className="text-sm text-muted-foreground min-w-[40px] text-center font-mono" aria-label="Minimum price">
+          {priceRange[0]}
+        </span>
+        <div className="flex-1 px-2">
           <Slider
             id="price-slider"
             min={minPrice}
@@ -108,7 +118,9 @@ export const ServiceSearchBar = ({
             aria-label={`Price range between ${minPrice} and ${maxPrice}`}
           />
         </div>
-        <span className="text-sm text-muted-foreground min-w-[36px] text-center" aria-label="Maximum price">{priceRange[1]}</span>
+        <span className="text-sm text-muted-foreground min-w-[40px] text-center font-mono" aria-label="Maximum price">
+          {priceRange[1]}
+        </span>
       </div>
     </div>
   </form>

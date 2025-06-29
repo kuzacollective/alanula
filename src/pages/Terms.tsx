@@ -1,4 +1,3 @@
-
 import Header from "@/components/ui/Header";
 import { Card, CardContent } from "@/components/ui/card";
 import { Scale } from "lucide-react";
@@ -22,14 +21,14 @@ export default function Terms() {
             <div>
               <strong>1. General</strong>
               <p>
-                Alanula is a platform for connecting clients with local service providers (&quot;hustlers&quot;).
+                Alanula is a platform for connecting clients with local service providers ("pros").
                 We do not process payments or act as a legal representative of either party.
               </p>
             </div>
             <div>
               <strong>2. User Responsibilities</strong>
               <ul className="list-disc pl-6 mt-1">
-                <li>Hustlers are responsible for the accuracy and honesty of their listings.</li>
+                <li>Pros are responsible for the accuracy and honesty of their listings.</li>
                 <li>Clients must communicate respectfully and honor agreed bookings.</li>
               </ul>
             </div>

@@ -1,73 +1,162 @@
-# Welcome to your Lovable project
+# Alanula - Local Service Provider Platform
 
-## Project info
+Alanula is the fastest, easiest way to find and book trusted local service providers in Mauritius. We help everyday pros build visibility and grow their income—while helping clients find great help, fast.
 
-**URL**: https://lovable.dev/projects/adc7cd48-6a8a-42e6-a32c-33064fe2d25c
+## 🚀 Features
 
-## How can I edit this code?
+- **Browse Local Pros**: Discover verified service providers across Mauritius
+- **Direct WhatsApp Booking**: Connect instantly with pros via WhatsApp
+- **Review System**: Rate and review services to help the community
+- **Admin Dashboard**: Manage pro listings and monitor platform activity
+- **Responsive Design**: Works seamlessly on desktop and mobile devices
+- **Dark Mode**: Toggle between light and dark themes for better user experience
 
-There are several ways of editing your application.
+## 🛠️ Tech Stack
 
-**Use Lovable**
+- **Frontend**: React 18 + TypeScript
+- **Build Tool**: Vite
+- **Styling**: Tailwind CSS + shadcn/ui components
+- **State Management**: React hooks + TanStack Query
+- **Routing**: React Router DOM
+- **Data Source**: Airtable (via Make.com webhooks)
+- **Deployment**: GitHub Pages
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/adc7cd48-6a8a-42e6-a32c-33064fe2d25c) and start prompting.
+## 🏃‍♂️ Quick Start
 
-Changes made via Lovable will be committed automatically to this repo.
+### Prerequisites
 
-**Use your preferred IDE**
+- Node.js 18+ and npm
+- Git
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+### Installation
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+1. Clone the repository:
+```bash
+git clone https://github.com/kuzacollective/alanula-pros.git
+cd alanula-pros
+```
 
-Follow these steps:
+2. Install dependencies:
+```bash
+npm install
+```
 
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
+3. Create environment file:
+```bash
+cp .env.example .env
+```
 
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
+4. Configure your environment variables in `.env`:
+```env
+VITE_MAKE_WEBHOOK_URL=https://hook.eu2.make.com/your-webhook-url-here
+```
 
-# Step 3: Install the necessary dependencies.
-npm i
-
-# Step 4: Start the development server with auto-reloading and an instant preview.
+5. Start the development server:
+```bash
 npm run dev
 ```
 
-**Edit a file directly in GitHub**
+The application will be available at `http://localhost:8080`
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+## 📁 Project Structure
 
-**Use GitHub Codespaces**
+```
+src/
+├── components/          # Reusable UI components
+│   ├── admin/          # Admin-specific components
+│   ├── directory/      # Pro listing components
+│   ├── landing/        # Landing page sections
+│   └── ui/            # Base UI components (shadcn/ui)
+├── hooks/              # Custom React hooks
+├── pages/              # Route components
+├── utils/              # Utility functions
+├── mocks/              # Mock data for development
+└── constants/          # App constants and filters
+```
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+## 🔧 Available Scripts
 
-## What technologies are used for this project?
+- `npm run dev` - Start development server
+- `npm run build` - Build for production
+- `npm run preview` - Preview production build
+- `npm run lint` - Run ESLint
 
-This project is built with:
+## 🌐 Deployment
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+### GitHub Pages (Automatic)
 
-## How can I deploy this project?
+This repository is configured for automatic deployment to GitHub Pages:
 
-Simply open [Lovable](https://lovable.dev/projects/adc7cd48-6a8a-42e6-a32c-33064fe2d25c) and click on Share -> Publish.
+1. Push your changes to the `main` branch
+2. GitHub Actions will automatically build and deploy
+3. Your site will be available at: `https://kuzacollective.github.io/alanula-pros/`
 
-## Can I connect a custom domain to my Lovable project?
+### Manual Deployment Steps
 
-Yes, you can!
+If you need to set up the repository from scratch:
 
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
+```bash
+# Initialize git repository
+git init
+git add .
+git commit -m "Initial commit: Alanula platform"
+git branch -M main
+git remote add origin https://github.com/kuzacollective/alanula-pros.git
+git push -u origin main
+```
 
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/tips-tricks/custom-domain#step-by-step-guide)
+Then enable GitHub Pages:
+1. Go to repository Settings → Pages
+2. Under Source, select "GitHub Actions"
+3. The workflow will automatically deploy your app
+
+## 🔗 Data Integration
+
+The application integrates with Airtable via Make.com webhooks:
+
+1. **Airtable**: Stores pro profiles and service data
+2. **Make.com**: Provides webhook endpoints for data fetching
+3. **Frontend**: Fetches data via REST API calls
+
+To set up your own data source:
+1. Create an Airtable base with pro profiles
+2. Set up a Make.com scenario to expose the data
+3. Update `VITE_MAKE_WEBHOOK_URL` in your environment
+
+## 🎨 Design System
+
+The app uses a custom design system built on Tailwind CSS:
+
+- **Primary Color**: #F5B400 (Golden yellow)
+- **Secondary Color**: #2E2E2E (Dark gray)
+- **Accent Color**: #00C88F (Teal green)
+- **Fonts**: Inter (body), Poppins (headings)
+
+## 🤝 Contributing
+
+1. Fork the repository
+2. Create a feature branch: `git checkout -b feature/amazing-feature`
+3. Commit your changes: `git commit -m 'Add amazing feature'`
+4. Push to the branch: `git push origin feature/amazing-feature`
+5. Open a Pull Request
+
+## 📄 License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+## 📞 Support
+
+- **WhatsApp**: +230 5917 0001
+- **Email**: hello@alanula.mu
+- **Website**: https://alanula.mu
+
+## 🙏 Acknowledgments
+
+- Built with [Vite](https://vitejs.dev/) and [React](https://reactjs.org/)
+- UI components from [shadcn/ui](https://ui.shadcn.com/)
+- Icons from [Lucide React](https://lucide.dev/)
+- Hosted on [GitHub Pages](https://pages.github.com/)
+
+---
+
+Made with ❤️ for the Mauritian community by Kuza Collective

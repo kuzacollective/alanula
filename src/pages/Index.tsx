@@ -1,8 +1,7 @@
-
 import Hero from "@/components/landing/Hero";
-import HustlerSpotlight from "@/components/landing/HustlerSpotlight";
+import ProSpotlight from "@/components/landing/ProSpotlight";
 import CommunityStats from "@/components/landing/CommunityStats";
-import RecentlyJoined from "@/components/landing/RecentlyJoined";
+import RecentlyJoinedPros from "@/components/landing/RecentlyJoinedPros";
 import PopularCategories from "@/components/landing/PopularCategories";
 import HowItWorks from "@/components/landing/HowItWorks";
 import SuccessStories from "@/components/landing/SuccessStories";
@@ -18,9 +17,9 @@ const Index = () => {
   return (
     <div className="min-h-screen bg-background flex flex-col font-inter">
       <Section><Hero /></Section>
-      <Section bg="bg-yellow-50 dark:bg-yellow-900/10"><HustlerSpotlight /></Section>
+      <Section bg="bg-yellow-50 dark:bg-yellow-900/10"><ProSpotlight /></Section>
       <Section><CommunityStats /></Section>
-      <Section bg="bg-muted/10"><RecentlyJoined /></Section>
+      <Section bg="bg-muted/10"><RecentlyJoinedPros /></Section>
       <Section><PopularCategories /></Section>
       <Section bg="bg-muted/10"><HowItWorks /></Section>
       <Section><SuccessStories /></Section>

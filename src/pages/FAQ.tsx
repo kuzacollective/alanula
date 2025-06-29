@@ -1,4 +1,3 @@
-
 import Header from "@/components/ui/Header";
 import { Card, CardContent } from "@/components/ui/card";
 import React from "react";
@@ -23,7 +22,7 @@ const FAQS = [
   },
   {
     q: "Is payment handled through Alanula?",
-    a: "Not at the moment. Clients and hustlers arrange payment directly, usually via cash, bank transfer, or mobile wallet."
+    a: "Not at the moment. Clients and pros arrange payment directly, usually via cash, bank transfer, or mobile wallet."
   },
   {
     q: "Can I edit my profile later?",

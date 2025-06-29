@@ -1,9 +1,8 @@
-
 import React from "react";
 import { Users, Star, MapPin, Briefcase, Award } from "lucide-react";
 
 const stats = [
-  { icon: Users, label: "Active Hustlers", value: 18 },
+  { icon: Users, label: "Active Pros", value: 18 },
   { icon: Briefcase, label: "Services Listed", value: 25 },
   { icon: MapPin, label: "Cities Covered", value: 15 },
   { icon: Star, label: "Total Reviews", value: 48 },
