@@ -1,7 +1,7 @@
 import Hero from "@/components/landing/Hero";
 import HustlerSpotlight from "@/components/landing/HustlerSpotlight";
 import CommunityStats from "@/components/landing/CommunityStats";
-import RecentlyJoinedPros from "@/components/landing/RecentlyJoinedPros";
+import RecentlyJoined from "@/components/landing/RecentlyJoined";
 import PopularCategories from "@/components/landing/PopularCategories";
 import HowItWorks from "@/components/landing/HowItWorks";
 import SuccessStories from "@/components/landing/SuccessStories";
@@ -19,7 +19,7 @@ const Index = () => {
       <Section><Hero /></Section>
       <Section bg="bg-yellow-50 dark:bg-yellow-900/10"><HustlerSpotlight /></Section>
       <Section><CommunityStats /></Section>
-      <Section bg="bg-muted/10"><RecentlyJoinedPros /></Section>
+      <Section bg="bg-muted/10"><RecentlyJoined /></Section>
       <Section><PopularCategories /></Section>
       <Section bg="bg-muted/10"><HowItWorks /></Section>
       <Section><SuccessStories /></Section>
