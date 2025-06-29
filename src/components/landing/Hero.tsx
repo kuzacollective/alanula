@@ -12,7 +12,7 @@ export default function Hero() {
           <span className="text-accent">Book in minutes.</span>
         </h1>
         <p className="text-xl md:text-2xl font-inter text-muted-foreground text-center mb-8 max-w-3xl mx-auto leading-relaxed">
-          Alanula will be the fastest, easiest way to find and book trusted local service providers in Mauritius. 
+          Alanula is the fastest, easiest way to find and book trusted local service providers for your everyday needs in Mauritius. 
           We're building a platform to help everyday pros gain visibility and grow their income—while helping clients find great help, fast.
         </p>
         <div className="flex flex-col sm:flex-row gap-4 w-full max-w-md mx-auto justify-center">
