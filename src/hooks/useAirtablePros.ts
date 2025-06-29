@@ -1,15 +1,15 @@
 import { useState, useEffect } from "react";
-import { fetchAirtableHustlers } from "@/utils/airtableApi";
-import { Hustler } from "@/components/directory/HustlerCard";
+import { fetchAirtablePros } from "@/utils/airtablePros";
+import { Pro } from "@/components/directory/ProCard";
 
 export function useAirtablePros() {
-  const [pros, setPros] = useState<Hustler[]>([]);
+  const [pros, setPros] = useState<Pro[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
     setLoading(true);
-    fetchAirtableHustlers()
+    fetchAirtablePros()
       .then(setPros)
       .catch(e => setError(e.message))
       .finally(() => setLoading(false));

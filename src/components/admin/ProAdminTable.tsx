@@ -1,12 +1,12 @@
 import React from "react";
-import { Hustler } from "@/components/directory/HustlerCard";
+import { Pro } from "@/components/directory/ProCard";
 import { Table, TableHeader, TableRow, TableHead, TableBody, TableCell } from "@/components/ui/table";
 
 export default function ProAdminTable({
   pros,
   loading,
 }: {
-  pros: Hustler[];
+  pros: Pro[];
   loading: boolean;
 }) {
   if (loading) {

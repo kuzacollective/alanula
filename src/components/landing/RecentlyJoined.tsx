@@ -1,9 +1,8 @@
-
 import React from "react";
-import HustlerCard, { Hustler } from "../directory/HustlerCard";
-import { HustlerWithAdminFields } from "../directory/HustlerList";
+import ProCard, { Pro } from "../directory/ProCard";
+import { ProWithAdminFields } from "../directory/ProList";
 
-const hustlers: HustlerWithAdminFields[] = [
+const pros: ProWithAdminFields[] = [
   {
     id: "2",
     name: "Jean-Marc Dumas",
@@ -76,21 +75,21 @@ const hustlers: HustlerWithAdminFields[] = [
 ];
 
 export default function RecentlyJoined() {
-  // Only show verified & newly joined hustlers (isNew && verified)
-  const verifiedNewHustlers = hustlers.filter(h => h.isNew && h.verified);
+  // Only show verified & newly joined pros (isNew && verified)
+  const verifiedNewPros = pros.filter(h => h.isNew && h.verified);
 
-  if (verifiedNewHustlers.length === 0) return null;
+  if (verifiedNewPros.length === 0) return null;
 
   return (
     <div className="py-12 md:py-16">
       <h3 className="text-3xl font-bold font-poppins text-primary mb-8 text-center">
-        Recently Joined Hustlers
+        Recently Joined Pros
       </h3>
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 justify-center">
-        {verifiedNewHustlers.map(h => (
+        {verifiedNewPros.map(h => (
           <div key={h.id} className="w-full">
-            <HustlerCard
-              hustler={h}
+            <ProCard
+              pro={h}
               isNew={h.isNew}
               needsReview={h.needsReview}
               profileComplete={!!h.profileComplete}
