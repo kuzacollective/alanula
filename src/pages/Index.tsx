@@ -1,5 +1,5 @@
 import Hero from "@/components/landing/Hero";
-import ProSpotlight from "@/components/landing/ProSpotlight";
+import HustlerSpotlight from "@/components/landing/HustlerSpotlight";
 import CommunityStats from "@/components/landing/CommunityStats";
 import RecentlyJoinedPros from "@/components/landing/RecentlyJoinedPros";
 import PopularCategories from "@/components/landing/PopularCategories";
@@ -17,7 +17,7 @@ const Index = () => {
   return (
     <div className="min-h-screen bg-background flex flex-col font-inter">
       <Section><Hero /></Section>
-      <Section bg="bg-yellow-50 dark:bg-yellow-900/10"><ProSpotlight /></Section>
+      <Section bg="bg-yellow-50 dark:bg-yellow-900/10"><HustlerSpotlight /></Section>
       <Section><CommunityStats /></Section>
       <Section bg="bg-muted/10"><RecentlyJoinedPros /></Section>
       <Section><PopularCategories /></Section>
