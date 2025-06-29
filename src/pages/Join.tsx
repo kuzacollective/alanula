@@ -12,9 +12,9 @@ export default function Join() {
   const [selectedForm, setSelectedForm] = useState<FormType>(null);
   const [iframeLoaded, setIframeLoaded] = useState(false);
 
-  // Separate Airtable embed URLs for each form type
-  const providerFormUrl = "https://airtable.com/embed/appYCffZwGEMJ3xcF/pagEvCD1lwQwVV0qx/form";
-  const customerFormUrl = "https://airtable.com/embed/appYCffZwGEMJ3xcF/pagKPQDue1zA7yulf/form";
+  // Updated Airtable embed URLs with proper parameters
+  const providerFormUrl = "https://airtable.com/embed/appYCffZwGEMJ3xcF/pagEvCD1lwQwVV0qx/form?backgroundColor=transparent";
+  const customerFormUrl = "https://airtable.com/embed/appYCffZwGEMJ3xcF/pagKPQDue1zA7yulf/form?backgroundColor=transparent";
 
   const currentFormUrl = selectedForm === 'provider' ? providerFormUrl : customerFormUrl;
 
@@ -26,7 +26,10 @@ export default function Join() {
           <Button
             variant="ghost"
             className="flex items-center gap-2 mb-4"
-            onClick={() => setSelectedForm(null)}
+            onClick={() => {
+              setSelectedForm(null);
+              setIframeLoaded(false);
+            }}
           >
             <ArrowLeft className="w-4 h-4" />
             Back to form selection
@@ -42,52 +45,72 @@ export default function Join() {
           </p>
         </div>
         
-        <div className="w-full max-w-xl bg-white dark:bg-card rounded-lg shadow-lg p-4 md:p-8 flex flex-col items-center">
-          <div className="relative w-full">
+        <div className="w-full max-w-2xl bg-white dark:bg-card rounded-lg shadow-lg overflow-hidden">
+          <div className="relative">
             {/* Show spinner until iframe loads */}
             {!iframeLoaded && (
-              <div className="absolute inset-0 flex items-center justify-center bg-white/60 dark:bg-background/70 z-10 rounded-md animate-fade-in">
-                <svg
-                  className="animate-spin h-7 w-7 text-accent"
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  aria-label="Loading"
-                >
-                  <circle
-                    className="opacity-25"
-                    cx="12"
-                    cy="12"
-                    r="10"
-                    stroke="currentColor"
-                    strokeWidth="4"
-                  ></circle>
-                  <path
-                    className="opacity-75"
-                    fill="currentColor"
-                    d="M4 12a8 8 0 018-8v4a4 4 0 00-4 4H4z"
-                  ></path>
-                </svg>
+              <div className="absolute inset-0 flex items-center justify-center bg-white/90 dark:bg-background/90 z-10 rounded-md animate-fade-in min-h-[600px]">
+                <div className="flex flex-col items-center gap-4">
+                  <svg
+                    className="animate-spin h-8 w-8 text-accent"
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    aria-label="Loading form"
+                  >
+                    <circle
+                      className="opacity-25"
+                      cx="12"
+                      cy="12"
+                      r="10"
+                      stroke="currentColor"
+                      strokeWidth="4"
+                    ></circle>
+                    <path
+                      className="opacity-75"
+                      fill="currentColor"
+                      d="M4 12a8 8 0 018-8v4a4 4 0 00-4 4H4z"
+                    ></path>
+                  </svg>
+                  <p className="text-sm text-muted-foreground">Loading form...</p>
+                </div>
               </div>
             )}
+            
             <iframe
-              className="airtable-embed w-full h-[533px] rounded-md border transition-opacity duration-300"
+              className="w-full min-h-[600px] border-0 transition-opacity duration-300"
               src={currentFormUrl}
               title={`Alanula ${selectedForm === 'provider' ? 'Service Provider' : 'Customer'} Waitlist Form`}
-              frameBorder="0"
-              style={{ background: "transparent", border: "1px solid #ccc" }}
               onLoad={() => setIframeLoaded(true)}
-              width="100%"
-              height="533"
-              allowFullScreen
-            >
-              Loading…
-            </iframe>
+              onError={() => {
+                console.error('Failed to load Airtable form');
+                setIframeLoaded(true);
+              }}
+              style={{ 
+                background: "transparent",
+                opacity: iframeLoaded ? 1 : 0
+              }}
+              allow="camera; microphone; geolocation"
+              sandbox="allow-scripts allow-same-origin allow-forms allow-popups allow-popups-to-escape-sandbox"
+            />
           </div>
         </div>
         
-        <div className="text-center text-sm text-muted-foreground mt-6">
-          Questions? <a href="/contact" className="text-accent font-semibold underline">Contact us</a>
+        <div className="text-center text-sm text-muted-foreground mt-6 max-w-md">
+          <p className="mb-2">
+            Having trouble with the form? Try refreshing the page or{" "}
+            <a 
+              href={selectedForm === 'provider' ? providerFormUrl.replace('/embed/', '/') : customerFormUrl.replace('/embed/', '/')} 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="text-accent font-semibold underline hover:text-accent/80"
+            >
+              open it in a new tab
+            </a>.
+          </p>
+          <p>
+            Questions? <a href="/contact" className="text-accent font-semibold underline">Contact us</a>
+          </p>
         </div>
       </div>
     );
