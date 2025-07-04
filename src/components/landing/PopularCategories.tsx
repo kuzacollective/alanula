@@ -1,4 +1,3 @@
-
 import { useNavigate } from "react-router-dom";
 import { ChefHat, Image, PencilLine, Camera, Brush, Users } from "lucide-react";
 import { Card, CardContent } from "../ui/card";
@@ -60,14 +59,14 @@ export default function PopularCategories() {
             key={cat.label}
             role="button"
             tabIndex={0}
-            className={`transition-all duration-200 hover-scale cursor-pointer shadow-sm bg-gradient-to-b ${cat.color}`}
+            className={`transition-all duration-200 hover-scale cursor-pointer shadow-sm bg-gradient-to-b ${cat.color} border border-gray-200 dark:border-gray-700`}
             onClick={() => handleCardClick(cat.label)}
             onKeyDown={e => (e.key === "Enter" || e.key === " ") && handleCardClick(cat.label)}
             aria-label={`Browse ${cat.label}`}
           >
             <CardContent className="flex flex-col gap-1 items-center py-7">
               <cat.icon className={cat.iconClass} size={30} aria-hidden="true" />
-              <span className="mt-3 font-bold font-poppins text-base text-secondary text-center">
+              <span className="mt-3 font-bold font-poppins text-base text-gray-800 dark:text-gray-900 text-center">
                 {cat.label}
               </span>
             </CardContent>
