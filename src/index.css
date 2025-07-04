@@ -66,14 +66,14 @@
     --primary: 44 95% 48%; /* #F5B400 */
     --primary-foreground: 222.2 47.4% 11.2%;
 
-    --secondary: 0 0% 18%; /* #2E2E2E */
-    --secondary-foreground: 0 0% 100%;
+    --secondary: 0 0% 85%; /* Changed from 18% to 85% for better contrast */
+    --secondary-foreground: 0 0% 15%; /* Adjusted for contrast */
 
     --accent: 166 100% 39%; /* #00C88F */
     --accent-foreground: 0 0% 100%;
 
     --muted: 217.2 32.6% 17.5%;
-    --muted-foreground: 215 20.2% 65.1%;
+    --muted-foreground: 215 20.2% 75%; /* Increased from 65.1% for better visibility */
 
     --destructive: 0 62.8% 30.6%;
     --destructive-foreground: 210 40% 98%;
