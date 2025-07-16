@@ -1,5 +1,5 @@
 
-import { Zap } from "lucide-react";
+import AlanulaIcon from "./AlanulaIcon";
 import { Link } from "react-router-dom";
 
 export default function Logo({
@@ -10,8 +10,8 @@ export default function Logo({
 }: { size?: number; withText?: boolean; className?: string; clickable?: boolean }) {
   const logoContent = (
     <div className={`flex items-center gap-2 ${className}`}>
-      <span className="inline-flex items-center justify-center rounded-full bg-primary/10 p-2">
-        <Zap size={size} color="#F5B400" strokeWidth={2.2} />
+      <span className="inline-flex items-center justify-center rounded-lg bg-secondary p-2">
+        <AlanulaIcon size={size} />
       </span>
       {withText && (
         <span
