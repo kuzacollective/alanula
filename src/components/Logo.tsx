@@ -10,7 +10,7 @@ export default function Logo({
 }: { size?: number; withText?: boolean; className?: string; clickable?: boolean }) {
   const logoContent = (
     <div className={`flex items-center gap-2 ${className}`}>
-      <span className="inline-flex items-center justify-center rounded-lg p-2">
+      <span className="inline-flex items-center justify-center rounded-lg p-2 bg-muted border border-border/20 shadow-sm">
         <AlanulaIcon size={size} />
       </span>
       {withText && (
