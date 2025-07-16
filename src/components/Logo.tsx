@@ -15,10 +15,11 @@ export default function Logo({
       </span>
       {withText && (
         <span
-          className="font-poppins text-[2rem] font-bold tracking-tight text-primary"
+          className="font-poppins text-[2rem] font-bold tracking-tight"
           style={{ letterSpacing: "-1.5px" }}
         >
-          Alanula
+          <span className="text-primary">al</span>
+          <span className="text-accent">anula</span>
         </span>
       )}
     </div>
