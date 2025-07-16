@@ -22,6 +22,7 @@ interface ProListProps {
   onFeatureToggle?: (id: string, val: boolean) => void;
   isProfileComplete: (h: ProWithAdminFields) => boolean;
   isLoading?: boolean;
+  startingSoon?: boolean;
 }
 
 export const ProList = ({
@@ -35,6 +36,7 @@ export const ProList = ({
   onFeatureToggle,
   isProfileComplete,
   isLoading = false,
+  startingSoon = false,
 }: ProListProps) => {
   if (isLoading) {
     // Let Services decide how many skeletons to show—handled outside this component for flexibility
@@ -70,6 +72,7 @@ export const ProList = ({
               onReviewClick={() => openReviewDialog(h.id)}
               canFeatureToggle={canFeatureToggle}
               onFeatureToggle={val => onFeatureToggle && onFeatureToggle(h.id, val)}
+              startingSoon={startingSoon}
             />
             {reviewDialogFor === h.id && (
               <ReviewDialog

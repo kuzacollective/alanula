@@ -21,6 +21,7 @@ type TrustProps = {
   needsReview?: boolean;
   profileComplete?: boolean;
   status?: "verified" | "unverified" | "under_review";
+  startingSoon?: boolean;
 };
 
 type Review = {
@@ -46,6 +47,7 @@ const ProCard = React.memo(function ProCard({
   needsReview = false,
   profileComplete = true,
   status = "verified",
+  startingSoon = false,
 }: {
   pro: Pro & { referredBy?: string; referralCode?: string };
   averageRating?: number;
@@ -76,6 +78,15 @@ const ProCard = React.memo(function ProCard({
           <Badge className="bg-yellow-300 text-yellow-800 px-2 py-1 flex items-center gap-1 shadow animate-fade-in">
             <Star size={16} className="text-yellow-500" />
             Featured
+          </Badge>
+        </div>
+      )}
+
+      {/* Starting Soon banner */}
+      {startingSoon && (
+        <div className="absolute left-1/2 transform -translate-x-1/2 top-2 z-20">
+          <Badge className="bg-blue-500 text-white px-3 py-1 text-xs font-semibold shadow-lg animate-fade-in">
+            Starting Soon
           </Badge>
         </div>
       )}
