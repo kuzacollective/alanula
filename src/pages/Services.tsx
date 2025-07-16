@@ -17,6 +17,7 @@ import { isProfileComplete } from "@/utils/isProfileComplete";
 import { ErrorBoundary } from "@/components/ErrorBoundary";
 import { BackToTopButton } from "@/components/ui/BackToTopButton";
 import { useAirtablePros } from "@/hooks/useAirtablePros";
+import { useAuth } from "@/hooks/useAuth";
 
 // Simulate data fetching/loading state
 function useDemoLoading(deps: any[]) {
@@ -39,6 +40,7 @@ const minPrice = Math.min(...rawPrices, 0);
 const maxPrice = Math.max(...rawPrices, 0);
 
 export default function Services() {
+  const { isAuthenticated } = useAuth();
   const [searchInput, setSearchInput] = useState("");
   const [search, setSearch] = useState("");
   const [category, setCategory] = useState("");
@@ -121,15 +123,17 @@ export default function Services() {
             </h1>
             <div className="flex items-center gap-3">
               <Badge variant="secondary" className="shrink-0">MVP Preview</Badge>
-              <div className="flex items-center gap-2">
-                <Switch
-                  checked={adminMode}
-                  onCheckedChange={setAdminMode}
-                  id="admin-mode"
-                  className="shrink-0"
-                />
-                <label htmlFor="admin-mode" className="text-xs text-muted-foreground">Admin view</label>
-              </div>
+              {isAuthenticated && (
+                <div className="flex items-center gap-2">
+                  <Switch
+                    checked={adminMode}
+                    onCheckedChange={setAdminMode}
+                    id="admin-mode"
+                    className="shrink-0"
+                  />
+                  <label htmlFor="admin-mode" className="text-xs text-muted-foreground">Admin view</label>
+                </div>
+              )}
             </div>
           </div>
 
