@@ -132,7 +132,8 @@ export default function Join() {
           Join the Alanula Waitlist
         </h1>
         <p className="text-secondary-foreground text-lg text-center mb-8 max-w-3xl mx-auto">
-          Be among the first to experience Mauritius' premier service provider platform! 
+        <p className="text-muted-foreground text-lg text-center mb-8 max-w-3xl mx-auto">
+          Be among the first to experience Mauritius' premier service provider platform!
           Choose your path below to get started.
         </p>
       </div>
