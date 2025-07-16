@@ -154,10 +154,16 @@ export default function About() {
                 Explore Services
               </a>
               <a 
-                href="/join" 
+                href="/join-pro" 
                 className="inline-flex items-center justify-center border-2 border-accent text-accent px-8 py-4 rounded-lg font-semibold hover:bg-accent hover:text-accent-foreground transition-colors"
               >
-                Join Our Community
+                Join as a Pro
+              </a>
+              <a 
+                href="/join-customer" 
+                className="inline-flex items-center justify-center border-2 border-primary text-primary px-8 py-4 rounded-lg font-semibold hover:bg-primary hover:text-primary-foreground transition-colors"
+              >
+                Request a Service
               </a>
             </div>
           </div>

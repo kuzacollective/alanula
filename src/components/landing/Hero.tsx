@@ -23,7 +23,18 @@ export default function Hero() {
             asChild
             className="w-full font-semibold text-lg border-2 border-accent text-accent py-4 px-8 hover:bg-accent hover:text-accent-foreground animate-scale-in"
           >
-            <Link to="/join">Join Waitlist</Link>
+            <Link to="/join-pro">Join as a Pro</Link>
+          </Button>
+        </div>
+        
+        {/* Additional CTA for customers */}
+        <div className="mt-4">
+          <Button
+            variant="ghost"
+            asChild
+            className="font-semibold text-base text-muted-foreground hover:text-primary underline"
+          >
+            <Link to="/join-customer">Looking for services? Request here</Link>
           </Button>
         </div>
       </div>

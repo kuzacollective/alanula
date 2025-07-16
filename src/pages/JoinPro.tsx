@@ -50,10 +50,10 @@ export default function JoinPro() {
         <Button
           variant="ghost"
           className="flex items-center gap-2 mb-6"
-          onClick={() => navigate("/join")}
+          onClick={() => navigate("/")}
         >
           <ArrowLeft className="w-4 h-4" />
-          Back to join options
+          Back to home
         </Button>
         
         <div className="text-center mb-12">
