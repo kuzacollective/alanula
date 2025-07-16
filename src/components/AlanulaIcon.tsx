@@ -22,8 +22,8 @@ export default function AlanulaIcon({ size = 32, className = "" }: AlanulaIconPr
       />
       
       {/* Two dots in teal green */}
-      <circle cx="75" cy="34" r="4" fill="#00C88F" />
-      <circle cx="75" cy="54" r="4" fill="#00C88F" />
+      <circle cx="75" cy="36" r="4" fill="#00C88F" />
+      <circle cx="75" cy="52" r="4" fill="#00C88F" />
     </svg>
   );
 }
