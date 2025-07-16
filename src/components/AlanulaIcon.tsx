@@ -22,8 +22,8 @@ export default function AlanulaIcon({ size = 32, className = "" }: AlanulaIconPr
       />
       
       {/* Rectangular colon (:) in teal green */}
-      <rect x="72" y="32" width="8" height="6" rx="1" fill="#00C88F" />
-      <rect x="72" y="52" width="8" height="6" rx="1" fill="#00C88F" />
+      <rect x="70" y="30" width="10" height="8" rx="1.5" fill="#00C88F" />
+      <rect x="70" y="50" width="10" height="8" rx="1.5" fill="#00C88F" />
     </svg>
   );
 }
