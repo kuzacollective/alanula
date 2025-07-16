@@ -41,6 +41,10 @@ const maxPrice = Math.max(...rawPrices, 0);
 
 export default function Services() {
   const { isAuthenticated } = useAuth();
+  
+  // Default WhatsApp number for all service providers during onboarding
+  const DEFAULT_WHATSAPP_NUMBER = "+230 5921 4463";
+  
   const [searchInput, setSearchInput] = useState("");
   const [search, setSearch] = useState("");
   const [category, setCategory] = useState("");
@@ -68,8 +72,10 @@ export default function Services() {
     Object.fromEntries(prosSource.map(p => [p.id, !!p.featured]))
   );
 
+  // Apply default WhatsApp number and featured state
   const prosWithFeatured = prosSource.map(p => ({
     ...p,
+    whatsapp: DEFAULT_WHATSAPP_NUMBER,
     featured: featuredState[p.id] ?? false,
   }));
 
