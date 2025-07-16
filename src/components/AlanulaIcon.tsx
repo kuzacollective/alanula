@@ -15,19 +15,15 @@ export default function AlanulaIcon({ size = 32, className = "" }: AlanulaIconPr
       xmlns="http://www.w3.org/2000/svg"
       className={className}
     >
-      {/* Large 'a' letter in golden yellow */}
+      {/* Stylized 'A' letter in golden yellow */}
       <path
-        d="M25 75V45C25 35 32 28 42 28C52 28 59 35 59 45V75M25 58H59M42 40C46 40 49 43 49 47C49 51 46 54 42 54C38 54 35 51 35 47C35 43 38 40 42 40Z"
-        stroke="#F5B400"
-        strokeWidth="6"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        fill="none"
+        d="M20 75L35 25H45L60 75H50L47 65H33L30 75H20ZM36 55H44L40 40L36 55Z"
+        fill="#F5B400"
       />
       
       {/* Colon (:) in teal green */}
-      <circle cx="72" cy="42" r="4" fill="#00C88F" />
-      <circle cx="72" cy="58" r="4" fill="#00C88F" />
+      <circle cx="75" cy="35" r="3.5" fill="#00C88F" />
+      <circle cx="75" cy="55" r="3.5" fill="#00C88F" />
     </svg>
   );
 }
