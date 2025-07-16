@@ -6,7 +6,9 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Index from "./pages/Index";
 import NotFound from "./pages/NotFound";
-import Join from "./pages/Join";
+import JoinSelection from "./pages/JoinSelection";
+import JoinPro from "./pages/JoinPro";
+import JoinCustomer from "./pages/JoinCustomer";
 import Services from "./pages/Services";
 import About from "./pages/About";
 import FAQ from "./pages/FAQ";
@@ -31,7 +33,9 @@ const App = () => (
             <Route path="/" element={<Index />} />
             <Route path="/about" element={<About />} />
             <Route path="/services" element={<Services />} />
-            <Route path="/join" element={<Join />} />
+            <Route path="/join" element={<JoinSelection />} />
+            <Route path="/join-pro" element={<JoinPro />} />
+            <Route path="/join-customer" element={<JoinCustomer />} />
             <Route path="/faq" element={<FAQ />} />
             <Route path="/contact" element={<Contact />} />
             <Route path="/legal" element={<Legal />} />
