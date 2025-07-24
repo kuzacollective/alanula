@@ -19,15 +19,22 @@ export function useAirtablePro(proId: string) {
     setError(null);
 
     fetchAirtableProById(proId)
-      .then(setPro)
-      .catch(e => {
-        // Fallback to mock data if Airtable fails
-        const mockPro = mockPros.find(p => p.id === proId);
-        if (mockPro) {
-          setPro(mockPro);
+      .then(airtablePro => {
+        if (airtablePro) {
+          setPro(airtablePro);
         } else {
+          // Airtable returned null, fallback to mock data
+          const mockPro = mockPros.find(p => p.id === proId);
+          setPro(mockPro || null);
+        }
+      })
+      .catch(e => {
+        // Airtable request failed, fallback to mock data
+        const mockPro = mockPros.find(p => p.id === proId);
+        if (!mockPro) {
           setError(e.message || "Professional not found");
         }
+        setPro(mockPro || null);
       })
       .finally(() => setLoading(false));
   }, [proId]);
