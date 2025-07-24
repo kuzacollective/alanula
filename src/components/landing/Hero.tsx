@@ -32,9 +32,9 @@ export default function Hero() {
           <Button
             variant="ghost"
             asChild
-            className="font-semibold text-base text-muted-foreground hover:text-primary underline"
+            className="font-semibold text-base text-muted-foreground hover:text-accent underline"
           >
-            <Link to="/join-customer">Looking for services? Request here</Link>
+            <Link to="/join-customer">Looking for Service Providers (Alanula Pros)? Request here</Link>
           </Button>
         </div>
       </div>
