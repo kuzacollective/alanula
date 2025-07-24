@@ -60,7 +60,7 @@ export default function JoinPro() {
           <h1 className="text-primary font-poppins font-bold text-4xl sm:text-6xl mb-6 leading-tight">
             Turn Your Skills Into <span className="text-accent">Income</span>
           </h1>
-          <p className="text-secondary-foreground text-xl sm:text-2xl mb-8 max-w-3xl mx-auto leading-relaxed">
+          <p className="text-muted-foreground text-xl sm:text-2xl mb-8 max-w-3xl mx-auto leading-relaxed">
             Join Mauritius' fastest-growing platform for service providers. Get discovered by clients who need your expertise and grow your business with zero commission fees.
           </p>
           
