@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import { Badge } from "../ui/badge";
 import { Star, Check } from "lucide-react";
 
@@ -69,8 +70,6 @@ const ProCard = React.memo(function ProCard({
         "transition-transform duration-200 transform hover:scale-105 hover:shadow-lg focus-within:scale-105 focus-within:shadow-lg animate-fade-in" +
         (isAdmin && !profileComplete ? " border-red-400" : "")
       }
-      tabIndex={0}
-      aria-label={`Service provider: ${name}, category: ${category}, location: ${location}`}
     >
       {/* Featured badge */}
       {featured && (
@@ -109,7 +108,11 @@ const ProCard = React.memo(function ProCard({
         </div>
       )}
 
-      <div className="flex flex-col items-center px-4 pt-6 pb-4 w-full">
+      <Link 
+        to={`/pro/${pro.id}`}
+        className="flex flex-col items-center px-4 pt-6 pb-4 w-full flex-1 hover:bg-muted/10 transition-colors"
+        aria-label={`View ${name}'s profile - ${category} in ${location}`}
+      >
         <div className="relative mb-3">
           {!imgLoaded && (
             <div className="absolute left-0 top-0 w-24 h-24 rounded-full bg-muted animate-pulse" aria-hidden="true" />
@@ -137,7 +140,9 @@ const ProCard = React.memo(function ProCard({
         <Badge variant="secondary" className="mb-1">{category}</Badge>
         <div className="font-semibold text-xl text-secondary mb-2">{formatPrice(price)} <span className="text-sm text-muted-foreground font-normal">/start</span></div>
         <div className="text-sm text-center text-muted-foreground mb-2 line-clamp-3">{summary || <span className="italic text-muted-foreground/60">No summary provided</span>}</div>
-        
+      </Link>
+      
+      <div className="px-4 pb-4">
         {/* Referral code - admin only */}
         {isAdmin && referralCode && (
           <div className="mb-2">

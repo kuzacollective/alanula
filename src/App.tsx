@@ -17,6 +17,7 @@ import Privacy from "./pages/Privacy";
 import Terms from "./pages/Terms";
 import Admin from "./pages/Admin";
 import Login from "./pages/Login";
+import ProProfile from "./pages/ProProfile";
 import AuthGuard from "./components/AuthGuard";
 
 const queryClient = new QueryClient();
@@ -45,6 +46,7 @@ const App = () => (
                 <Admin />
               </AuthGuard>
             } />
+            <Route path="/pro/:proId" element={<ProProfile />} />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />
           </Routes>

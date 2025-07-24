@@ -74,3 +74,21 @@ export async function fetchAirtablePros() {
     throw new Error(`Failed to fetch pros: ${error instanceof Error ? error.message : 'Unknown error'}`);
   }
 }
+
+export async function fetchAirtableProById(proId: string) {
+  try {
+    // For now, fetch all pros and filter by ID
+    // In the future, you could modify your Make.com webhook to support fetching by ID
+    const allPros = await fetchAirtablePros();
+    const pro = allPros.find(p => p.id === proId);
+    
+    if (!pro) {
+      throw new Error(`Professional with ID ${proId} not found`);
+    }
+    
+    return pro;
+  } catch (error) {
+    console.error("Error fetching pro by ID:", error);
+    throw error;
+  }
+}

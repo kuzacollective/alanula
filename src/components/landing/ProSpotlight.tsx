@@ -16,7 +16,7 @@ const spotlightPro = {
     { text: "4.9/5 average rating", icon: <Star className="text-yellow-400" size={15} fill="currentColor"/> },
   ],
   rating: 4.9,
-  profileUrl: "#", // Example link
+  profileUrl: "/pro/1", // Link to Aisha's profile (she has ID "1" in mockPros)
 };
 
 export default function ProSpotlight() {
