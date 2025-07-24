@@ -8,7 +8,7 @@ export default function JoinCustomer() {
   const navigate = useNavigate();
   const [iframeLoaded, setIframeLoaded] = useState(false);
 
-  const customerFormUrl = "https://airtable.com/embed/appYCffZwGEMJ3xcF/pagKPQDue1zA7yulf/form?backgroundColor=transparent";
+  const customerFormUrl = "https://airtable.com/embed/appYCffZwGEMJ3xcF/pagvcD1lwclCFlnsa/form?backgroundColor=transparent";
 
   const benefits = [
     {
