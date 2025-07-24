@@ -83,7 +83,7 @@ export async function fetchAirtableProById(proId: string) {
     const pro = allPros.find(p => p.id === proId);
     
     if (!pro) {
-      throw new Error(`Professional with ID ${proId} not found`);
+      return null;
     }
     
     return pro;
