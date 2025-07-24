@@ -57,7 +57,7 @@ const ProCard = React.memo(function ProCard({
   onFeatureToggle?: (featured: boolean) => void;
 } & TrustProps) {
   const { name, location, category, price, summary, whatsapp, photo, verified, featured, referredBy, referralCode } = pro;
-  const waLink = `https://wa.me/${whatsapp}?text=Hi!%20I%20found%20you%20on%20Alanula.mu%20and%20I'm%20interested%20in%20your%20${encodeURIComponent(category)}%20services.`;
+  const customerFormUrl = "https://airtable.com/embed/appYCffZwGEMJ3xcF/pagKPQDue1zA7yulf/form";
   const canContact = !!summary && !!whatsapp && !!photo;
   // Check for loading fallback for profile photo
   const [imgLoaded, setImgLoaded] = React.useState(false);
@@ -173,7 +173,7 @@ const ProCard = React.memo(function ProCard({
 
         {canContact ? (
           <a
-            href={waLink}
+            href={customerFormUrl}
             target="_blank"
             rel="noopener noreferrer"
             className="mt-auto w-full"
@@ -181,7 +181,7 @@ const ProCard = React.memo(function ProCard({
             <button
               className="bg-accent text-accent-foreground font-semibold w-full rounded-md py-2 px-3 flex items-center justify-center gap-2 hover:bg-accent/90 transition animate-fade-in"
             >
-              <Check size={18} /> Chat on WhatsApp
+              Pre-book Service
             </button>
           </a>
         ) : (
@@ -190,7 +190,7 @@ const ProCard = React.memo(function ProCard({
             disabled
             title="Profile incomplete"
           >
-            <Check size={18} /> Chat on WhatsApp
+            Pre-book Service
           </button>
         )}
 
