@@ -65,7 +65,7 @@ export default function JoinCustomer() {
           <h1 className="text-primary font-poppins font-bold text-4xl sm:text-6xl mb-6 leading-tight">
             Find <span className="text-accent">Trusted</span> Local Services
           </h1>
-          <p className="text-secondary-foreground text-xl sm:text-2xl mb-8 max-w-3xl mx-auto leading-relaxed">
+          <p className="text-muted-foreground text-xl sm:text-2xl mb-8 max-w-3xl mx-auto leading-relaxed">
             Get early access to Mauritius' premier platform for finding verified local service providers. From tutors to photographers, discover quality help in your area.
           </p>
           
