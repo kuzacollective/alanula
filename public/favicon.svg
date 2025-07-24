@@ -1,0 +1,11 @@
+<svg width="32" height="32" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Proper lowercase 'a' letter in golden yellow -->
+  <path
+    d="M20 45C20 35 27 28 35 28C43 28 48 35 48 45V50C48 58 43 65 35 65C27 65 20 58 20 45ZM35 35C30 35 28 40 28 45C28 50 30 55 35 55C40 55 40 50 40 45C40 40 40 35 35 35ZM48 30V65C48 67 50 68 52 68C54 68 56 67 56 65V30C56 28 54 27 52 27C50 27 48 28 48 30Z"
+    fill="#F5B400"
+  />
+  
+  <!-- Two dots in teal green -->
+  <circle cx="70" cy="36" r="4" fill="#00C88F" />
+  <circle cx="70" cy="52" r="4" fill="#00C88F" />
+</svg>
