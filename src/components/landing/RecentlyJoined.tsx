@@ -95,7 +95,6 @@ export default function RecentlyJoined() {
               profileComplete={!!h.profileComplete}
               status={h.status}
               isAdmin={false}
-              startingSoon={true}
             />
           </div>
         ))}

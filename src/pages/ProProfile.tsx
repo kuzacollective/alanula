@@ -77,7 +77,9 @@ export default function ProProfile() {
     );
   }
 
-  const customerFormUrl = "https://airtable.com/embed/appYCffZwGEMJ3xcF/pagKPQDue1zA7yulf/form";
+  const whatsappNumber = "+230 5921 4463";
+  const whatsappMessage = encodeURIComponent("Hi, I'm interested in your services on Alanula. Can we chat?");
+  const whatsappUrl = `https://wa.me/${whatsappNumber.replace(/[^0-9]/g, '')}?text=${whatsappMessage}`;
 
   return (
     <div className="min-h-screen bg-background">
@@ -133,19 +135,19 @@ export default function ProProfile() {
                 </div>
 
                 <a
-                  href={customerFormUrl}
+                  href={whatsappUrl}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="w-full"
                 >
                   <Button className="w-full bg-accent text-accent-foreground hover:bg-accent/90 mb-4">
                     <MessageCircle className="w-4 h-4 mr-2" />
-                    Pre-book Service
+                    Chat with Alanula Pro
                   </Button>
                 </a>
 
                 <div className="text-xs text-muted-foreground">
-                  Click to express interest and get notified when services go live
+                  Click to chat directly with our team about this service
                 </div>
               </CardContent>
             </Card>
@@ -204,24 +206,24 @@ export default function ProProfile() {
             <Card>
               <CardContent className="p-6">
                 <h2 className="text-xl font-bold font-poppins text-secondary mb-4">Get in Touch</h2>
-                <div className="bg-blue-50 dark:bg-blue-900/20 rounded-lg p-4 mb-4">
+                <div className="bg-green-50 dark:bg-green-900/20 rounded-lg p-4 mb-4">
                   <div className="flex items-center gap-2 mb-2">
-                    <MessageCircle className="w-5 h-5 text-blue-600" />
-                    <span className="font-semibold text-blue-900 dark:text-blue-100">Pre-launch Phase</span>
+                    <MessageCircle className="w-5 h-5 text-green-600" />
+                    <span className="font-semibold text-green-900 dark:text-green-100">Direct Chat Available</span>
                   </div>
-                  <p className="text-sm text-blue-800 dark:text-blue-200">
-                    We're not live yet! Click "Pre-book Service" to express interest and be notified when {pro.name} starts accepting bookings.
+                  <p className="text-sm text-green-800 dark:text-green-200">
+                    Chat directly with our Alanula team about {pro.name}'s services. We'll connect you and help coordinate your booking.
                   </p>
                 </div>
                 
                 <a
-                  href={customerFormUrl}
+                  href={whatsappUrl}
                   target="_blank"
                   rel="noopener noreferrer"
                 >
                   <Button className="w-full bg-accent text-accent-foreground hover:bg-accent/90">
                     <MessageCircle className="w-4 h-4 mr-2" />
-                    Pre-book Service
+                    Chat with Alanula Pro
                   </Button>
                 </a>
               </CardContent>

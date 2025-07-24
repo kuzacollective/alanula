@@ -217,7 +217,6 @@ export default function Services() {
                 canFeatureToggle={adminMode}
                 onFeatureToggle={handleFeatureToggle}
                 isProfileComplete={isProfileComplete}
-                startingSoon={true}
               />
             )}
           </div>

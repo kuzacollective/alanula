@@ -58,7 +58,9 @@ const ProCard = React.memo(function ProCard({
   onFeatureToggle?: (featured: boolean) => void;
 } & TrustProps) {
   const { name, location, category, price, summary, whatsapp, photo, verified, featured, referredBy, referralCode } = pro;
-  const customerFormUrl = "https://airtable.com/embed/appYCffZwGEMJ3xcF/pagKPQDue1zA7yulf/form";
+  const whatsappNumber = "+230 5921 4463";
+  const whatsappMessage = encodeURIComponent("Hi, I'm interested in your services on Alanula. Can we chat?");
+  const whatsappUrl = `https://wa.me/${whatsappNumber.replace(/[^0-9]/g, '')}?text=${whatsappMessage}`;
   const canContact = !!summary && !!whatsapp && !!photo;
   // Check for loading fallback for profile photo
   const [imgLoaded, setImgLoaded] = React.useState(false);
@@ -81,14 +83,6 @@ const ProCard = React.memo(function ProCard({
         </div>
       )}
 
-      {/* Starting Soon banner */}
-      {startingSoon && (
-        <div className="absolute left-1/2 transform -translate-x-1/2 top-2 z-20">
-          <Badge className="bg-blue-500 text-white px-3 py-1 text-xs font-semibold shadow-lg animate-fade-in">
-            Starting Soon
-          </Badge>
-        </div>
-      )}
 
       {/* Trust Layer Badges (Left) */}
       {(isAdmin || isNew || needsReview || status === "under_review") && (
@@ -178,7 +172,7 @@ const ProCard = React.memo(function ProCard({
 
         {canContact ? (
           <a
-            href={customerFormUrl}
+            href={whatsappUrl}
             target="_blank"
             rel="noopener noreferrer"
             className="mt-auto w-full"
@@ -186,7 +180,7 @@ const ProCard = React.memo(function ProCard({
             <button
               className="bg-accent text-accent-foreground font-semibold w-full rounded-md py-2 px-3 flex items-center justify-center gap-2 hover:bg-accent/90 transition animate-fade-in"
             >
-              Pre-book Service
+              Chat with Alanula Pro
             </button>
           </a>
         ) : (
@@ -195,7 +189,7 @@ const ProCard = React.memo(function ProCard({
             disabled
             title="Profile incomplete"
           >
-            Pre-book Service
+            Chat with Alanula Pro
           </button>
         )}
 
