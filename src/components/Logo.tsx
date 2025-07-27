@@ -16,10 +16,11 @@ export default function Logo({
       {withText && (
         <span
           className="font-poppins text-[2rem] font-bold tracking-tight"
-          style={{ letterSpacing: "-1.5px" }}
+          style={{ letterSpacing: "-2px" }}
         >
-          <span className="text-primary">al</span>
-          <span className="text-accent">anula</span>
+          <span className="bg-gradient-to-r from-teal-400 via-orange-500 via-yellow-400 via-teal-600 via-teal-500 via-teal-600 to-teal-700 bg-clip-text text-transparent">
+            alanula
+          </span>
         </span>
       )}
     </div>
