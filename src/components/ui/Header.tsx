@@ -47,7 +47,7 @@ export default function Header() {
     <header className="w-full py-4 px-2 border-b border-border bg-background sticky top-0 z-30">
       <div className="mx-auto max-w-4xl flex items-center justify-between gap-2">
         <Link to="/" aria-label="Alanula Home" className="flex items-center gap-2">
-          <Logo size={80} logoImageUrl="https://noskvkbffpezmwsstjzf.supabase.co/storage/v1/object/public/logo/alanula.png" />
+          <Logo size={36} logoImageUrl="https://noskvkbffpezmwsstjzf.supabase.co/storage/v1/object/public/logo/alanula.png" />
         </Link>
         <div className="flex items-center gap-2">
           {isAuthenticated && (
