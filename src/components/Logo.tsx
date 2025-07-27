@@ -4,11 +4,21 @@ import { Link } from "react-router-dom";
 export default function Logo({
   size = 32,
   className = "",
-  clickable = false
-}: { size?: number; className?: string; clickable?: boolean }) {
+  clickable = false,
+  logoImageUrl
+}: { size?: number; className?: string; clickable?: boolean; logoImageUrl?: string }) {
   const logoContent = (
     <div className={`flex items-center ${className}`}>
-      <AlanulaIcon size={size} />
+      {logoImageUrl ? (
+        <img 
+          src={logoImageUrl} 
+          alt="Alanula Logo" 
+          style={{ height: `${size}px` }}
+          className="object-contain"
+        />
+      ) : (
+        <AlanulaIcon size={size} />
+      )}
     </div>
   );
 
