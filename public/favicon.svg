@@ -1,11 +1,16 @@
-<svg width="32" height="32" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-  <!-- Proper lowercase 'a' letter in golden yellow -->
-  <path
-    d="M20 45C20 35 27 28 35 28C43 28 48 35 48 45V50C48 58 43 65 35 65C27 65 20 58 20 45ZM35 35C30 35 28 40 28 45C28 50 30 55 35 55C40 55 40 50 40 45C40 40 40 35 35 35ZM48 30V65C48 67 50 68 52 68C54 68 56 67 56 65V30C56 28 54 27 52 27C50 27 48 28 48 30Z"
-    fill="#F5B400"
-  />
+<svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background circle for better visibility -->
+  <rect width="32" height="32" rx="6" fill="#ffffff"/>
   
-  <!-- Two dots in teal green -->
-  <circle cx="70" cy="36" r="4" fill="#00C88F" />
-  <circle cx="70" cy="52" r="4" fill="#00C88F" />
+  <!-- Main 'a' letterform - matches the reference design -->
+  <path d="M8 20C8 15.5817 11.5817 12 16 12C20.4183 12 24 15.5817 24 20C24 24.4183 20.4183 28 16 28C11.5817 28 8 24.4183 8 20Z" fill="#4ECDC4"/>
+  
+  <!-- Inner circle (hole of the 'a') -->
+  <circle cx="16" cy="20" r="4" fill="#ffffff"/>
+  
+  <!-- Vertical stem of the 'a' -->
+  <rect x="20" y="16" width="3" height="12" rx="1.5" fill="#2C7873"/>
+  
+  <!-- Connection between circle and stem -->
+  <path d="M20 20C20 17.7909 18.2091 16 16 16C15.4477 16 15 16.4477 15 17C15 17.5523 15.4477 18 16 18C17.1046 18 18 18.8954 18 20V24C18 24.5523 18.4477 25 19 25C19.5523 25 20 24.5523 20 24V20Z" fill="#2C7873"/>
 </svg>
