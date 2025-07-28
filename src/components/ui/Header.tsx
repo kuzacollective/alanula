@@ -51,7 +51,7 @@ export default function Header() {
         </Link>
         <div className="flex items-center gap-2">
           {isAuthenticated && (
-            <div className="flex items-center gap-2">
+            <Logo size={32} logoImageUrl="https://noskvkbffpezmwsstjzf.supabase.co/storage/v1/object/public/logo/alanula.png" />
               <div className="flex items-center gap-1 text-sm text-muted-foreground">
                 <User size={16} />
                 <span className="hidden sm:inline">{user?.email}</span>
