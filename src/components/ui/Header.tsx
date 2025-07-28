@@ -76,27 +76,3 @@ export default function Header() {
     </header>
   );
 }
-              <div className="flex items-center gap-1 text-sm text-muted-foreground">
-                <User size={16} />
-                <span className="hidden sm:inline">{user?.email}</span>
-              </div>
-              <Button
-                variant="ghost"
-                size="sm"
-                onClick={signOut}
-                className="text-muted-foreground hover:text-foreground"
-              >
-                <LogOut size={16} />
-                <span className="hidden sm:inline ml-1">Sign Out</span>
-              </Button>
-            </div>
-          )}
-          <ThemeToggle />
-        </div>
-      </div>
-      <div className="mx-auto max-w-4xl mt-1">
-        {breadcrumb}
-      </div>
-    </header>
-  );
-}
