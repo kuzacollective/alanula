@@ -51,7 +51,7 @@ export default function Header() {
         </Link>
         <div className="flex items-center gap-2">
           {isAuthenticated && (
-            <div className="flex items-center gap-2">
+            <Logo size={18} />
               <div className="flex items-center gap-1 text-sm text-muted-foreground">
                 <User size={16} />
                 <span className="hidden sm:inline">{user?.email}</span>
