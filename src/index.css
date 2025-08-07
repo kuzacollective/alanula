@@ -51,7 +51,7 @@
 :root {
   --logo-primary: 12 73% 63%; /* Terracotta */
   --logo-secondary: 152 28% 61%; /* Seafoam Green */
-  --logo-accent: 44 65% 75%; /* Golden Yellow */
+  --logo-accent: 44 65% 55%; /* Darker Golden Yellow */
 }
 
 @layer base {
