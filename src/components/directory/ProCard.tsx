@@ -68,7 +68,7 @@ const ProCard = React.memo(function ProCard({
   return (
     <div
       className={
-        "bg-white dark:bg-card border rounded-lg shadow-sm flex flex-col h-full relative overflow-hidden " +
+        "bg-white dark:bg-card border rounded-lg shadow-sm flex flex-col h-full relative overflow-hidden min-h-[400px] " +
         "transition-transform duration-200 transform hover:scale-105 hover:shadow-lg focus-within:scale-105 focus-within:shadow-lg animate-fade-in" +
         (isAdmin && !profileComplete ? " border-red-400" : "")
       }
@@ -104,19 +104,19 @@ const ProCard = React.memo(function ProCard({
 
       <Link 
         to={`/pro/${pro.id}`}
-        className="flex flex-col items-center px-4 pt-6 pb-4 w-full flex-1 hover:bg-muted/10 transition-colors"
+        className="flex flex-col items-center px-3 sm:px-4 pt-4 sm:pt-6 pb-3 sm:pb-4 w-full flex-1 hover:bg-muted/10 transition-colors"
         aria-label={`View ${name}'s profile - ${category} in ${location}`}
       >
-        <div className="relative mb-3">
+        <div className="relative mb-2 sm:mb-3">
           {!imgLoaded && (
-            <div className="absolute left-0 top-0 w-24 h-24 rounded-full bg-muted animate-pulse" aria-hidden="true" />
+            <div className="absolute left-0 top-0 w-20 sm:w-24 h-20 sm:h-24 rounded-full bg-muted animate-pulse" aria-hidden="true" />
           )}
           <img
             src={photo || "/placeholder.svg"}
             alt={name}
             loading="lazy"
             className={
-              "w-24 h-24 rounded-full object-cover border-2 shadow transition-all duration-150 " +
+              "w-20 sm:w-24 h-20 sm:h-24 rounded-full object-cover border-2 shadow transition-all duration-150 " +
               (profileComplete ? "border-primary" : "border-red-300") +
               (imgLoaded ? "" : " opacity-0")
             }
@@ -125,22 +125,22 @@ const ProCard = React.memo(function ProCard({
           />
           {verified && (
             <span className="absolute -bottom-2 -right-2">
-              <Check className="bg-primary text-white rounded-full p-1" size={28} />
+              <Check className="bg-primary text-white rounded-full p-1" size={24} />
             </span>
           )}
         </div>
-        <h2 className="font-poppins text-lg font-bold text-primary text-center leading-tight">{name}</h2>
-        <div className="text-sm text-muted-foreground mb-1 text-center">{location}</div>
-        <Badge variant="secondary" className="mb-1">{category}</Badge>
-        <div className="font-semibold text-xl text-secondary mb-2">{formatPrice(price)} <span className="text-sm text-muted-foreground font-normal">/start</span></div>
-        <div className="text-sm text-center text-muted-foreground mb-2 line-clamp-3">{summary || <span className="italic text-muted-foreground/60">No summary provided</span>}</div>
+        <h2 className="font-poppins text-base sm:text-lg font-bold text-primary text-center leading-tight px-1">{name}</h2>
+        <div className="text-xs sm:text-sm text-muted-foreground mb-1 text-center">{location}</div>
+        <Badge variant="secondary" className="mb-1 text-xs">{category}</Badge>
+        <div className="font-semibold text-lg sm:text-xl text-secondary mb-2">{formatPrice(price)} <span className="text-xs sm:text-sm text-muted-foreground font-normal">/start</span></div>
+        <div className="text-xs sm:text-sm text-center text-muted-foreground mb-2 line-clamp-3 px-1">{summary || <span className="italic text-muted-foreground/60">No summary provided</span>}</div>
       </Link>
       
-      <div className="px-4 pb-4">
+      <div className="px-3 sm:px-4 pb-3 sm:pb-4 mt-auto">
         {/* Referral code - admin only */}
         {isAdmin && referralCode && (
           <div className="mb-2">
-            <Badge className="bg-violet-100 text-violet-900 border-violet-300 font-normal">Referral Code: {referralCode}</Badge>
+            <Badge className="bg-violet-100 text-violet-900 border-violet-300 font-normal text-xs">Referral Code: {referralCode}</Badge>
           </div>
         )}
 
@@ -149,7 +149,7 @@ const ProCard = React.memo(function ProCard({
           {!!averageRating && (
             <span className="flex items-center gap-0.5">
               {[...Array(5)].map((_, i) => (
-                <Star key={i} size={18} className={i < Math.round(averageRating) ? "text-yellow-400 fill-yellow-300" : "text-gray-300"} />
+                <Star key={i} size={14} className={i < Math.round(averageRating) ? "text-yellow-400 fill-yellow-300" : "text-gray-300"} />
               ))}
             </span>
           )}
@@ -178,14 +178,14 @@ const ProCard = React.memo(function ProCard({
             className="mt-auto w-full"
           >
             <button
-              className="bg-accent text-accent-foreground font-semibold w-full rounded-md py-2 px-3 flex items-center justify-center gap-2 hover:bg-accent/90 transition animate-fade-in"
+              className="bg-accent text-accent-foreground font-semibold w-full rounded-md py-2 px-2 sm:px-3 flex items-center justify-center gap-1 sm:gap-2 hover:bg-accent/90 transition animate-fade-in text-xs sm:text-sm"
             >
               Chat with Alanula Pro
             </button>
           </a>
         ) : (
           <button
-            className="bg-muted text-muted-foreground font-semibold w-full rounded-md py-2 px-3 flex items-center justify-center gap-2 opacity-70 cursor-not-allowed mt-auto"
+            className="bg-muted text-muted-foreground font-semibold w-full rounded-md py-2 px-2 sm:px-3 flex items-center justify-center gap-1 sm:gap-2 opacity-70 cursor-not-allowed mt-auto text-xs sm:text-sm"
             disabled
             title="Profile incomplete"
           >
@@ -196,7 +196,7 @@ const ProCard = React.memo(function ProCard({
         {/* Admin: Toggle Featured status */}
         {isAdmin && canFeatureToggle && onFeatureToggle && (
           <button
-            className={`mt-2 text-xs px-2 py-1 rounded border border-yellow-400 bg-yellow-50 text-yellow-700 font-medium hover:bg-yellow-100 transition`}
+            className={`mt-2 text-xs px-2 py-1 rounded border border-yellow-400 bg-yellow-50 text-yellow-700 font-medium hover:bg-yellow-100 transition w-full sm:w-auto`}
             onClick={() => onFeatureToggle(!featured)}
             type="button"
           >

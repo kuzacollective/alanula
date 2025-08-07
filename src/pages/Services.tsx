@@ -119,12 +119,12 @@ export default function Services() {
       <Header />
       {/* Optionally show Airtable error */}
       {airtableError && <div className="bg-red-100 text-red-700 p-2 text-center mb-2 font-semibold animate-fade-in">{airtableError}</div>}
-      <main className="min-h-screen bg-background px-2 py-8 w-full relative">
+      <main className="min-h-screen bg-background px-2 sm:px-4 py-6 sm:py-8 w-full relative">
         <BackToTopButton />
-        <div className="max-w-4xl mx-auto flex flex-col gap-0 w-full">
+        <div className="max-w-4xl mx-auto flex flex-col gap-0 w-full px-2 sm:px-0">
           {/* Top controls: Title, MVP badge, Admin toggle */}
           <div className="flex flex-col sm:flex-row sm:items-center gap-2 mb-4 w-full justify-between">
-            <h1 className="text-3xl font-poppins font-bold text-primary">
+            <h1 className="text-2xl sm:text-3xl font-poppins font-bold text-primary">
               Browse Local Pros
             </h1>
             <div className="flex items-center gap-3">
@@ -161,7 +161,7 @@ export default function Services() {
 
           {/* Results count and clear filters */}
           <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-3 mt-[-12px]">
-            <div className="text-sm text-muted-foreground flex items-center gap-2">
+            <div className="text-xs sm:text-sm text-muted-foreground flex items-center gap-2">
               {filtered.length > 0
                 ? `Showing ${filtered.length} pro${filtered.length > 1 ? "s" : ""}`
                 : loading
@@ -191,12 +191,12 @@ export default function Services() {
             className="
               grid gap-5 
               grid-cols-1 
-              sm:grid-cols-2 
+              xs:grid-cols-2 
               lg:grid-cols-3 
               auto-rows-fr 
               mb-6
-              px-1
-              xs:px-2
+              px-0
+              sm:px-1
             "
             aria-live="polite"
           >
@@ -222,7 +222,7 @@ export default function Services() {
           </div>
         </div>
         {/* Moved footer out of flex column for better stacking and responsive layout */}
-        <div className="text-center text-sm mt-7 text-muted-foreground pb-8">
+        <div className="text-center text-xs sm:text-sm mt-7 text-muted-foreground pb-8 px-4">
           Powered by <span className="text-primary font-medium">Airtable</span> & Alanula community 🚀
         </div>
       </main>

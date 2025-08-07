@@ -44,16 +44,16 @@ export default function Header() {
   }
 
   return (
-    <header className="w-full py-4 px-2 border-b border-border bg-background sticky top-0 z-30">
+    <header className="w-full py-3 sm:py-4 px-3 sm:px-4 border-b border-border bg-background sticky top-0 z-30">
       <div className="mx-auto max-w-4xl flex items-center justify-between gap-2">
         <Link to="/" aria-label="Alanula Home" className="flex items-center gap-2">
-          <Logo size={18} logoImageUrl="https://noskvkbffpezmwsstjzf.supabase.co/storage/v1/object/public/logo/alanula.png" />
+          <Logo size={16} logoImageUrl="https://noskvkbffpezmwsstjzf.supabase.co/storage/v1/object/public/logo/alanula.png" />
         </Link>
-        <div className="flex items-center gap-2">
+        <div className="flex items-center gap-1 sm:gap-2">
           {isAuthenticated && (
-            <div className="flex items-center gap-2">
-              <Logo size={18} logoImageUrl="https://noskvkbffpezmwsstjzf.supabase.co/storage/v1/object/public/logo/alanula-small.png" />
-              <div className="flex items-center gap-1 text-sm text-muted-foreground">
+            <div className="flex items-center gap-1 sm:gap-2">
+              <Logo size={16} logoImageUrl="https://noskvkbffpezmwsstjzf.supabase.co/storage/v1/object/public/logo/alanula-small.png" />
+              <div className="flex items-center gap-1 text-xs sm:text-sm text-muted-foreground">
                 <User size={16} />
                 <span className="hidden sm:inline">{user?.email}</span>
               </div>
@@ -61,7 +61,7 @@ export default function Header() {
                 variant="ghost"
                 size="sm"
                 onClick={signOut}
-                className="text-muted-foreground hover:text-foreground"
+                className="text-muted-foreground hover:text-foreground px-2 sm:px-3"
               >
                 <LogOut size={16} />
                 <span className="hidden sm:inline ml-1">Sign Out</span>
@@ -71,7 +71,7 @@ export default function Header() {
           <ThemeToggle />
         </div>
       </div>
-      <div className="mx-auto max-w-4xl mt-1">
+      <div className="mx-auto max-w-4xl mt-1 px-1 sm:px-0">
         {breadcrumb}
       </div>
     </header>
