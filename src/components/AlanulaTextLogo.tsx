@@ -15,7 +15,7 @@ export default function AlanulaTextLogo({ size = 32, className = "" }: AlanulaTe
       role="img"
       aria-label="Alanula"
     >
-      <span className="alanula-text-logo-letter" style={{ color: '#4ECDC4' }}>A</span>
+      <span className="alanula-text-logo-letter" style={{ color: '#4ECDC4' }}>a</span>
       <span className="alanula-text-logo-letter" style={{ color: '#FF6B35' }}>l</span>
       <span className="alanula-text-logo-letter" style={{ color: '#F7DC6F' }}>a</span>
       <span className="alanula-text-logo-letter" style={{ color: '#4ECDC4' }}>n</span>
