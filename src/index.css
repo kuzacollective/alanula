@@ -107,14 +107,7 @@
 /* Alanula text logo styling */
 .alanula-text-logo-letter {
   letter-spacing: 0.1em;
-  text-shadow: 
-    1px 1px 0px #000,
-    -1px -1px 0px #000,
-    1px -1px 0px #000,
-    -1px 1px 0px #000,
-    3px 3px 0px #2E464A,
-    6px 6px 12px rgba(0, 0, 0, 0.4),
-    1px 1px 0px #1a2c2f;
+  text-shadow: 3px 3px 0px rgba(0, 0, 0, 0.7);
   transition: transform 0.2s ease-in-out;
 }
 
