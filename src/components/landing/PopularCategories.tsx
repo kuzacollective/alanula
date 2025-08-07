@@ -6,38 +6,38 @@ const categories = [
   {
     label: "Makeup Artist",
     icon: Brush,
-    color: "from-pink-50 to-pink-100",
-    iconClass: "text-pink-400",
+    color: "from-primary/10 to-primary/20",
+    iconClass: "text-primary",
   },
   {
     label: "Photographer",
     icon: Camera,
-    color: "from-blue-50 to-blue-100",
-    iconClass: "text-blue-500",
+    color: "from-secondary/10 to-secondary/20",
+    iconClass: "text-secondary",
   },
   {
     label: "Math Tutor",
     icon: PencilLine,
-    color: "from-green-50 to-green-100",
-    iconClass: "text-green-500",
+    color: "from-accent/10 to-accent/20",
+    iconClass: "text-accent-foreground",
   },
   {
     label: "Chef",
     icon: ChefHat,
-    color: "from-orange-50 to-orange-100",
-    iconClass: "text-orange-400",
+    color: "from-primary/10 to-primary/20",
+    iconClass: "text-primary",
   },
   {
     label: "Hair Stylist",
     icon: Image,
-    color: "from-purple-50 to-purple-100",
-    iconClass: "text-purple-400",
+    color: "from-secondary/10 to-secondary/20",
+    iconClass: "text-secondary",
   },
   {
     label: "Massage Therapist",
     icon: Users,
-    color: "from-yellow-50 to-yellow-100",
-    iconClass: "text-yellow-500",
+    color: "from-accent/10 to-accent/20",
+    iconClass: "text-accent-foreground",
   },
 ];
 
@@ -59,14 +59,14 @@ export default function PopularCategories() {
             key={cat.label}
             role="button"
             tabIndex={0}
-            className={`transition-all duration-200 hover-scale cursor-pointer shadow-sm bg-gradient-to-b ${cat.color} border border-gray-200 dark:border-gray-700`}
+            className={`transition-all duration-200 hover-scale cursor-pointer shadow-sm bg-gradient-to-b ${cat.color} border border-border`}
             onClick={() => handleCardClick(cat.label)}
             onKeyDown={e => (e.key === "Enter" || e.key === " ") && handleCardClick(cat.label)}
             aria-label={`Browse ${cat.label}`}
           >
             <CardContent className="flex flex-col gap-1 items-center py-7">
               <cat.icon className={cat.iconClass} size={30} aria-hidden="true" />
-              <span className="mt-3 font-bold font-poppins text-base text-gray-800 dark:text-gray-900 text-center">
+              <span className="mt-3 font-bold font-poppins text-base text-foreground text-center">
                 {cat.label}
               </span>
             </CardContent>

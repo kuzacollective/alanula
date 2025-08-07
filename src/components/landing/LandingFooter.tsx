@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 
 export default function LandingFooter() {
   return (
-    <footer className="w-full border-t border-border bg-background py-6 sm:py-8 px-4 mt-6 sm:mt-8">
+    <footer className="w-full border-t border-border bg-muted/20 py-6 sm:py-8 px-4 mt-6 sm:mt-8">
       <div className="max-w-5xl mx-auto flex flex-col md:flex-row justify-between items-center gap-4 sm:gap-6">
         <div className="flex flex-col gap-2 text-center md:text-left">
           <Logo size={18} className="mx-auto md:mx-0" />
@@ -36,16 +36,6 @@ export default function LandingFooter() {
           <li>
             <Link to="/legal" className="hover:underline flex items-center gap-1 text-sm sm:text-base text-secondary font-medium">
               <FileText size={16} className="sm:w-[18px] sm:h-[18px]" /> Legal
-            </Link>
-          </li>
-          <li>
-            <Link to="/privacy" className="hover:underline flex items-center gap-1 text-sm sm:text-base text-secondary font-medium">
-              <FileText size={16} className="sm:w-[18px] sm:h-[18px]" /> Privacy
-            </Link>
-          </li>
-          <li>
-            <Link to="/terms" className="hover:underline flex items-center gap-1 text-sm sm:text-base text-secondary font-medium">
-              <FileText size={16} className="sm:w-[18px] sm:h-[18px]" /> Terms
             </Link>
           </li>
         </ul>

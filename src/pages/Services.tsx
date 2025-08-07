@@ -118,7 +118,7 @@ export default function Services() {
     <ErrorBoundary>
       <Header />
       {/* Optionally show Airtable error */}
-      {airtableError && <div className="bg-red-100 text-red-700 p-2 text-center mb-2 font-semibold animate-fade-in">{airtableError}</div>}
+      {airtableError && <div className="bg-destructive/10 text-destructive p-2 text-center mb-2 font-semibold animate-fade-in">{airtableError}</div>}
       <main className="min-h-screen bg-background px-2 sm:px-4 py-6 sm:py-8 w-full relative">
         <BackToTopButton />
         <div className="max-w-4xl mx-auto flex flex-col gap-0 w-full px-2 sm:px-0">
@@ -173,7 +173,7 @@ export default function Services() {
             </div>
             {(category || location || (priceRange[0] !== minPrice || priceRange[1] !== maxPrice)) && (
               <button
-                className="text-xs underline text-accent font-bold hover:text-accent/80 transition"
+                className="text-xs underline text-secondary font-bold hover:text-secondary/80 transition"
                 onClick={() => {
                   setCategory("");
                   setLocation("");
@@ -223,7 +223,7 @@ export default function Services() {
         </div>
         {/* Moved footer out of flex column for better stacking and responsive layout */}
         <div className="text-center text-xs sm:text-sm mt-7 text-muted-foreground pb-8 px-4">
-          Powered by <span className="text-primary font-medium">Airtable</span> & Alanula community 🚀
+          Powered by <span className="text-secondary font-medium">Airtable</span> & Alanula community 🚀
         </div>
       </main>
     </ErrorBoundary>

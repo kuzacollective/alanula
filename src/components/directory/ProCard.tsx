@@ -68,16 +68,16 @@ const ProCard = React.memo(function ProCard({
   return (
     <div
       className={
-        "bg-white dark:bg-card border rounded-lg shadow-sm flex flex-col h-full relative overflow-hidden min-h-[400px] " +
+        "bg-card border rounded-lg shadow-card flex flex-col h-full relative overflow-hidden min-h-[400px] " +
         "transition-transform duration-200 transform hover:scale-105 hover:shadow-lg focus-within:scale-105 focus-within:shadow-lg animate-fade-in" +
-        (isAdmin && !profileComplete ? " border-red-400" : "")
+        (isAdmin && !profileComplete ? " border-destructive" : "")
       }
     >
       {/* Featured badge */}
       {featured && (
         <div className="absolute right-3 top-3 z-10">
-          <Badge className="bg-yellow-300 text-yellow-800 px-2 py-1 flex items-center gap-1 shadow animate-fade-in">
-            <Star size={16} className="text-yellow-500" />
+          <Badge className="bg-accent text-accent-foreground px-2 py-1 flex items-center gap-1 shadow animate-fade-in">
+            <Star size={16} className="text-accent-foreground" />
             Featured
           </Badge>
         </div>
@@ -87,15 +87,15 @@ const ProCard = React.memo(function ProCard({
       {/* Trust Layer Badges (Left) */}
       {(isAdmin || isNew || needsReview || status === "under_review") && (
         <div className="absolute left-3 top-3 flex flex-col gap-1 z-10 w-max min-w-[110px]">
-          {isNew && <Badge className="bg-green-50 text-green-700 border-green-500 font-normal shadow-md animate-fade-in">New</Badge>}
+          {isNew && <Badge className="bg-secondary/20 text-secondary border-secondary font-normal shadow-md animate-fade-in">New</Badge>}
           {needsReview && <Badge variant="destructive" className="font-normal shadow-md animate-fade-in">Needs Review</Badge>}
-          {status === "under_review" && <Badge className="bg-yellow-200 text-yellow-900 border-yellow-500 font-normal shadow-md animate-fade-in">Under Review</Badge>}
+          {status === "under_review" && <Badge className="bg-accent/20 text-accent-foreground border-accent font-normal shadow-md animate-fade-in">Under Review</Badge>}
           {isAdmin && !profileComplete && (
-            <Badge className="bg-red-200 text-red-900 border-red-500 font-normal shadow-md animate-fade-in">Incomplete Profile</Badge>
+            <Badge className="bg-destructive/20 text-destructive border-destructive font-normal shadow-md animate-fade-in">Incomplete Profile</Badge>
           )}
           {/* Referral info - admin only */}
           {isAdmin && referredBy && referredBy.trim() && (
-            <Badge className="bg-blue-100 text-blue-800 border-blue-400 font-normal shadow-md animate-fade-in">
+            <Badge className="bg-primary/20 text-primary border-primary font-normal shadow-md animate-fade-in">
               Referred by {referredBy}
             </Badge>
           )}
@@ -117,7 +117,7 @@ const ProCard = React.memo(function ProCard({
             loading="lazy"
             className={
               "w-20 sm:w-24 h-20 sm:h-24 rounded-full object-cover border-2 shadow transition-all duration-150 " +
-              (profileComplete ? "border-primary" : "border-red-300") +
+              (profileComplete ? "border-primary" : "border-destructive") +
               (imgLoaded ? "" : " opacity-0")
             }
             onLoad={() => setImgLoaded(true)}
@@ -140,7 +140,7 @@ const ProCard = React.memo(function ProCard({
         {/* Referral code - admin only */}
         {isAdmin && referralCode && (
           <div className="mb-2">
-            <Badge className="bg-violet-100 text-violet-900 border-violet-300 font-normal text-xs">Referral Code: {referralCode}</Badge>
+            <Badge className="bg-secondary/20 text-secondary border-secondary font-normal text-xs">Referral Code: {referralCode}</Badge>
           </div>
         )}
 
@@ -148,9 +148,16 @@ const ProCard = React.memo(function ProCard({
         <div className="flex items-center gap-1 mb-2">
           {!!averageRating && (
             <span className="flex items-center gap-0.5">
-              {[...Array(5)].map((_, i) => (
-                <Star key={i} size={14} className={i < Math.round(averageRating) ? "text-yellow-400 fill-yellow-300" : "text-gray-300"} />
-              ))}
+              {[...Array(5)].map((_, i) => {
+                const isFilled = i < Math.round(averageRating);
+                return (
+                  <Star 
+                    key={i} 
+                    size={14} 
+                    className={isFilled ? "text-accent fill-accent" : "text-muted-foreground"} 
+                  />
+                );
+              })}
             </span>
           )}
           {typeof reviewCount === "number" && (
@@ -164,7 +171,7 @@ const ProCard = React.memo(function ProCard({
         {onReviewClick && (
           <button
             onClick={onReviewClick}
-            className="mb-2 underline text-xs text-accent-foreground hover:text-primary transition"
+            className="mb-2 underline text-xs text-secondary hover:text-primary transition"
           >
             ⭐ Leave a Review
           </button>
@@ -196,7 +203,7 @@ const ProCard = React.memo(function ProCard({
         {/* Admin: Toggle Featured status */}
         {isAdmin && canFeatureToggle && onFeatureToggle && (
           <button
-            className={`mt-2 text-xs px-2 py-1 rounded border border-yellow-400 bg-yellow-50 text-yellow-700 font-medium hover:bg-yellow-100 transition w-full sm:w-auto`}
+            className={`mt-2 text-xs px-2 py-1 rounded border border-accent bg-accent/10 text-accent-foreground font-medium hover:bg-accent/20 transition w-full sm:w-auto`}
             onClick={() => onFeatureToggle(!featured)}
             type="button"
           >
@@ -211,8 +218,8 @@ const ProCard = React.memo(function ProCard({
               className={
                 "rounded px-2 py-1 " +
                 (profileComplete
-                  ? "bg-green-100 text-green-700"
-                  : "bg-red-100 text-red-700")
+                  ? "bg-secondary/20 text-secondary"
+                  : "bg-destructive/20 text-destructive")
               }
             >
               {profileComplete ? "Profile complete" : "Profile incomplete"}

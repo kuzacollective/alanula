@@ -37,7 +37,7 @@ export default function SuccessStories() {
         {stories.map(story => (
           <div
             key={story.name}
-            className="bg-card rounded-xl shadow flex flex-col items-center p-6 animate-fade-in"
+            className="bg-card rounded-xl shadow-card hover:shadow-elevated transition-shadow duration-300 flex flex-col items-center p-6 animate-fade-in"
           >
             <img
               src={story.photo}
@@ -46,7 +46,7 @@ export default function SuccessStories() {
             />
             <div className="font-poppins font-semibold text-primary">{story.name}</div>
             <div className="text-xs text-muted-foreground mb-2">{story.category}</div>
-            <blockquote className="text-center text-sm italic text-gray-200 dark:text-gray-300 leading-relaxed">
+            <blockquote className="text-center text-sm italic text-muted-foreground leading-relaxed">
               "{story.summary}"
             </blockquote>
           </div>

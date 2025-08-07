@@ -7,35 +7,35 @@ const stats = [
     label: "Active Pros", 
     value: "25+",
     description: "Verified service providers",
-    color: "text-blue-500"
+    color: "text-primary"
   },
   { 
     icon: Briefcase, 
     label: "Services Listed", 
     value: "40+",
     description: "Different service categories",
-    color: "text-green-500"
+    color: "text-secondary"
   },
   { 
     icon: MapPin, 
     label: "Cities Covered", 
     value: "15+",
     description: "Across Mauritius",
-    color: "text-purple-500"
+    color: "text-accent-foreground"
   },
   { 
     icon: Star, 
     label: "Average Rating", 
     value: "4.8★",
     description: "Customer satisfaction",
-    color: "text-yellow-500"
+    color: "text-accent-foreground"
   },
   { 
     icon: TrendingUp, 
     label: "Bookings Growth", 
     value: "+150%",
     description: "Month over month",
-    color: "text-accent"
+    color: "text-secondary"
   },
   { 
     icon: Award, 
@@ -59,7 +59,7 @@ export default function CommunityStats() {
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
         {stats.map(({ icon: Icon, label, value, description, color }) => (
           <div key={label} className="group">
-            <div className="bg-white dark:bg-card rounded-2xl p-6 sm:p-8 shadow-sm border hover:shadow-lg transition-all duration-300 hover:-translate-y-1 text-center h-full">
+            <div className="bg-card rounded-2xl p-6 sm:p-8 shadow-card border hover:shadow-elevated transition-all duration-300 hover:-translate-y-1 text-center h-full">
               <div className="mb-4 sm:mb-6">
                 <Icon size={40} className={`mx-auto ${color} group-hover:scale-110 transition-transform duration-300 sm:w-12 sm:h-12`} />
               </div>

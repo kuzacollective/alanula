@@ -5,37 +5,37 @@ const reasons = [
     icon: <Shield className="text-primary" size={32} />,
     title: "Verified Pros Only",
     desc: "Every service provider is manually verified for quality and authenticity.",
-    color: "bg-blue-50 dark:bg-blue-900/20"
+    color: "bg-primary/10"
   },
   {
-    icon: <MapPin className="text-accent" size={32} />,
+    icon: <MapPin className="text-secondary" size={32} />,
     title: "100% Local",
     desc: "Supporting Mauritian talent and keeping money in our community.",
-    color: "bg-green-50 dark:bg-green-900/20"
+    color: "bg-secondary/10"
   },
   {
-    icon: <Smartphone className="text-purple-500" size={32} />,
+    icon: <Smartphone className="text-accent-foreground" size={32} />,
     title: "WhatsApp Direct",
     desc: "No app downloads needed. Book through the platform you already use.",
-    color: "bg-purple-50 dark:bg-purple-900/20"
+    color: "bg-accent/10"
   },
   {
-    icon: <BadgeCheck className="text-yellow-500" size={32} />,
+    icon: <BadgeCheck className="text-accent-foreground" size={32} />,
     title: "Zero Commission",
     desc: "Pros keep 100% of their earnings. Fair pricing for everyone.",
-    color: "bg-yellow-50 dark:bg-yellow-900/20"
+    color: "bg-accent/10"
   },
   {
-    icon: <HeartHandshake className="text-pink-500" size={32} />,
+    icon: <HeartHandshake className="text-primary" size={32} />,
     title: "Community First",
     desc: "Built by locals, for locals. Empowering everyday entrepreneurs.",
-    color: "bg-pink-50 dark:bg-pink-900/20"
+    color: "bg-primary/10"
   },
   {
-    icon: <Wand2 className="text-indigo-500" size={32} />,
+    icon: <Wand2 className="text-secondary" size={32} />,
     title: "Smart Matching",
     desc: "Advanced filters help you find exactly what you need, when you need it.",
-    color: "bg-indigo-50 dark:bg-indigo-900/20"
+    color: "bg-secondary/10"
   },
 ];
 
@@ -52,7 +52,7 @@ export default function WhyAlanula() {
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
         {reasons.map((reason, idx) => (
           <div key={reason.title} className="group">
-            <div className="bg-white dark:bg-card rounded-2xl p-6 sm:p-8 shadow-sm border hover:shadow-lg transition-all duration-300 hover:-translate-y-1 h-full">
+            <div className="bg-card rounded-2xl p-6 sm:p-8 shadow-card border hover:shadow-elevated transition-all duration-300 hover:-translate-y-1 h-full">
               <div className={`mb-4 sm:mb-6 p-3 sm:p-4 rounded-xl ${reason.color} w-fit group-hover:scale-110 transition-transform duration-300`}>
                 {reason.icon}
               </div>

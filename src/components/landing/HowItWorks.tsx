@@ -5,31 +5,31 @@ const steps = [
     icon: <Search className="text-primary" size={40} />,
     title: "Discover Services",
     desc: "Browse verified local pros by category, location, and price. Read reviews and see portfolios.",
-    color: "bg-blue-50 dark:bg-blue-900/20"
+    color: "bg-primary/10"
   },
   {
-    icon: <MessageCircle className="text-accent" size={40} />,
+    icon: <MessageCircle className="text-secondary" size={40} />,
     title: "Connect Instantly",
     desc: "Message pros directly via WhatsApp. No middlemen, no complicated booking systems.",
-    color: "bg-green-50 dark:bg-green-900/20"
+    color: "bg-secondary/10"
   },
   {
-    icon: <Shield className="text-yellow-500" size={40} />,
+    icon: <Shield className="text-accent-foreground" size={40} />,
     title: "Book with Confidence",
     desc: "All pros are verified. See ratings, reviews, and work samples before you book.",
-    color: "bg-yellow-50 dark:bg-yellow-900/20"
+    color: "bg-accent/10"
   },
   {
-    icon: <Star className="text-purple-500" size={40} />,
+    icon: <Star className="text-primary" size={40} />,
     title: "Rate & Review",
     desc: "Share your experience to help others and build trust in our community.",
-    color: "bg-purple-50 dark:bg-purple-900/20"
+    color: "bg-primary/10"
   },
 ];
 
 const forPros = [
   {
-    icon: <UserPlus className="text-accent" size={36} />,
+    icon: <UserPlus className="text-secondary" size={36} />,
     title: "List Your Service",
     desc: "Create your profile in minutes. Showcase your skills and build your client base.",
   },
@@ -75,10 +75,10 @@ export default function HowItWorks() {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 sm:gap-12 max-w-4xl mx-auto">
           {forPros.map((item, idx) => (
             <div key={item.title} className="flex flex-col items-center text-center animate-fade-in">
-              <div className="mb-4 sm:mb-6 p-4 sm:p-6 rounded-2xl bg-accent/10">
+              <div className="mb-4 sm:mb-6 p-4 sm:p-6 rounded-2xl bg-secondary/10">
                 {item.icon}
               </div>
-              <div className="bg-accent/20 text-accent rounded-full w-7 h-7 sm:w-8 sm:h-8 flex items-center justify-center text-sm font-bold mb-3 sm:mb-4">
+              <div className="bg-secondary/20 text-secondary rounded-full w-7 h-7 sm:w-8 sm:h-8 flex items-center justify-center text-sm font-bold mb-3 sm:mb-4">
                 {idx + 1}
               </div>
               <h4 className="font-bold font-poppins text-lg sm:text-xl text-secondary mb-2 sm:mb-3">{item.title}</h4>
@@ -89,7 +89,7 @@ export default function HowItWorks() {
         <div className="text-center mt-6 sm:mt-8">
           <a 
             href="/join-pro" 
-            className="inline-flex items-center gap-2 bg-accent text-accent-foreground px-5 sm:px-6 py-2.5 sm:py-3 rounded-lg font-semibold hover:bg-accent/90 transition-colors text-sm sm:text-base"
+            className="inline-flex items-center gap-2 bg-secondary text-secondary-foreground px-5 sm:px-6 py-2.5 sm:py-3 rounded-lg font-semibold hover:bg-secondary/90 transition-colors text-sm sm:text-base"
           >
             <UserPlus size={20} />
             Join as a Pro

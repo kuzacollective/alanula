@@ -60,13 +60,13 @@ export const ServiceSearchBar = ({
         placeholder="Search services..."
         value={search}
         onChange={e => setSearch(e.target.value)}
-        className="w-full bg-white dark:bg-card"
+        className="w-full bg-card"
       />
     </div>
     
     <div className="flex flex-col gap-1 w-full md:w-[160px] lg:w-[180px]">
       <Select value={category} onValueChange={setCategory}>
-        <SelectTrigger className="w-full bg-white dark:bg-card" aria-label="Select category">
+        <SelectTrigger className="w-full bg-card" aria-label="Select category">
           <SelectValue placeholder="Category" />
         </SelectTrigger>
         <SelectContent>
@@ -81,7 +81,7 @@ export const ServiceSearchBar = ({
     
     <div className="flex flex-col gap-1 w-full md:w-[140px] lg:w-[160px]">
       <Select value={location} onValueChange={setLocation}>
-        <SelectTrigger className="w-full bg-white dark:bg-card" aria-label="Select location">
+        <SelectTrigger className="w-full bg-card" aria-label="Select location">
           <SelectValue placeholder="Location" />
         </SelectTrigger>
         <SelectContent>
