@@ -1,4 +1,5 @@
 
+import Logo from "../Logo";
 import { Instagram, MessageCircle, FileText, MessageSquare } from "lucide-react";
 import { Link } from "react-router-dom";
 
@@ -7,7 +8,7 @@ export default function LandingFooter() {
     <footer className="w-full border-t border-border bg-background py-6 sm:py-8 px-4 mt-6 sm:mt-8">
       <div className="max-w-5xl mx-auto flex flex-col md:flex-row justify-between items-center gap-4 sm:gap-6">
         <div className="flex flex-col gap-2 text-center md:text-left">
-          <span className="font-poppins font-bold text-lg sm:text-xl text-primary">Alanula</span>
+          <Logo size={18} variant="text" className="mx-auto md:mx-0" />
           <span className="text-muted-foreground text-xs sm:text-sm px-2 md:px-0">A project to empower Mauritius' service hustlers</span>
         </div>
         <ul className="flex flex-wrap gap-3 sm:gap-5 mt-3 md:mt-0 justify-center">

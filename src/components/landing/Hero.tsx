@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 export default function Hero() {
   return (
     <section className="flex flex-col items-center justify-center py-8 sm:py-12 md:py-20 gap-4 sm:gap-6 bg-background px-4">
-      <Logo size={18} logoImageUrl="https://noskvkbffpezmwsstjzf.supabase.co/storage/v1/object/public/logo/alanula-small.png" />
+      <Logo size={24} variant="icon" className="mb-2 animate-fade-in" />
       <div className="text-center max-w-4xl mx-auto w-full">
         <h1 className="text-3xl xs:text-4xl sm:text-5xl md:text-6xl font-poppins font-bold tracking-tight text-primary text-center mb-4 sm:mb-6 animate-fade-in leading-tight">
           Find trusted local pros.<br className="hidden md:block" /> 
