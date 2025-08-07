@@ -1,6 +1,6 @@
 import Header from "@/components/ui/Header";
 import { Button } from "@/components/ui/button";
-import { ArrowLeft, Star, Users, MessageCircle, TrendingUp, Shield, Handshake } from "lucide-react";
+import { ArrowLeft, Star, Users, MessageCircle, TrendingUp, Shield, Handshake, Zap } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import React, { useState } from "react";
 
