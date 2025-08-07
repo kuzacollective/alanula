@@ -142,3 +142,14 @@
     transform: scale(1);
   }
 }
+/* Alanula text logo styling */
+.alanula-text-logo-letter {
+  text-shadow: 
+    2px 2px 0px #2E464A,
+    4px 4px 8px rgba(0, 0, 0, 0.3);
+  transition: transform 0.2s ease-in-out;
+}
+
+.alanula-text-logo-letter:hover {
+  transform: scale(1.05);
+}
