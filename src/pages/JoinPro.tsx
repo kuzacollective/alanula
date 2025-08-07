@@ -77,18 +77,6 @@ export default function JoinPro() {
           </div>
         </div>
 
-        {/* Benefits Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
-          {benefits.map((benefit, idx) => (
-            <div key={benefit.title} className="bg-white dark:bg-card rounded-xl p-6 shadow-sm border hover:shadow-md transition-shadow">
-              <div className="mb-4 p-3 bg-muted/30 rounded-lg w-fit">
-                {benefit.icon}
-              </div>
-              <h3 className="font-bold font-poppins text-lg text-secondary mb-2">{benefit.title}</h3>
-              <p className="text-muted-foreground text-sm leading-relaxed">{benefit.desc}</p>
-            </div>
-          ))}
-        </div>
       </div>
       
       <div className="w-full max-w-2xl bg-white dark:bg-card rounded-lg shadow-lg overflow-hidden">
