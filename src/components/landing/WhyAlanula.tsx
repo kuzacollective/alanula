@@ -43,8 +43,8 @@ export default function WhyAlanula() {
   return (
     <div className="py-12 sm:py-16 md:py-24 px-4">
       <div className="text-center mb-12 sm:mb-16">
-        <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold font-poppins text-secondary mb-4">Why Choose Alanula?</h2>
-        <p className="text-lg sm:text-xl text-muted-foreground max-w-3xl mx-auto px-2">
+        <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold font-poppins text-foreground mb-4">Why Choose Alanula?</h2>
+        <p className="text-lg sm:text-xl text-foreground/70 max-w-3xl mx-auto px-2">
           We're not just another marketplace. We're a community-driven platform built specifically for Mauritius.
         </p>
       </div>
@@ -57,7 +57,7 @@ export default function WhyAlanula() {
                 {reason.icon}
               </div>
               <h3 className="font-bold font-poppins text-lg sm:text-xl text-secondary mb-2 sm:mb-3">{reason.title}</h3>
-              <p className="text-sm sm:text-base text-muted-foreground leading-relaxed">{reason.desc}</p>
+              <p className="text-sm sm:text-base text-foreground/70 leading-relaxed">{reason.desc}</p>
             </div>
           </div>
         ))}
@@ -66,10 +66,10 @@ export default function WhyAlanula() {
       {/* Call to action */}
       <div className="text-center mt-12 sm:mt-16">
         <div className="bg-gradient-to-r from-primary/10 to-accent/10 rounded-2xl p-6 sm:p-8 md:p-12">
-          <h3 className="text-xl sm:text-2xl md:text-3xl font-bold font-poppins text-secondary mb-4">
+          <h3 className="text-xl sm:text-2xl md:text-3xl font-bold font-poppins text-foreground mb-4">
             Ready to experience the difference?
           </h3>
-          <p className="text-base sm:text-lg text-muted-foreground mb-6 sm:mb-8 max-w-2xl mx-auto px-2">
+          <p className="text-base sm:text-lg text-foreground/70 mb-6 sm:mb-8 max-w-2xl mx-auto px-2">
             Join thousands of satisfied clients and successful service providers who trust Alanula.
           </p>
           <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center max-w-2xl mx-auto">

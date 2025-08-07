@@ -12,6 +12,7 @@ export default function Hero() {
           <span className="text-accent">Book in minutes.</span>
         </h1>
         <p className="text-lg xs:text-xl md:text-2xl font-inter text-muted-foreground text-center mb-6 sm:mb-8 max-w-3xl mx-auto leading-relaxed px-2">
+        <p className="text-lg xs:text-xl md:text-2xl font-inter text-foreground/70 text-center mb-6 sm:mb-8 max-w-3xl mx-auto leading-relaxed px-2">
           Alanula connects you with verified local service providers across Mauritius. From tutors to photographers, find the perfect pro for your needs—fast, easy, and trusted.
         </p>
         <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 w-full max-w-md mx-auto justify-center">

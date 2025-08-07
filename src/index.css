@@ -7,25 +7,25 @@
 @layer base {
   :root {
     --background: 44 29% 97%; /* #FDFBF6 - Off-White/Light Beige */
-    --foreground: 0 0% 20%; /* #333333 - Charcoal Gray */
+    --foreground: 0 0% 15%; /* #262626 - Darker Charcoal Gray for better contrast */
 
     --card: 44 29% 97%; /* Same as background for consistency */
-    --card-foreground: 0 0% 20%; /* Same as foreground */
+    --card-foreground: 0 0% 15%; /* Same as foreground */
 
     --popover: 44 29% 97%;
-    --popover-foreground: 0 0% 20%;
+    --popover-foreground: 0 0% 15%;
 
     --primary: 12 73% 63%; /* #E07A5F - Terracotta */
     --primary-foreground: 44 29% 97%; /* Light background for contrast */
 
     --secondary: 152 28% 61%; /* #81B29A - Seafoam Green */
-    --secondary-foreground: 0 0% 20%; /* Dark text for contrast */
+    --secondary-foreground: 0 0% 10%; /* Much darker text for better contrast */
 
     --accent: 44 65% 75%; /* #F2CC8F - Golden Yellow */
-    --accent-foreground: 0 0% 20%; /* Dark text for contrast */
+    --accent-foreground: 0 0% 10%; /* Much darker text for better contrast */
 
     --muted: 44 20% 92%; /* Light muted background */
-    --muted-foreground: 0 0% 45%; /* Medium gray for secondary text */
+    --muted-foreground: 0 0% 35%; /* Darker gray for better contrast */
 
     --destructive: 0 70% 55%; /* Softer red */
     --destructive-foreground: 44 29% 97%;
@@ -37,11 +37,11 @@
     --radius: 0.5rem;
 
     --sidebar-background: 44 29% 97%;
-    --sidebar-foreground: 0 0% 20%;
+    --sidebar-foreground: 0 0% 15%;
     --sidebar-primary: 12 73% 63%;
     --sidebar-primary-foreground: 44 29% 97%;
     --sidebar-accent: 44 20% 92%;
-    --sidebar-accent-foreground: 0 0% 20%;
+    --sidebar-accent-foreground: 0 0% 15%;
     --sidebar-border: 44 15% 88%;
     --sidebar-ring: 12 73% 63%;
   }

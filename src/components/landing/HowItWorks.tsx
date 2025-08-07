@@ -44,8 +44,8 @@ export default function HowItWorks() {
   return (
     <div className="py-12 sm:py-16 md:py-24 px-4">
       <div className="text-center mb-12 sm:mb-16">
-        <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold font-poppins text-secondary mb-4">How Alanula Works</h2>
-        <p className="text-lg sm:text-xl text-muted-foreground max-w-2xl mx-auto px-2">
+        <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold font-poppins text-foreground mb-4">How Alanula Works</h2>
+        <p className="text-lg sm:text-xl text-foreground/70 max-w-2xl mx-auto px-2">
           Connecting clients with trusted local professionals has never been easier
         </p>
       </div>
@@ -63,7 +63,7 @@ export default function HowItWorks() {
                 {idx + 1}
               </div>
               <h4 className="font-bold font-poppins text-lg sm:text-xl text-secondary mb-2 sm:mb-3">{step.title}</h4>
-              <p className="text-sm sm:text-base font-inter text-muted-foreground leading-relaxed px-2">{step.desc}</p>
+              <p className="text-sm sm:text-base font-inter text-foreground/70 leading-relaxed px-2">{step.desc}</p>
             </div>
           ))}
         </div>
@@ -82,7 +82,7 @@ export default function HowItWorks() {
                 {idx + 1}
               </div>
               <h4 className="font-bold font-poppins text-lg sm:text-xl text-secondary mb-2 sm:mb-3">{item.title}</h4>
-              <p className="text-sm sm:text-base font-inter text-muted-foreground leading-relaxed px-2">{item.desc}</p>
+              <p className="text-sm sm:text-base font-inter text-foreground/70 leading-relaxed px-2">{item.desc}</p>
             </div>
           ))}
         </div>

@@ -74,10 +74,10 @@ export default function CommunityStats() {
       {/* Additional context */}
       <div className="mt-12 sm:mt-16 text-center">
         <div className="bg-muted/30 rounded-2xl p-6 sm:p-8 md:p-12 max-w-4xl mx-auto">
-          <h3 className="text-xl sm:text-2xl font-bold font-poppins text-secondary mb-4">
+          <h3 className="text-xl sm:text-2xl font-bold font-poppins text-foreground mb-4">
             Building Mauritius' Premier Service Marketplace
           </h3>
-          <p className="text-base sm:text-lg text-muted-foreground leading-relaxed px-2">
+          <p className="text-base sm:text-lg text-foreground/80 leading-relaxed px-2">
             From tutoring sessions in Curepipe to photography shoots in Grand Baie, 
             Alanula is connecting talented locals with clients who need their expertise. 
             Every booking helps build a stronger, more connected community.
