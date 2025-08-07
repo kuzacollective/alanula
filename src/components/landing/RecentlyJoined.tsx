@@ -92,8 +92,8 @@ export default function RecentlyJoined() {
               pro={h}
               isNew={h.isNew}
               needsReview={h.needsReview}
-              profileComplete={!!h.profileComplete}
-              status={h.status}
+            <div className="text-xs text-foreground/60 mb-2">{story.category}</div>
+            <blockquote className="text-center text-sm italic text-foreground/70 leading-relaxed">
               isAdmin={false}
             />
           </div>

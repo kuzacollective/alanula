@@ -130,10 +130,10 @@ const ProCard = React.memo(function ProCard({
           )}
         </div>
         <h2 className="font-poppins text-base sm:text-lg font-bold text-primary text-center leading-tight px-1">{name}</h2>
-        <div className="text-xs sm:text-sm text-muted-foreground mb-1 text-center">{location}</div>
+        <div className="text-xs sm:text-sm text-foreground/60 mb-1 text-center">{location}</div>
         <Badge variant="secondary" className="mb-1 text-xs">{category}</Badge>
-        <div className="font-semibold text-lg sm:text-xl text-secondary mb-2">{formatPrice(price)} <span className="text-xs sm:text-sm text-muted-foreground font-normal">/start</span></div>
-        <div className="text-xs sm:text-sm text-center text-muted-foreground mb-2 line-clamp-3 px-1">{summary || <span className="italic text-muted-foreground/60">No summary provided</span>}</div>
+        <div className="font-semibold text-lg sm:text-xl text-secondary mb-2">{formatPrice(price)} <span className="text-xs sm:text-sm text-foreground/60 font-normal">/start</span></div>
+        <div className="text-xs sm:text-sm text-center text-foreground/70 mb-2 line-clamp-3 px-1">{summary || <span className="italic text-foreground/50">No summary provided</span>}</div>
       </Link>
       
       <div className="px-3 sm:px-4 pb-3 sm:pb-4 mt-auto">
@@ -161,7 +161,7 @@ const ProCard = React.memo(function ProCard({
             </span>
           )}
           {typeof reviewCount === "number" && (
-            <span className="text-xs text-muted-foreground ml-2">
+            <span className="text-xs text-foreground/60 ml-2">
               {reviewCount === 1 ? "1 review" : `${reviewCount} reviews`}
             </span>
           )}

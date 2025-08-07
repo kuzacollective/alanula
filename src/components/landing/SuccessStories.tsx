@@ -45,8 +45,8 @@ export default function SuccessStories() {
               className="w-20 h-20 rounded-full border-2 border-primary mb-3 object-cover"
             />
             <div className="font-poppins font-semibold text-primary">{story.name}</div>
-            <div className="text-xs text-muted-foreground mb-2">{story.category}</div>
-            <blockquote className="text-center text-sm italic text-muted-foreground leading-relaxed">
+            <div className="text-xs text-foreground/60 mb-2">{story.category}</div>
+            <blockquote className="text-center text-sm italic text-foreground/70 leading-relaxed">
               "{story.summary}"
             </blockquote>
           </div>

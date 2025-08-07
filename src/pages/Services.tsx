@@ -161,7 +161,7 @@ export default function Services() {
 
           {/* Results count and clear filters */}
           <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-3 mt-[-12px]">
-            <div className="text-xs sm:text-sm text-muted-foreground flex items-center gap-2">
+            <div className="text-xs sm:text-sm text-foreground/60 flex items-center gap-2">
               {filtered.length > 0
                 ? `Showing ${filtered.length} pro${filtered.length > 1 ? "s" : ""}`
                 : loading
@@ -223,7 +223,7 @@ export default function Services() {
         </div>
         {/* Moved footer out of flex column for better stacking and responsive layout */}
         <div className="text-center text-xs sm:text-sm mt-7 text-muted-foreground pb-8 px-4">
-          Powered by <span className="text-secondary font-medium">Airtable</span> & Alanula community 🚀
+          Powered by <span className="text-primary font-medium">Airtable</span> & Alanula community 🚀
         </div>
       </main>
     </ErrorBoundary>

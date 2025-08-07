@@ -9,7 +9,7 @@ export default function LandingFooter() {
       <div className="max-w-5xl mx-auto flex flex-col md:flex-row justify-between items-center gap-4 sm:gap-6">
         <div className="flex flex-col gap-2 text-center md:text-left">
           <Logo size={18} className="mx-auto md:mx-0" />
-          <span className="text-muted-foreground text-xs sm:text-sm px-2 md:px-0">A project to empower Mauritius' service hustlers</span>
+          <span className="text-foreground/60 text-xs sm:text-sm px-2 md:px-0">A project to empower Mauritius' service hustlers</span>
         </div>
         <ul className="flex flex-wrap gap-3 sm:gap-5 mt-3 md:mt-0 justify-center">
           <li>
@@ -40,7 +40,7 @@ export default function LandingFooter() {
           </li>
         </ul>
       </div>
-      <div className="text-center text-xs text-muted-foreground mt-4 px-4">&copy; {new Date().getFullYear()} Alanula. All rights reserved.</div>
+      <div className="text-center text-xs text-foreground/50 mt-4 px-4">&copy; {new Date().getFullYear()} Alanula. All rights reserved.</div>
     </footer>
   );
 }

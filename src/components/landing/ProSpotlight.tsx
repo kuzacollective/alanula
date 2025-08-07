@@ -54,7 +54,7 @@ export default function ProSpotlight() {
           {spotlightPro.quote}
           <span className="absolute right-2 bottom-3 text-accent text-xl select-none">"</span>
         </blockquote>
-        <ul className="text-xs text-muted-foreground flex flex-wrap gap-x-4 gap-y-1 justify-center md:justify-start mb-4">
+        <ul className="text-xs text-foreground/60 flex flex-wrap gap-x-4 gap-y-1 justify-center md:justify-start mb-4">
           {spotlightPro.achievements.map((ach, i) => (
             <li key={ach.text} className="flex items-center gap-1">
               {ach.icon}

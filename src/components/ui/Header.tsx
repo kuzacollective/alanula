@@ -52,7 +52,7 @@ export default function Header() {
           {isAuthenticated && (
             <div className="flex items-center gap-1 sm:gap-2">
               <Logo size={12} />
-              <div className="flex items-center gap-1 text-xs sm:text-sm text-muted-foreground">
+              <div className="flex items-center gap-1 text-xs sm:text-sm text-foreground/60">
                 <User size={16} />
                 <span className="hidden sm:inline">{user?.email}</span>
               </div>
@@ -60,7 +60,7 @@ export default function Header() {
                 variant="ghost"
                 size="sm"
                 onClick={signOut}
-                className="text-muted-foreground hover:text-foreground px-2 sm:px-3"
+                className="text-foreground/60 hover:text-foreground px-2 sm:px-3"
               >
                 <LogOut size={16} />
                 <span className="hidden sm:inline ml-1">Sign Out</span>
