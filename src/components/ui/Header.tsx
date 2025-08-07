@@ -1,7 +1,6 @@
 import React from "react";
 import { Link, useLocation } from "react-router-dom";
 import Logo from "@/components/Logo";
-import { ThemeToggle } from "@/components/ui/ThemeToggle";
 import { Breadcrumb, BreadcrumbList, BreadcrumbItem, BreadcrumbLink, BreadcrumbSeparator, BreadcrumbPage } from "@/components/ui/breadcrumb";
 import { useAuth } from "@/hooks/useAuth";
 import { Button } from "@/components/ui/button";
@@ -68,7 +67,6 @@ export default function Header() {
               </Button>
             </div>
           )}
-          <ThemeToggle />
         </div>
       </div>
       <div className="mx-auto max-w-4xl mt-1 px-1 sm:px-0">
