@@ -21,7 +21,7 @@
     --secondary: 152 28% 61%; /* #81B29A - Seafoam Green */
     --secondary-foreground: 0 0% 10%; /* Much darker text for better contrast */
 
-    --accent: 44 65% 75%; /* #F2CC8F - Golden Yellow */
+    --accent: 44 65% 55%; /* #D4A574 - Darker Golden Yellow for better contrast */
     --accent-foreground: 0 0% 10%; /* Much darker text for better contrast */
 
     --muted: 44 20% 92%; /* Light muted background */
