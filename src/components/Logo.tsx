@@ -2,7 +2,7 @@ import AlanulaTextLogo from "./AlanulaTextLogo";
 import { Link } from "react-router-dom";
 
 export default function Logo({
-  size = 32,
+  size = 48,
   className = "",
   clickable = false,
 }: { 

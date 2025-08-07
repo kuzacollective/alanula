@@ -47,7 +47,7 @@ export default function Header() {
     <header className="w-full py-3 sm:py-4 px-3 sm:px-4 border-b border-border bg-background sticky top-0 z-30">
       <div className="mx-auto max-w-4xl flex items-center justify-between gap-2">
         <Link to="/" aria-label="Alanula Home" className="flex items-center gap-2">
-          <Logo size={20} className="hover:opacity-80 transition-opacity" />
+          <Logo size={32} className="hover:opacity-80 transition-opacity" />
         </Link>
         <div className="flex items-center gap-1 sm:gap-2">
           {isAuthenticated && (
