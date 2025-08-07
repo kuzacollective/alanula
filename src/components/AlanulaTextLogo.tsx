@@ -15,13 +15,13 @@ export default function AlanulaTextLogo({ size = 32, className = "" }: AlanulaTe
       role="img"
       aria-label="Alanula"
     >
-      <span className="alanula-text-logo-letter" style={{ color: '#4ECDC4' }}>a</span>
-      <span className="alanula-text-logo-letter" style={{ color: '#FF6B35' }}>l</span>
-      <span className="alanula-text-logo-letter" style={{ color: '#F7DC6F' }}>a</span>
-      <span className="alanula-text-logo-letter" style={{ color: '#4ECDC4' }}>n</span>
-      <span className="alanula-text-logo-letter" style={{ color: '#4ECDC4' }}>u</span>
-      <span className="alanula-text-logo-letter" style={{ color: '#4ECDC4' }}>l</span>
-      <span className="alanula-text-logo-letter" style={{ color: '#4ECDC4' }}>a</span>
+      <span className="alanula-text-logo-letter" style={{ color: 'hsl(var(--logo-teal))' }}>a</span>
+      <span className="alanula-text-logo-letter" style={{ color: 'hsl(var(--logo-orange))' }}>l</span>
+      <span className="alanula-text-logo-letter" style={{ color: 'hsl(var(--logo-yellow))' }}>a</span>
+      <span className="alanula-text-logo-letter" style={{ color: 'hsl(var(--logo-teal))' }}>n</span>
+      <span className="alanula-text-logo-letter" style={{ color: 'hsl(var(--logo-teal))' }}>u</span>
+      <span className="alanula-text-logo-letter" style={{ color: 'hsl(var(--logo-teal))' }}>l</span>
+      <span className="alanula-text-logo-letter" style={{ color: 'hsl(var(--logo-teal))' }}>a</span>
     </div>
   );
 }

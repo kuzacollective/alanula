@@ -92,6 +92,13 @@
   }
 }
 
+/* Logo-specific colors for brand consistency */
+:root {
+  --logo-yellow: 45 95% 69%; /* #F7DC6F */
+  --logo-teal: 170 50% 54%; /* #4ECDC4 */
+  --logo-orange: 19 100% 60%; /* #FF6B35 */
+}
+
 @layer base {
   * {
     @apply border-border;
@@ -146,6 +153,11 @@
 .alanula-text-logo-letter {
   letter-spacing: 0.1em;
   text-shadow: 
+    0px 0px 0px #000,
+    1px 1px 0px #000,
+    -1px -1px 0px #000,
+    1px -1px 0px #000,
+    -1px 1px 0px #000,
     3px 3px 0px #2E464A,
     6px 6px 12px rgba(0, 0, 0, 0.4),
     1px 1px 0px #1a2c2f;
