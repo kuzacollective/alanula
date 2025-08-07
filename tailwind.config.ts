@@ -19,6 +19,11 @@ export default {
 			}
 		},
 		extend: {
+			boxShadow: {
+				'soft': '0 2px 8px rgba(0, 0, 0, 0.08)',
+				'card': '0 1px 3px rgba(0, 0, 0, 0.1)',
+				'elevated': '0 4px 12px rgba(0, 0, 0, 0.12)',
+			},
 			colors: {
 				border: 'hsl(var(--border))',
 				input: 'hsl(var(--input))',

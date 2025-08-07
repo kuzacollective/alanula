@@ -6,97 +6,52 @@
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
+    --background: 44 29% 97%; /* #FDFBF6 - Off-White/Light Beige */
+    --foreground: 0 0% 20%; /* #333333 - Charcoal Gray */
 
-    --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
+    --card: 44 29% 97%; /* Same as background for consistency */
+    --card-foreground: 0 0% 20%; /* Same as foreground */
 
-    --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
+    --popover: 44 29% 97%;
+    --popover-foreground: 0 0% 20%;
 
-    --primary: 44 95% 48%; /* #F5B400 */
-    --primary-foreground: 222.2 47.4% 11.2%;
+    --primary: 12 73% 63%; /* #E07A5F - Terracotta */
+    --primary-foreground: 44 29% 97%; /* Light background for contrast */
 
-    --secondary: 0 0% 18%; /* #2E2E2E - Dark gray for light theme */
-    --secondary-foreground: 0 0% 98%; /* Light text on dark secondary background */
+    --secondary: 152 28% 61%; /* #81B29A - Seafoam Green */
+    --secondary-foreground: 0 0% 20%; /* Dark text for contrast */
 
-    --accent: 166 100% 39%; /* #00C88F */
-    --accent-foreground: 0 0% 100%;
+    --accent: 44 65% 75%; /* #F2CC8F - Golden Yellow */
+    --accent-foreground: 0 0% 20%; /* Dark text for contrast */
 
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
+    --muted: 44 20% 92%; /* Light muted background */
+    --muted-foreground: 0 0% 45%; /* Medium gray for secondary text */
 
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
+    --destructive: 0 70% 55%; /* Softer red */
+    --destructive-foreground: 44 29% 97%;
 
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
+    --border: 44 15% 88%; /* Subtle border color */
+    --input: 44 15% 88%; /* Same as border */
+    --ring: 12 73% 63%; /* Primary color for focus rings */
 
     --radius: 0.5rem;
 
-    --sidebar-background: 0 0% 98%;
-
-    --sidebar-foreground: 240 5.3% 26.1%;
-
-    --sidebar-primary: 240 5.9% 10%;
-
-    --sidebar-primary-foreground: 0 0% 98%;
-
-    --sidebar-accent: 240 4.8% 95.9%;
-
-    --sidebar-accent-foreground: 240 5.9% 10%;
-
-    --sidebar-border: 220 13% 91%;
-
-    --sidebar-ring: 217.2 91.2% 59.8%;
-  }
-
-  .dark {
-    --background: 222.2 84% 4.9%;
-    --foreground: 210 40% 98%;
-
-    --card: 222.2 84% 4.9%;
-    --card-foreground: 210 40% 98%;
-
-    --popover: 222.2 84% 4.9%;
-    --popover-foreground: 210 40% 98%;
-
-    --primary: 44 95% 48%; /* #F5B400 */
-    --primary-foreground: 222.2 47.4% 11.2%;
-
-    --secondary: 0 0% 85%; /* Light gray for dark theme */
-    --secondary-foreground: 0 0% 15%; /* Dark text on light secondary background */
-
-    --accent: 166 100% 39%; /* #00C88F */
-    --accent-foreground: 0 0% 100%;
-
-    --muted: 217.2 32.6% 17.5%;
-    --muted-foreground: 215 20.2% 75%; /* Increased for better visibility in dark mode */
-
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 210 40% 98%;
-
-    --border: 217.2 32.6% 17.5%;
-    --input: 217.2 32.6% 17.5%;
-    --ring: 212.7 26.8% 83.9%;
-    --sidebar-background: 240 5.9% 10%;
-    --sidebar-foreground: 240 4.8% 95.9%;
-    --sidebar-primary: 224.3 76.3% 48%;
-    --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 240 3.7% 15.9%;
-    --sidebar-accent-foreground: 240 4.8% 95.9%;
-    --sidebar-border: 240 3.7% 15.9%;
-    --sidebar-ring: 217.2 91.2% 59.8%;
+    --sidebar-background: 44 29% 97%;
+    --sidebar-foreground: 0 0% 20%;
+    --sidebar-primary: 12 73% 63%;
+    --sidebar-primary-foreground: 44 29% 97%;
+    --sidebar-accent: 44 20% 92%;
+    --sidebar-accent-foreground: 0 0% 20%;
+    --sidebar-border: 44 15% 88%;
+    --sidebar-ring: 12 73% 63%;
   }
 }
 
 /* Logo-specific colors for brand consistency */
 :root {
-  --logo-yellow: 45 95% 69%; /* #F7DC6F */
-  --logo-teal: 170 50% 54%; /* #4ECDC4 */
-  --logo-orange: 19 100% 60%; /* #FF6B35 */
+  --logo-primary: 12 73% 63%; /* Terracotta */
+  --logo-secondary: 152 28% 61%; /* Seafoam Green */
+  --logo-accent: 44 65% 75%; /* Golden Yellow */
 }
 
 @layer base {
