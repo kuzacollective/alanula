@@ -1,6 +1,6 @@
 import Header from "@/components/ui/Header";
 import { Button } from "@/components/ui/button";
-import { ArrowLeft, Star, Users, MessageCircle, TrendingUp, Shield, Zap } from "lucide-react";
+import { ArrowLeft, Star, Users, MessageCircle, TrendingUp, Shield, Handshake } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import React, { useState } from "react";
 
@@ -27,9 +27,9 @@ export default function JoinPro() {
       desc: "No middlemen - communicate directly with clients via WhatsApp"
     },
     {
-      icon: <Shield className="text-blue-500" size={24} />,
-      title: "Zero Commission",
-      desc: "Keep 100% of your earnings - we don't take any fees from your bookings"
+      icon: <Handshake className="text-blue-500" size={24} />,
+      title: "Business Growth & Partners",
+      desc: "Access exclusive resources, partnerships, and support to grow your business"
     },
     {
       icon: <Star className="text-yellow-500" size={24} />,
@@ -61,22 +61,18 @@ export default function JoinPro() {
             Turn Your Skills Into <span className="text-accent">Income</span>
           </h1>
           <p className="text-muted-foreground text-xl sm:text-2xl mb-8 max-w-3xl mx-auto leading-relaxed">
-            Join Mauritius' fastest-growing platform for service providers. Get discovered by clients who need your expertise and grow your business with zero commission fees.
+            Connect with clients, save time, and grow your business. Join a supportive community and access exclusive resources to thrive.
           </p>
           
           {/* Trust indicators */}
           <div className="flex flex-wrap items-center justify-center gap-6 mb-8 text-sm text-muted-foreground">
             <div className="flex items-center gap-2">
               <span className="w-2 h-2 bg-green-500 rounded-full"></span>
-              <span>25+ Active Pros</span>
+              <span>18+ Verified Pros</span>
             </div>
             <div className="flex items-center gap-2">
               <span className="w-2 h-2 bg-blue-500 rounded-full"></span>
               <span>4.8★ Average Rating</span>
-            </div>
-            <div className="flex items-center gap-2">
-              <span className="w-2 h-2 bg-yellow-500 rounded-full"></span>
-              <span>Zero Commission</span>
             </div>
           </div>
         </div>
