@@ -75,6 +75,37 @@ export async function fetchAirtablePros() {
   }
 }
 
+export async function updateAirtablePro(proId: string, updatedFields: Partial<any>) {
+  const MAKE_WEBHOOK_URL = import.meta.env.VITE_MAKE_WEBHOOK_URL || "";
+
+  if (!MAKE_WEBHOOK_URL || MAKE_WEBHOOK_URL.trim() === "") {
+    throw new Error("Make.com webhook URL is not configured");
+  }
+
+  try {
+    const response = await fetch(MAKE_WEBHOOK_URL, {
+      method: 'PATCH',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        action: 'update',
+        proId,
+        updatedFields
+      }),
+    });
+
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+
+    const result = await response.json();
+    return result;
+  } catch (error) {
+    console.error("Error updating pro:", error);
+    throw new Error(`Failed to update pro: ${error instanceof Error ? error.message : 'Unknown error'}`);
+  }
+}
 export async function fetchAirtableProById(proId: string) {
   try {
     // For now, fetch all pros and filter by ID

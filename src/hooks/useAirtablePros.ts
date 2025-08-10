@@ -7,13 +7,18 @@ export function useAirtablePros() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
-  useEffect(() => {
+  const fetchData = () => {
     setLoading(true);
+    setError(null);
     fetchAirtablePros()
       .then(setPros)
       .catch(e => setError(e.message))
       .finally(() => setLoading(false));
+  };
+
+  useEffect(() => {
+    fetchData();
   }, []);
 
-  return { pros, loading, error };
+  return { pros, loading, error, refetch: fetchData };
 }
