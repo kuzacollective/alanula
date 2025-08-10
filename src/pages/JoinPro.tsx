@@ -8,7 +8,7 @@ export default function JoinPro() {
   const navigate = useNavigate();
   const [iframeLoaded, setIframeLoaded] = useState(false);
 
-  const providerFormUrl = "https://airtable.com/embed/app7qyVA3PpoYOUBI/pagEvCD1lwQwVV0qx/form?backgroundColor=transparent";
+  const providerFormUrl = "https://airtable.com/embed/app7qyVA3PpoYOUBI/pagEvCD1lwQwVV0qx/form";
 
   const benefits = [
     {
